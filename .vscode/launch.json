@@ -16,10 +16,14 @@
                 "-r",
                 "tsconfig-paths/register"
             ],
-            "args": ["src/index.ts"],
+            "args": [
+                "src/index.ts"
+            ],
             "cwd": "${workspaceRoot}",
             "internalConsoleOptions": "openOnSessionStart",
-            "skipFiles": ["<node_internals>/**"],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
             "resolveSourceMapLocations": [
                 "${workspaceFolder}/**",
                 "!**/node_modules/**"
