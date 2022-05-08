@@ -1,5 +1,12 @@
-# kbotify-template
-Starter kit for kBotify bots
+# goutouBot 狗头
+
+A [Kaiheila](https://www.kaiheila.cn/) bot. 
+
+This bot provides Apex Legends related queries.
+
+
+
+
 
 Tips to dev:
 
@@ -7,7 +14,6 @@ Tips to dev:
 npm link ts-node
 npm link typescript
 2. install ts??
-
 
 Postman:
 no auth
