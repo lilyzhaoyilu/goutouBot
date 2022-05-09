@@ -1,15 +1,16 @@
 {
-  "name": "kbotify-template",
+  "name": "goutouBot",
   "version": "0.0.1",
-  "description": "Starter kit for kBotify bots",
+  "description": "A bot to query Apex Lengeds related info.",
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --nolazy -r ts-node/register -r tsconfig-paths/register src/index.ts"
+    "start": "node --nolazy -r ts-node/register -r tsconfig-paths/register src/index.ts",
+    "build": "npm install --save-dev ts-node@latest typescript@latest && npm link typescript && npm link ts-node && npm start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fi6/kbotify-template.git"
+    "url": "git+https://github.com/lilyzhaoyilu/goutouBot.git"
   },
   "keywords": [
     "kbotify",
@@ -18,10 +19,7 @@
   ],
   "author": "FlappyIce",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fi6/kbotify-template/issues"
-  },
-  "homepage": "https://github.com/fi6/kbotify-template#readme",
+  "homepage": "https://github.com/lilyzhaoyilu/goutouBot#readme",
   "dependencies": {
     "bunyan": "^1.8.15",
     "dotenv": "^16.0.0",

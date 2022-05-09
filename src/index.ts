@@ -4,6 +4,7 @@ import { apexMenu } from './commands/apex/apex_menu';
 import { apexCommand } from './commands/apex/apex_command';
 
 
+
 bot.addCommands(echoMenu);
 bot.addAlias(echoMenu, "在吗");
 
