@@ -12,14 +12,14 @@ class ApexQuery extends AppCommand {
       return session.quote('输入的指令有误。格式是：.apex q {你的id}，比如 .apex q my_id');
     }
 
-    const curUser = session.user.username;
+    const curUser = session.user.nickname || session.user.username;
     const queryUser = session.args[0];
     try {
       const res = await getApexAccountStatus(queryUser);
       const data = res.data;
       return session.sendCard(constructCard(curUser, data));
     } catch (err) {
-      return session.quote('查询失败, 暂时只支持查询origin id。如果同时查询次数过多, 可以等一会再查询。如果你觉得这是一个bug, 请向开发者反馈。');
+      return session.quote('查询失败，暂时只支持查询origin id。如果同时查询次数过多，可以等一会再查询。如果你觉得这是一个bug，请向开发者反馈。');
     }
   };
 }
@@ -30,6 +30,9 @@ const getApexAccountStatus = async (queryUser: string) => {
 
 const translateRanking = (rank: string) => {
   switch (rank) {
+    case 'Apex Predator':
+      return '猎杀';
+      break;
     case 'Master':
       return '大师';
       break;

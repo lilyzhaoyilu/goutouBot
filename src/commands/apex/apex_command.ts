@@ -6,7 +6,7 @@ class ApexCommand extends AppCommand {
   help = '发送`.apex best`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
-    const curUserName = session.user.username;
+    const curUserName = session.user.nickname || session.user.username;
     return session.quote(`最厉害的apex玩家是${curUserName}呀୧(๑•̀◡•́๑)૭！`);
   };
 }
