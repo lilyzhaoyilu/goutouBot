@@ -1,5 +1,5 @@
 import { KBotify } from 'kbotify';
-import auth from '../configs/auth';
+import auth from '../configs/auth_dev';
 import * as dotenv from 'dotenv';
 
 export const bot = new KBotify({

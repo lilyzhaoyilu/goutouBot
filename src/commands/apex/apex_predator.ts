@@ -47,15 +47,18 @@ const constructCard = (data: any) => {
             "fields": [
               {
                 "type": "kmarkdown",
-                "content": "**当前猎杀最低排名** \n${data.RP.PC.foundRank}"
+                "content": "**当前猎杀最低排名**
+                ${data.RP.PC.foundRank}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**当前猎杀最低分数** \n${data.RP.PC.val}"
+                "content": "**当前猎杀最低分数**
+                ${data.RP.PC.val}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**当前大师及猎杀人数** \n${data.RP.PC.totalMastersAndPreds}"
+                "content": "**当前大师及猎杀人数**
+                ${data.RP.PC.totalMastersAndPreds}"
               }
             ]
           }
@@ -75,15 +78,18 @@ const constructCard = (data: any) => {
             "fields": [
               {
                 "type": "kmarkdown",
-                "content": "**当前猎杀最低排名** \n${data.AP.PC.foundRank}"
+                "content": "**当前猎杀最低排名**
+                ${data.AP.PC.foundRank}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**当前猎杀最低分数** \n${data.AP.PC.val}"
+                "content": "**当前猎杀最低分数**
+                ${data.AP.PC.val}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**当前大师及猎杀人数** \n${data.AP.PC.totalMastersAndPreds}"
+                "content": "**当前大师及猎杀人数**
+                ${data.AP.PC.totalMastersAndPreds}"
               }
             ]
           }

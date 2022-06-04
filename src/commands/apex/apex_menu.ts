@@ -2,6 +2,7 @@ import { Card, MenuCommand, BaseUser } from 'kbotify';
 import { apexCommand } from './apex_command';
 import { apexQuery } from './apex_query';
 import { apexPredator } from './apex_predator';
+import { apexMap } from './apex_map';
 
 class ApexMenu extends MenuCommand {
   code = 'apex';
@@ -37,6 +38,13 @@ const apexMenuCard = `[
           "text": {
             "type": "kmarkdown",
             "content": "\`.apex p\` 查询现在达到猎杀的分数"
+          }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "\`.apex map\` 查询现在大逃杀的地图"
           }
         },
         {
@@ -85,4 +93,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexCommand, apexQuery, apexPredator);
+export const apexMenu = new ApexMenu(apexCommand, apexQuery, apexPredator, apexMap);

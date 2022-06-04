@@ -115,15 +115,15 @@ const constructCard = (curUser: string, data: any) => (
             "fields": [
               {
                 "type": "kmarkdown",
-                "content": "**当前段位**\n ${translateRanking(data.global.rank.rankName)}"
+                "content": "**当前段位** ${translateRanking(data.global.rank.rankName)}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**段位分数**\n ${data.global.rank.rankScore}"
+                "content": "**段位分数** ${data.global.rank.rankScore}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**猎杀排名**\n ${data.global.rank.ladderPosPlatform}"
+                "content": "**猎杀排名** ${data.global.rank.ladderPosPlatform}"
               }
             ]
           }
@@ -146,15 +146,15 @@ const constructCard = (curUser: string, data: any) => (
             "fields": [
               {
                 "type": "kmarkdown",
-                "content": "**当前段位**\n ${translateRanking(data.global.arena.rankName)}"
+                "content": "**当前段位** ${translateRanking(data.global.arena.rankName)}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**段位分数**\n ${data.global.arena.rankScore}"
+                "content": "**段位分数** ${data.global.arena.rankScore}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**猎杀排名**\n ${data.global.arena.ladderPosPlatform}"
+                "content": "**猎杀排名** ${data.global.arena.ladderPosPlatform}"
               }
             ]
           }
