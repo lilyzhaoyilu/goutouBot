@@ -1,8 +1,9 @@
 import { Card, MenuCommand, BaseUser } from 'kbotify';
-import { apexCommand } from './apex_command';
+import { apexBest } from './apex_best';
 import { apexQuery } from './apex_query';
 import { apexPredator } from './apex_predator';
 import { apexMap } from './apex_map';
+import { apexCraft } from './apex_craft';
 
 class ApexMenu extends MenuCommand {
   code = 'apex';
@@ -51,6 +52,13 @@ const apexMenuCard = `[
           "type": "section",
           "text": {
             "type": "kmarkdown",
+            "content": "\`.apex c\` 查询现在复制器可以制造的东西"
+          }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
             "content": "\`.apex best\` 获取狗头的夸夸"
           }
         },
@@ -93,4 +101,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexCommand, apexQuery, apexPredator, apexMap);
+export const apexMenu = new ApexMenu(apexBest, apexQuery, apexPredator, apexMap, apexCraft);

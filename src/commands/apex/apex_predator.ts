@@ -12,7 +12,7 @@ class ApexPredator extends AppCommand {
     try {
       const res = await getReachPredatorOnPC();
       const data = res.data;
-      return session.sendCard(constructCard(data));
+      return session.sendCard(constructCard(data, session));
     } catch (err) {
       return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
     }
@@ -25,7 +25,15 @@ const getReachPredatorOnPC = () => {
   return axios.get(`https://api.mozambiquehe.re/predator?auth=${auth.apexTracker}`)
 }
 
-const constructCard = (data: any) => {
+const constructCard = (data: any, session: any) => {
+
+  // TODO: take the `check vip function` out.
+
+  let vip = false;
+  if (session.user.username === 'Haoyun' && session.user.identifyNum === '0007') {
+    vip = true;
+  }
+
   return `[
     {
       "type": "card",
@@ -93,7 +101,19 @@ const constructCard = (data: any) => {
               }
             ]
           }
-        }
+        }${!vip ? `` : `,      {
+          "type": "context",
+          "elements": [
+            {
+              "type": "plain-text",
+              "content": "好运今天猎杀了吗？要加油哟(＾Ｕ＾)ノ~ＹＯ"
+            },
+            {
+              "type": "image",
+              "src": "https://p2.picjs.xyz/2022/05/20220515190148364.jpg"
+            }
+          ]
+        }`}
       ]
     }
   ]`

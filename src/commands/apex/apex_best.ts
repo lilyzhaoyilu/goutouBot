@@ -1,6 +1,6 @@
 import { AppCommand, AppFunc, BaseSession } from 'kbotify';
 
-class ApexCommand extends AppCommand {
+class ApexBest extends AppCommand {
   code = 'best'; // 只是用作标记
   trigger = 'best'; // 用于触发的文字
   help = '发送`.apex best`就可以啦~'; // 帮助文字
@@ -11,7 +11,7 @@ class ApexCommand extends AppCommand {
   };
 }
 
-export const apexCommand = new ApexCommand();
+export const apexBest = new ApexBest();
 
 
 // class EchoNext2 extends AppCommand {
