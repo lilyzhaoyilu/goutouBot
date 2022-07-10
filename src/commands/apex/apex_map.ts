@@ -39,6 +39,21 @@ const translateMap = (map: string) => {
     case 'Kings Canyon':
       return '诸王峡谷';
       break;
+    case 'Party crasher':
+      return '不速之客 (Party crasher)'
+      break;
+    case 'Phase runner':
+      return '相位移动 (Phase runner)'
+      break;
+    case 'Drop off':
+      return '物料场 (Drop off)'
+      break;
+    case 'Habitat':
+      return '栖息地 (Habitat)'
+      break;
+    case 'Encore':
+      return '安可 (Encore)'
+      break;
     default:
       return map
   }
@@ -73,18 +88,18 @@ const constructCard = (data: any) => {
           "fields": [
             {
               "type": "kmarkdown",
-              "content": "**当前地图**   
-              ${translateMap(data.battle_royale.current.map)}"
+              "content": "**当前地图**    
+              [${translateMap(data.battle_royale.current.map)}](${data.battle_royale.current.asset})"
             },
             {
               "type": "kmarkdown",
-              "content": "**剩余时间**   
-              ${translateMap(data.battle_royale.current.remainingTimer)}"
+              "content": "**剩余时间**    
+              ${data.battle_royale.current.remainingTimer}"
             },
             {
               "type": "kmarkdown",
-              "content": "**下张地图**   
-              ${translateMap(data.battle_royale.next.map)}"
+              "content": "**下张地图**    
+              [${translateMap(data.battle_royale.next.map)}](${data.battle_royale.next.asset})"
             }
           ]
         }
@@ -104,14 +119,97 @@ const constructCard = (data: any) => {
           "fields": [
             {
               "type": "kmarkdown",
-              "content": "**上半赛季** ${translateMap(data.ranked.current.map)}"
+              "content": "**当前地图**   
+              [${translateMap(data.ranked.current.map)}](${data.ranked.current.asset})"
             },
             {
               "type": "kmarkdown",
-              "content": "**下半赛季** ${translateMap(data.ranked.next.map)}"
+              "content": "**下张地图**    
+              [${translateMap(data.ranked.next.map)}](${data.ranked.next.asset})"
             }
           ]
         }
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "header",
+        "text": {
+          "type": "plain-text",
+          "content": "地图查询 (竞技场)"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "**匹配**"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "paragraph",
+          "cols": 3,
+          "fields": [
+            {
+              "type": "kmarkdown",
+              "content": "**当前地图**    
+              [${translateMap(data.arenas.current.map)}](${data.arenas.current.asset})"
+            },
+            {
+              "type": "kmarkdown",
+              "content": "**剩余时间**    
+              ${data.arenas.current.remainingTimer}"
+            },
+            {
+              "type": "kmarkdown",
+              "content": "**下张地图**    
+              [${translateMap(data.arenas.next.map)}](${data.arenas.next.asset})"
+            }
+          ]
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "**排位**"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "paragraph",
+          "cols": 3,
+          "fields": [
+            {
+              "type": "kmarkdown",
+              "content": "**当前地图**    
+              [${translateMap(data.arenasRanked.current.map)}](${data.arenasRanked.current.asset})"
+            },
+            {
+              "type": "kmarkdown",
+              "content": "**剩余时间**    
+              ${translateMap(data.arenasRanked.current.remainingTimer)}"
+            },
+            {
+              "type": "kmarkdown",
+              "content": "**下张地图**    
+              [${translateMap(data.arenasRanked.next.map)}](${data.arenasRanked.next.asset})"
+            }
+          ]
+        }
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "type": "plain-text",
+            "content": "如果有更好的地图翻译建议，请联系作者，感谢~特别感谢Niko指出的错误<3"
+          }
+        ]
       }
     ]
   }
@@ -189,6 +287,77 @@ export const apexMap = new ApexMap();
 //             }
 //           ]
 //         }
+//       },
+//       {
+//         "type": "divider"
+//       },
+//       {
+//         "type": "header",
+//         "text": {
+//           "type": "plain-text",
+//           "content": "地图查询 (竞技场)"
+//         }
+//       },
+//       {
+//         "type": "section",
+//         "text": {
+//           "type": "kmarkdown",
+//           "content": "**匹配**"
+//         }
+//       },
+//       {
+//         "type": "section",
+//         "text": {
+//           "type": "paragraph",
+//           "cols": 3,
+//           "fields": [
+//             {
+//               "type": "kmarkdown",
+//               "content": "**当前地图**\n怪才君"
+//             },
+//             {
+//               "type": "kmarkdown",
+//               "content": "**剩余时间**\n活动中心"
+//             },
+//             {
+//               "type": "kmarkdown",
+//               "content": "**下张地图**\n9:00-21:00"
+//             }
+//           ]
+//         }
+//       },
+//       {
+//         "type": "section",
+//         "text": {
+//           "type": "kmarkdown",
+//           "content": "**排位**"
+//         }
+//       },
+//       {
+//         "type": "section",
+//         "text": {
+//           "type": "paragraph",
+//           "cols": 2,
+//           "fields": [
+//             {
+//               "type": "kmarkdown",
+//               "content": "**当前地图**\n怪才君"
+//             },
+//             {
+//               "type": "kmarkdown",
+//               "content": "**剩余时间**\n活动中心"
+//             }
+//           ]
+//         }
+//       },
+//       {
+//         "type": "context",
+//         "elements": [
+//           {
+//             "type": "plain-text",
+//             "content": "如果有更好的地图翻译建议，请联系作者，感谢~"
+//           }
+//         ]
 //       }
 //     ]
 //   }
