@@ -40,19 +40,19 @@ const translateMap = (map: string) => {
       return '诸王峡谷';
       break;
     case 'Party crasher':
-      return '不速之客 (Party crasher)'
+      return '派对破坏者'
       break;
     case 'Phase runner':
-      return '相位移动 (Phase runner)'
+      return '相位穿梭器'
       break;
-    case 'Drop off':
-      return '物料场 (Drop off)'
+    case 'Drop Off':
+      return '原料厂'
       break;
     case 'Habitat':
-      return '栖息地 (Habitat)'
+      return '栖息地4'
       break;
     case 'Encore':
-      return '安可 (Encore)'
+      return '再来一次'
       break;
     default:
       return map
@@ -207,7 +207,7 @@ const constructCard = (data: any) => {
         "elements": [
           {
             "type": "plain-text",
-            "content": "如果有更好的地图翻译建议，请联系作者，感谢~特别感谢Niko指出的错误<3"
+            "content": "特别感谢Niko指出的错误<3"
           }
         ]
       }
