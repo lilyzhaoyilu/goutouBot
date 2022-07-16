@@ -11,10 +11,8 @@ class ApexMap extends AppCommand {
     try {
       const res = await getCurrentMapRotation();
       const data = res.data;
-      console.log('leo data:', data);
       return session.sendCard(constructCard(data));
     } catch (err) {
-      console.log('leo', err);
       return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
     }
   };
