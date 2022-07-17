@@ -4,6 +4,7 @@ import { apexQuery } from './apex_query';
 import { apexPredator } from './apex_predator';
 import { apexMap } from './apex_map';
 import { apexCraft } from './apex_craft';
+import { apexTopTen } from './apex_top_ten';
 
 class ApexMenu extends MenuCommand {
   code = 'apex';
@@ -39,6 +40,13 @@ const apexMenuCard = `[
           "text": {
             "type": "kmarkdown",
             "content": "\`.apex p\` 查询现在达到猎杀的分数"
+          }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "\`.apex top10\` 查询现在PC端大逃杀榜单前10"
           }
         },
         {
@@ -101,4 +109,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexBest, apexQuery, apexPredator, apexMap, apexCraft);
+export const apexMenu = new ApexMenu(apexBest, apexQuery, apexPredator, apexMap, apexCraft, apexTopTen);
