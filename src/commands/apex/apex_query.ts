@@ -22,7 +22,7 @@ class ApexQuery extends AppCommand {
       const data = res.data;
       return session.sendCard(constructCard(curUser, data));
     }, rej => {
-      console.log('Apex query error: ', rej, 'Time: ', new Date());
+      console.log('Apex query error: send by', curUser, ' querying', queryUser, 'rej reason: ', rej, 'Time: ', new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
       session.client.API.message.create(9, '9682242694390929', `Apex query error: currentUser ${curUser}#${session.user.identifyNum} has error: ${rej}`);
       return session.sendCard(constructErrorCard(curUser));
     });
