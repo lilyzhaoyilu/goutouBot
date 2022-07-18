@@ -14,14 +14,77 @@ class ApexQuery extends AppCommand {
 
     const curUser = session.user.nickname || session.user.username;
     const queryUser = session.args[0];
-    try {
-      const res = await getApexAccountStatus(queryUser);
+    await getApexAccountStatus(queryUser).then(res => {
+      if (res.data.Error) {
+        session.client.API.message.create(9, '9682242694390929', `Apex query not found: currentUser ${curUser}#${session.user.identifyNum} querying ${queryUser}`);
+        return session.sendCard(notFoundCardConstructor(curUser, queryUser));
+      }
       const data = res.data;
       return session.sendCard(constructCard(curUser, data));
-    } catch (err) {
-      return session.quote('查询失败，暂时只支持查询origin id。如果同时查询次数过多，可以等一会再查询。如果你觉得这是一个bug，请向开发者反馈。');
+    }, rej => {
+      console.log('Apex query error: ', rej, 'Time: ', new Date());
+      session.client.API.message.create(9, '9682242694390929', `Apex query error: currentUser ${curUser}#${session.user.identifyNum} has error: ${rej}`);
+      return session.sendCard(constructErrorCard(curUser));
+    });
+  }
+};
+
+const notFoundCardConstructor = (curUser: string, queryUser: string) => {
+  return `[
+    {
+      "type": "card",
+      "theme": "secondary",
+      "size": "lg",
+      "modules": [
+        {
+          "type": "header",
+          "text": {
+            "type": "plain-text",
+            "content": "${curUser}的查询结果"
+          }
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "没有查询到关于${queryUser}的数据，目前只支持用Origin平台的ID进行查询。如果你觉得这是一个bug，可以私信狗头。非常感谢你的帮助:blush:"
+          }
+        }
+      ]
     }
-  };
+  ]`
+}
+
+const constructErrorCard = (curUser: string) => {
+  return `[
+    {
+      "type": "card",
+      "theme": "secondary",
+      "size": "lg",
+      "modules": [
+        {
+          "type": "header",
+          "text": {
+            "type": "plain-text",
+            "content": "${curUser}的查询结果"
+          }
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "同一时间查询的次数超过了服务器限制，请再试一下。如果你觉得这是一个bug，可以私信狗头。非常感谢你的帮助:blush:"
+          }
+        }
+      ]
+    }
+  ]`
 }
 
 const getApexAccountStatus = async (queryUser: string) => {

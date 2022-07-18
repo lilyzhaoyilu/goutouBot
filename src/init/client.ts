@@ -10,6 +10,7 @@ export const bot = new KBotify({
     ignoreDecryptError: false,
 });
 
+// GET/POST
 // export const bot = new KBotify({
 //     mode: 'webhook',
 //     token: auth.khltoken,

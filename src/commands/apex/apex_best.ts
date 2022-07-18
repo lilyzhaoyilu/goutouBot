@@ -1,4 +1,4 @@
-import { AppCommand, AppFunc, BaseSession } from 'kbotify';
+import { AppCommand, AppFunc, BaseSession, TextMessage } from 'kbotify';
 
 class ApexBest extends AppCommand {
   code = 'best'; // 只是用作标记
@@ -7,6 +7,8 @@ class ApexBest extends AppCommand {
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
     const curUserName = session.user.nickname || session.user.username;
+    // console.log(send another message: ', res);
+    // const res = await session.client.API.message.create(9, '9682242694390929', 'corgi test');
     return session.quote(`最厉害的apex玩家是${curUserName}呀୧(๑•̀◡•́๑)૭！`);
   };
 }
@@ -31,6 +33,5 @@ export const apexBest = new ApexBest();
 //   };
 // }
 
-// const testCard3 = 
 
 // const username = await session.client.API.getUser();
