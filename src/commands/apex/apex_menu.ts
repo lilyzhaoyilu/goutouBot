@@ -5,6 +5,7 @@ import { apexPredator } from './apex_predator';
 import { apexMap } from './apex_map';
 import { apexCraft } from './apex_craft';
 import { apexTopTen } from './apex_top_ten';
+import { apexInvite } from './apex_invite';
 
 class ApexMenu extends MenuCommand {
   code = 'apex';
@@ -78,6 +79,13 @@ const apexMenuCard = `[
           }
         },
         {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "\`.apex invite\` 邀请狗头去自己服务器"
+          }
+        },
+        {
           "type": "divider"
         },
         {
@@ -109,4 +117,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexBest, apexQuery, apexPredator, apexMap, apexCraft, apexTopTen);
+export const apexMenu = new ApexMenu(apexBest, apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite);

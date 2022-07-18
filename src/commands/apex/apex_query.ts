@@ -50,8 +50,24 @@ const notFoundCardConstructor = (curUser: string, queryUser: string) => {
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "没有查询到关于${queryUser}的数据，目前只支持用Origin平台的ID进行查询。如果你觉得这是一个bug，可以私信狗头。非常感谢你的帮助:blush:"
+            "content": "没有查询到关于${queryUser}的数据，目前只支持用Origin平台的ID进行查询。"
           }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "如果是第一次使用查询功能，请去 [apexlegendsstatus.com](https://apexlegendsstatus.com/stats/) 查一下自己的橘子id，让自己的 id 进入到数据库中（绿色箭头）。请确保选择PC平台（黄色箭头）。"
+          }
+        },
+        {
+          "type": "container",
+          "elements": [
+            {
+              "type": "image",
+              "src": "https://img.kookapp.cn/assets/2022-07/NZQpzi8xLI19t0ib.png"
+            }
+          ]
         }
       ]
     }
