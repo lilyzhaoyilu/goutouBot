@@ -9,8 +9,9 @@ bot.messageSource.on('message', (e: any) => {
   console.log(e);
   //
 
-  if (e.channel_type === 'PERSON' && e.extra?.author?.username) {
+  if (e.channel_type === 'PERSON' && e.extra?.author?.username && e.extra?.author?.bot === false) {
     try {
+      // 给频道发消息
       bot.API.message.create(9, '9682242694390929', `:memo: ${e.extra?.author?.username}#${e.extra?.author?.identify_num} says ${e.content.toString()}. Author_id: ${e.author_id?.toString()}`);
 
       if (e.extra?.last_msg_content === '[卡片]' && e.author_id) {
@@ -28,5 +29,5 @@ bot.addCommands(echoMenu);
 bot.addAlias(echoMenu, "在吗");
 
 bot.addCommands(apexMenu);
-console.log('goutou Bot is connected at ', new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+console.error('goutou Bot is connected at ', new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
 bot.connect();
