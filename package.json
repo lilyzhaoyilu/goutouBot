@@ -1,6 +1,6 @@
 {
   "name": "goutouBot",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A bot to query Apex Lengeds related info.",
   "main": "src/index.ts",
   "scripts": {
