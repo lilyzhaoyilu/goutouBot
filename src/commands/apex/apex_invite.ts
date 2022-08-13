@@ -28,14 +28,14 @@ const constructCard = () => {
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "直接戳[邀请链接](https://www.kaiheila.cn/app/oauth2/authorize?id=11038&permissions=268435455&client_id=dZ69aXhULKhX5krk&redirect_uri=&scope=bot)。或者点击进入[狗头的机器人市场页面](https://www.botmarket.cn/bots?id=23)，再点击**邀请机器人进入服务器**就好啦。"
+            "content": "用**电脑**直接戳[邀请链接](https://www.kaiheila.cn/app/oauth2/authorize?id=11038&permissions=268435455&client_id=dZ69aXhULKhX5krk&redirect_uri=&scope=bot)。这个链接可能打开比较慢，需要等一下..."
           }
         },
         {
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "你需要是邀请服务器的管理者。"
+            "content": "你需要是邀请服务器的管理者。手机端暂时不能邀请机器人。"
           }
         }
       ]

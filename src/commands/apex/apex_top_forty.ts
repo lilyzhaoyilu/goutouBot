@@ -2,15 +2,17 @@ import { AppCommand, AppFunc, BaseSession } from 'kbotify';
 import auth from '../../configs/auth';
 const axios = require('axios');
 
-class ApexTopTen extends AppCommand {
-  code = 'top_ten'; // 只是用作标记
-  trigger = 'top10'; // 用于触发的文字
-  help = '发送`.apex top10`就可以啦~'; // 帮助文字
+class ApexTopForty extends AppCommand {
+  code = 'top_one_hundred'; // 只是用作标记
+  trigger = 'top40'; // 用于触发的文字
+  help = '发送`.apex top40`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
     try {
       const res = await getCurrentLeaderboard();
       const data = res.data;
+      const test = constructCard(data)
+      console.log("goutou test: ", test);
       return session.sendCard(constructCard(data));
     } catch (err) {
       return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
@@ -125,7 +127,7 @@ const constructCard = (data: any) => {
 
   let res = '';
   res += headerContext;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 40; i++) {
     const playerInfo = data.data[i];
 
     res += ',' + playerFiller((i + 1).toString(), playerInfo.name, playerInfo.value)
@@ -136,4 +138,4 @@ const constructCard = (data: any) => {
 }
 
 
-export const apexTopTen = new ApexTopTen();
+export const apexTopForty = new ApexTopForty();

@@ -101,12 +101,12 @@ const constructCard = (data: any, session: any) => {
               }
             ]
           }
-        }${!vip ? `` : `,      {
+        }${!vip ? `` : `,{
           "type": "context",
           "elements": [
             {
               "type": "plain-text",
-              "content": cenxin giegie今天早睡了吗？要加油哟(＾Ｕ＾)ノ~ＹＯ"
+              "content": "cenxin giegie今天早睡了吗？要加油哟(＾Ｕ＾)ノ~ＹＯ"
             },
             {
               "type": "image",
