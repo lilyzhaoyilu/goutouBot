@@ -1,4 +1,5 @@
 import { AppCommand, AppFunc, BaseSession } from 'kbotify';
+import { convertEpochToDate, streamerSuperLink } from './apex_utils';
 import auth from '../../configs/auth';
 const axios = require('axios');
 
@@ -11,32 +12,15 @@ class ApexTopForty extends AppCommand {
     try {
       const res = await getCurrentLeaderboard();
       const data = res.data;
-      const test = constructCard(data)
-      console.log("goutou test: ", test);
       return session.sendCard(constructCard(data));
     } catch (err) {
-      return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
+      return session.quote('查询失败, 可能是一个bug, 请休息一下并且私信狗头~')
     }
   };
 }
 
 const getCurrentLeaderboard = () => {
   return axios.get(`https://api.mozambiquehe.re/leaderboard?auth=${auth.apexTracker}&legend=Any&platform=PC&key=rankScore`)
-}
-
-const streamerSuperLink = (streamerId: string) => {
-  switch (streamerId) {
-    case "DF_Pite":
-      return '[DF_Pite](https://www.douyu.com/5684726)';
-      break;
-
-    case "DF_3Mz_o":
-      return '[DF_3Mz_o](https://www.douyu.com/1667826)';
-      break;
-    default:
-      return streamerId;
-      break;
-  }
 }
 
 const playerFiller = (rank: string, playerId: string, points: string) => (`{
@@ -61,16 +45,6 @@ const playerFiller = (rank: string, playerId: string, points: string) => (`{
   }
 }`)
 
-const convertEpochToDate = (epoch: string) => {
-  // reference: https://stackoverflow.com/questions/4631928/convert-utc-epoch-to-local-date
-  const e = new Date(0);
-  e.setUTCSeconds(parseInt(epoch));
-  const d = new Date(e).toLocaleDateString("zh-CN", {
-    hour: 'numeric', hourCycle: 'h12',
-    dayPeriod: 'long', timeZone: 'Asia/Shanghai'
-  });
-  return d;
-}
 
 
 const constructCard = (data: any) => {

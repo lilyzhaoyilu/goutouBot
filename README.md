@@ -1,12 +1,8 @@
 # goutouBot 狗头
 
-A [Kaiheila](https://www.kaiheila.cn/) bot based on [Kbotify](https://github.com/fi6/kBotify)
+A [Kook](https://kookapp.cn/) bot based on [Kbotify](https://github.com/fi6/kBotify)
 
 This bot provides Apex Legends related queries.
-
-
-
-
 
 Tips to dev:
 

@@ -29,7 +29,7 @@ class ApexQuery extends AppCommand {
 
         // Handle query in Chinese
         if (err.code === 'ERR_UNESCAPED_CHARACTERS') {
-          return session.quote('暂时不支持对中文ID的查询。如果你的Origin ID是中文的，请私信狗头这个问题。提交真的bug，狗头有小红包给你哦~');
+          return session.quote('暂时不支持对中文ID的查询。如果你的Origin ID是中文的，请私信狗头这个问题。提交bug，狗头有小红包给你哦~');
         }
 
         console.error(`ERROR at ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} in **QUERY**: ${err}`)

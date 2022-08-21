@@ -20,11 +20,9 @@ class ApexCraft extends AppCommand {
   };
 }
 
-
 const getReachPredatorOnPC = () => {
   return axios.get(`https://api.mozambiquehe.re/crafting?auth=${auth.apexTracker}`)
 }
-
 
 const constructCard = (data: any) => {
   return `[

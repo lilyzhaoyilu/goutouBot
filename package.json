@@ -18,7 +18,7 @@
     "bot"
   ],
   "author": "BigBosss",
-  "license": "MIT",
+  "license": "GNU General Public License 3 (GPL-3.0)",
   "homepage": "https://github.com/lilyzhaoyilu/goutouBot#readme",
   "dependencies": {
     "bunyan": "^1.8.15",

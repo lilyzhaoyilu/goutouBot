@@ -20,7 +20,6 @@ class ApexPredator extends AppCommand {
   };
 }
 
-
 const getReachPredatorOnPC = () => {
   return axios.get(`https://api.mozambiquehe.re/predator?auth=${auth.apexTracker}`)
 }
