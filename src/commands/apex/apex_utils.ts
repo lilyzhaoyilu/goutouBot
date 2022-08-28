@@ -21,8 +21,8 @@ export const streamerSuperLink = (streamerId: string) => {
     case "糕":
       return '[糕](https://live.bilibili.com/23504744)';
       break;
-    case "Aono is Noob":
-      return '[Aono is Noob](https://live.bilibili.com/21624651)';
+    case "MDY_Aono":
+      return '[MDY_Aono](https://live.bilibili.com/21624651)';
       break;
     case "FPS_Bugs_Bunny":
       return '[FPS_Bugs_Bunny](https://www.huya.com/kasha233)';
