@@ -21,21 +21,14 @@ const constructCard = () => {
           "type": "header",
           "text": {
             "type": "plain-text",
-            "content": "邀请Apex查询狗头进入自己的服务器"
+            "content": "邀请狗头进入你的频道"
           }
         },
         {
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "用**电脑**直接戳[邀请链接](https://www.kaiheila.cn/app/oauth2/authorize?id=11038&permissions=268435455&client_id=dZ69aXhULKhX5krk&redirect_uri=&scope=bot)。这个链接可能打开比较慢，需要等一下..."
-          }
-        },
-        {
-          "type": "section",
-          "text": {
-            "type": "kmarkdown",
-            "content": "你需要是邀请服务器的管理者。手机端暂时不能邀请机器人。"
+            "content": "请在**电脑**[点这个二狗邀请链接](https://www.kaiheila.cn/app/oauth2/authorize?id=12733&permissions=536870911&client_id=8_4R7kB3Eh6b9GhM&redirect_uri=&scope=bot)。手机不行哦。"
           }
         }
       ]
