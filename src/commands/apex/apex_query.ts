@@ -19,10 +19,10 @@ class ApexQuery extends AppCommand {
       // res might return 200 when not finding user data
       if (res.data.Error) {
         session.client.API.message.create(9, '9682242694390929', `:grey_question: Apex query notfound: currentUser ${curUser}#${session.user.identifyNum} has error: ${res.data.Error} when querying: ${queryUser}`);
-        return session.sendCard(constructNotFoundCard(curUser, queryUser));
+        return session.replyCard(constructNotFoundCard(curUser, queryUser));
       }
       // send back query result
-      return session.sendCard(constructCard(curUser, res.data));
+      return session.replyCard(constructCard(curUser, res.data));
     }).catch((err: any) => {
 
       if (!axios.isAxiosError(err)) {
@@ -31,55 +31,25 @@ class ApexQuery extends AppCommand {
         if (err.code === 'ERR_UNESCAPED_CHARACTERS') {
           return session.quote('暂时不支持对中文ID的查询。如果你的Origin ID是中文的，请私信狗头这个问题。提交bug，狗头有小红包给你哦~');
         }
-
-        console.error(`ERROR at ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} in **QUERY**: ${err}`)
-        return session.sendCard(constructErrorCard(curUser));
+        return session.replyCard(constructErrorCard(curUser));
       }
       switch (err.response.status) {
         // did not find data
         case 404:
           session.client.API.message.create(9, '9682242694390929', `:grey_question: Apex query notfound: currentUser ${curUser}#${session.user.identifyNum} has error: ${err} when querying: ${queryUser}`);
-          return session.sendCard(constructNotFoundCard(curUser, queryUser));
+          return session.replyCard(constructNotFoundCard(curUser, queryUser));
           break;
         // over rate limit
         case 429:
           session.client.API.message.create(9, '9682242694390929', `:no_entry: Apex query overlimit: currentUser ${curUser}#${session.user.identifyNum} has error: ${err} when querying: ${queryUser}`);
-          return session.sendCard(constructOverlimitCard(curUser));
+          return session.replyCard(constructOverlimitCard(curUser));
           break;
         default:
           session.client.API.message.create(9, '9682242694390929', `:no_entry: Apex query error: currentUser ${curUser}#${session.user.identifyNum} has error: ${err} when querying: ${queryUser}`);
-          return session.sendCard(constructErrorCard(curUser));
+          return session.replyCard(constructErrorCard(curUser));
       }
 
     });
-
-
-
-    // then((res: any) => {
-    //   console.log('corgi hit res');
-    //   console.log('corgi res', typeof res, ' ***: ', res);
-
-    //   console.log(res.data); //data
-    //   console.log('--------')
-    //   console.log(res.status); //200
-    //   console.log('--------')
-    //   console.log(res.statusText); //OK
-    //   console.log('--------')
-    //   console.log(res.headers);
-    //   console.log('--------')
-    //   console.log(res.config);
-    //   console.log('--------')
-    // }).catch((err: any) => {
-    //   console.log('corgi hit err');
-    //   console.log('corgi err', typeof err, ' ***: ', err);
-    //   console.log('--------')
-    //   console.log('data: ', err.response.data); // {error: ...}
-    //   console.log('--------')
-    //   console.log('stat: ', err.response.status); //404
-    //   console.log('--------')
-    //   console.log('header: ', err.response.headers);
-    //   console.log('--------')
-    // });
 
   }
 };
@@ -108,6 +78,16 @@ const constructNotFoundCard = (curUser: string, queryUser: string) => {
             "type": "kmarkdown",
             "content": "没有查询到关于 ${queryUser} 的数据，目前只支持用Origin平台的ID进行查询。"
           }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "如果不太会用，请看[这个使用教程的第47秒](https://www.bilibili.com/video/BV1Eg41127y3/?p=2)"
+          }
+        },
+        {
+          "type": "divider"
         },
         {
           "type": "section",

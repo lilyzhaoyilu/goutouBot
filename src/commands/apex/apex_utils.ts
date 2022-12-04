@@ -21,8 +21,13 @@ export const streamerSuperLink = (streamerId: string) => {
     case "糕":
       return '[糕](https://live.bilibili.com/23504744)';
       break;
-    case "MDY_Aono":
-      return '[MDY_Aono](https://live.bilibili.com/21624651)';
+    // 青野 ε=(´ο｀*)))唉 他咋总改名啊
+    case "Aono CN":
+      return '[Aono CN](https://live.bilibili.com/21624651)';
+      break;
+    // 无名Noname
+    case "Noname CN":
+      return '[Noname CN](https://live.bilibili.com/9078252)';
       break;
     case "FPS_Bugs_Bunny":
       return '[FPS_Bugs_Bunny](https://www.huya.com/kasha233)';

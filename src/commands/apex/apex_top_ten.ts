@@ -14,6 +14,7 @@ class ApexTopTen extends AppCommand {
       const data = res.data;
       return session.sendCard(constructCard(data));
     } catch (err) {
+      session.client.API.message.create(9, '9682242694390929', `top10挂了`);
       return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
     }
   };
@@ -84,22 +85,31 @@ const constructCard = (data: any) => {
         }`
 
   const latestUpdate = convertEpochToDate(data.meta.lastUpdate);
+  const numberOfPlayers = Number(data.meta.numberOfPlayers);
+  const interationNumber = numberOfPlayers > 10 ? 10 : numberOfPlayers
   const tailContext = `,{
-          "type": "section",
-          "text": {
-            "type": "kmarkdown",
-            "content": "最后更新于 北京时间 ${latestUpdate}"
-          }},{
-          "type": "section",
-          "text": {
-            "type": "kmarkdown",
-            "content": "数据由Apex Legends Stats 提供: [https://apexlegendsstatus.com](https://apexlegendsstatus.com)"
-          }
-        }]}]`
+                        "type": "section",
+                        "text": {
+                          "type": "kmarkdown",
+                          "content": "最后更新于 北京时间 ${latestUpdate}"
+                        }
+                      },{
+                        "type": "section",
+                        "text": {
+                          "type": "kmarkdown",
+                          "content": "如果榜上有国内主播，并且他的名字没有连接到直播间的请私信机器人。第一个私信的赠送通行证升级码或者其他小礼物。主播们改名字太快了:sob:"
+                        }
+                      },{
+                        "type": "section",
+                        "text": {
+                          "type": "kmarkdown",
+                          "content": "数据由Apex Legends Stats 提供: [https://apexlegendsstatus.com](https://apexlegendsstatus.com)"
+                        }
+                      }]}]`
 
   let res = '';
   res += headerContext;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < interationNumber; i++) {
     const playerInfo = data.data[i];
 
     res += ',' + playerFiller((i + 1).toString(), playerInfo.name, playerInfo.value)

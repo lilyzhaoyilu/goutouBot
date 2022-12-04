@@ -14,6 +14,7 @@ class ApexTopForty extends AppCommand {
       const data = res.data;
       return session.sendCard(constructCard(data));
     } catch (err) {
+      session.client.API.message.create(9, '9682242694390929', `top40挂了`);
       return session.quote('查询失败, 可能是一个bug, 请休息一下并且私信狗头~')
     }
   };
@@ -86,6 +87,8 @@ const constructCard = (data: any) => {
         }`
 
   const latestUpdate = convertEpochToDate(data.meta.lastUpdate);
+  const numberOfPlayers = Number(data.meta.numberOfPlayers);
+  const interationNumber = numberOfPlayers > 40 ? 40 : numberOfPlayers
   const tailContext = `,{
           "type": "section",
           "text": {
@@ -101,7 +104,7 @@ const constructCard = (data: any) => {
 
   let res = '';
   res += headerContext;
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < interationNumber; i++) {
     const playerInfo = data.data[i];
 
     res += ',' + playerFiller((i + 1).toString(), playerInfo.name, playerInfo.value)

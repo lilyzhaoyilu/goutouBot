@@ -1,5 +1,6 @@
 import { AppCommand, AppFunc, BaseSession } from 'kbotify';
 import auth from '../../configs/auth';
+import { bot } from 'init/client';
 const axios = require('axios');
 
 class ApexMap extends AppCommand {
@@ -13,6 +14,7 @@ class ApexMap extends AppCommand {
       const data = res.data;
       return session.sendCard(constructCard(data));
     } catch (err) {
+      bot.API.message.create(9, '9682242694390929', `:grey_question: MAP 挂了`);
       return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
     }
   };
@@ -51,6 +53,9 @@ const translateMap = (map: string) => {
       break;
     case 'Encore':
       return '再来一次'
+      break;
+    case 'Broken Moon':
+      return '残月'
       break;
     default:
       return map

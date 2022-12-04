@@ -19,11 +19,13 @@ bot.messageSource.on('message', (e: any) => {
         bot.API.directMessage.create(10, e.author_id?.toString(), undefined, INVITE_CONTENT)
       } else if (e.content === '1') {
         bot.API.directMessage.create(9, e.author_id?.toString(), undefined, '2')
+      } else if (e.content.search(/apex/i) !== -1 || e.content.search("冲猎") !== -1 || e.content.search("查询") !== -1 || e.content.search("猎杀") !== -1) {
+        bot.API.directMessage.create(10, e.author_id?.toString(), undefined, USAGE_ONLY_CONTENT)
       } else {
         bot.API.directMessage.create(10, e.author_id?.toString(), undefined, AUTO_REPLY_CONTENT)
       }
     } catch (err) {
-      console.error('Error catched for index.ts: ', err, 'at time: ', new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+      bot.API.message.create(9, '9682242694390929', `:fire: ERROR: ${e.extra?.author?.username}#${e.extra?.author?.identify_num} says ${e.content.toString()} || Author_id: ${e.author_id?.toString()}`);
     }
   }
 });
@@ -68,6 +70,37 @@ const INVITE_CONTENT = `[
   }
 ]`
 
+
+const USAGE_ONLY_CONTENT = `[
+  {
+    "type": "card",
+    "theme": "secondary",
+    "size": "lg",
+    "modules": [
+      {
+        "type": "header",
+        "text": {
+          "type": "plain-text",
+          "content": "使用狗头机器人"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "请在有狗头的频道**公屏**发送\`.apex\`查看机器人菜单。"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "不知道怎么用？[点这里看使用视频](https://www.bilibili.com/video/BV1Eg41127y3?p=2)。"
+        }
+      }
+    ]
+  }
+]`
 
 
 const AUTO_REPLY_CONTENT = `[

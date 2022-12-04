@@ -1,5 +1,6 @@
 import { AppCommand, AppFunc, BaseSession } from 'kbotify';
 import auth from '../../configs/auth';
+import { bot } from 'init/client';
 const axios = require('axios');
 
 class ApexPredator extends AppCommand {
@@ -14,6 +15,7 @@ class ApexPredator extends AppCommand {
       const data = res.data;
       return session.sendCard(constructCard(data, session));
     } catch (err) {
+      bot.API.message.create(9, '9682242694390929', `:grey_question: predator 挂了`);
       return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
     }
 
@@ -29,9 +31,9 @@ const constructCard = (data: any, session: any) => {
   // TODO: take the `check vip function` out.
 
   let vip = false;
-  if (session.user.username === 'justdaybyday' && session.user.identifyNum === '2154') {
-    vip = true;
-  }
+  // if (session.user.username === 'justdaybyday' && session.user.identifyNum === '2154') {
+  //   vip = true;
+  // }
 
   return `[
     {
