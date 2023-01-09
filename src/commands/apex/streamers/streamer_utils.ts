@@ -82,11 +82,11 @@ const constructPlayerInfoCard = (data: any) => {
         },
         {
           "type": "kmarkdown",
-          "content": "**大逃杀排位** \\n${translateRanking(data.global.rank.rankName, data.global.rank.rankDiv)} \\n${br_rank === "-1" ? "无排" : br_rank}名 \\n${data.global.rank.rankScore} RP"
+          "content": "**大逃杀排位** \\n${translateRanking(data.global.rank.rankName, data.global.rank.rankDiv)} \\n${br_rank === -1 ? "无排" : br_rank}名 \\n${data.global.rank.rankScore} RP"
         },
         {
           "type": "kmarkdown",
-          "content": "**竞技场排位**\\n${translateRanking(data.global.arena.rankName, data.global.arena.rankDiv)} \\n${areana_rank === "-1" ? "无排" : br_rank}名 \\n${data.global.arena.rankScore} AP "
+          "content": "**竞技场排位**\\n${translateRanking(data.global.arena.rankName, data.global.arena.rankDiv)} \\n${areana_rank === -1 ? "无排" : areana_rank}名 \\n${data.global.arena.rankScore} AP "
         }
       ]
     }

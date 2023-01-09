@@ -181,8 +181,25 @@ const constructCard = (curUser: string, data: any) => (
           "type": "header",
           "text": {
             "type": "plain-text",
-            "content": "${curUser}的查询结果"
+            "content": "${data.global.name}的数据"
           }
+        },
+        {
+          "type": "context",
+          "elements": [
+            {
+              "type": "image",
+              "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+            },
+            {
+              "type": "plain-text",
+              "content": "这里显示的是这个用户的游戏内名字。如果该用户绑定了Origin和Steam, 那么显示的是Steam ID."
+            },
+            {
+              "type": "image",
+              "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+            }
+          ]
         },
         {
           "type": "divider"
