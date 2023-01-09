@@ -1,4 +1,5 @@
 import { AppCommand, AppFunc, BaseSession } from 'kbotify';
+import { translateRanking } from './apex_utils';
 import auth from '../../configs/auth';
 const axios = require('axios');
 
@@ -169,37 +170,6 @@ const constructOverlimitCard = (curUser: string) => {
 }
 
 
-const translateRanking = (rank: string) => {
-  switch (rank) {
-    case 'Apex Predator':
-      return '猎杀';
-      break;
-    case 'Master':
-      return '大师';
-      break;
-    case 'Diamond':
-      return '钻石';
-      break;
-    case 'Platinum':
-      return '铂金';
-      break;
-    case 'Gold':
-      return '黄金';
-      break;
-    case 'Silver':
-      return '白银';
-      break;
-    case 'Bronze':
-      return '青铜';
-      break;
-    case 'Unranked':
-      return '未定级';
-      break;
-    default:
-      return rank
-  }
-}
-
 const constructCard = (curUser: string, data: any) => (
   `[
     {
@@ -299,6 +269,15 @@ const constructCard = (curUser: string, data: any) => (
               }
             ]
           }
+        },
+        {
+          "type": "context",
+          "elements": [
+            {
+              "type": "plain-text",
+              "content": ":grey_exclamation: 查询结果是基于橘子ID的, 游戏里显示的可能是Steam ID."
+            }
+          ]
         }
       ]
     }
@@ -307,7 +286,7 @@ const constructCard = (curUser: string, data: any) => (
 
 
 // text format
-// `[
+// [
 //   {
 //     "type": "card",
 //     "theme": "secondary",
@@ -405,10 +384,19 @@ const constructCard = (curUser: string, data: any) => (
 //             }
 //           ]
 //         }
+//       },
+//       {
+//         "type": "context",
+//         "elements": [
+//           {
+//             "type": "plain-text",
+//             "content": ":grey_exclamation:查询结果是基于橘子id的，游戏里显示的可能是steam id"
+//           }
+//         ]
 //       }
 //     ]
 //   }
-// ]`
+// ]
 
 
 

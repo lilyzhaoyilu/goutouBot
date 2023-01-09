@@ -27,14 +27,6 @@ const getReachPredatorOnPC = () => {
 }
 
 const constructCard = (data: any, session: any) => {
-
-  // TODO: take the `check vip function` out.
-
-  let vip = false;
-  // if (session.user.username === 'justdaybyday' && session.user.identifyNum === '2154') {
-  //   vip = true;
-  // }
-
   return `[
     {
       "type": "card",
@@ -102,19 +94,7 @@ const constructCard = (data: any, session: any) => {
               }
             ]
           }
-        }${!vip ? `` : `,{
-          "type": "context",
-          "elements": [
-            {
-              "type": "plain-text",
-              "content": "cenxin giegie今天早睡了吗？要加油哟(＾Ｕ＾)ノ~ＹＯ"
-            },
-            {
-              "type": "image",
-              "src": "https://p2.picjs.xyz/2022/05/20220515190148364.jpg"
-            }
-          ]
-        }`}
+        }
       ]
     }
   ]`

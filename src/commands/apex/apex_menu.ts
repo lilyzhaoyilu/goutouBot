@@ -5,9 +5,11 @@ import { apexPredator } from './apex_predator';
 import { apexMap } from './apex_map';
 import { apexCraft } from './apex_craft';
 import { apexTopTen } from './apex_top_ten';
-import { apexTopForty } from './apex_top_forty';
+import { apexTopForty, apexTopFifty } from './apex_top_forty';
 import { apexInvite } from './apex_invite';
 import { apexTime } from './apex_time';
+import { apexStreamers } from './apex_streamers';
+import { apexPite } from './streamers/pite';
 
 class ApexMenu extends MenuCommand {
   code = 'apex';
@@ -63,14 +65,21 @@ const apexMenuCard = `[
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "\`.apex top40\` 查询现在PC端大逃杀榜单前40"
+            "content": "\`.apex top50\` 查询现在PC端大逃杀榜单前50"
           }
         },
         {
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "\`.apex map\` 查询现在大逃杀的地图"
+            "content": "\`.apex streamers\` [测试中]查看一些主播的直播间和账号信息"
+          }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "\`.apex map\` 查询现在的地图"
           }
         },
         {
@@ -131,4 +140,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexBest, apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexTopForty, apexInvite, apexTime);
+export const apexMenu = new ApexMenu(apexBest, apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexTopForty, apexInvite, apexTime, apexTopFifty, apexPite, apexStreamers);

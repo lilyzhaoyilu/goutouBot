@@ -1,6 +1,6 @@
 import { AppCommand, AppFunc, BaseSession } from 'kbotify';
 import auth from '../../configs/auth';
-import { convertEpochToDate, streamerSuperLink } from './apex_utils';
+import { convertEpochToDate, streamerSuperLink, rankToImage } from './apex_utils';
 const axios = require('axios');
 
 class ApexTopTen extends AppCommand {
@@ -12,10 +12,10 @@ class ApexTopTen extends AppCommand {
     try {
       const res = await getCurrentLeaderboard();
       const data = res.data;
-      return session.sendCard(constructCard(data));
+      return session.replyCard(constructCard(data));
     } catch (err) {
       session.client.API.message.create(9, '9682242694390929', `top10挂了`);
-      return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
+      return session.quote('查询失败, 狗头已经收到错误提醒，会在周末的时候修复~')
     }
   };
 }
@@ -26,23 +26,15 @@ const getCurrentLeaderboard = () => {
 
 const playerFiller = (rank: string, playerId: string, points: string) => (`{
   "type": "section",
+  "mode": "left",
   "text": {
-    "type": "paragraph",
-    "cols": 3,
-    "fields": [
-      {
-        "type": "kmarkdown",
-        "content": "${rank}"
-      },
-      {
-        "type": "kmarkdown",
-        "content": "${streamerSuperLink(playerId)}"
-      },
-      {
-        "type": "kmarkdown",
-        "content": "${points}"
-      }
-    ]
+    "type": "kmarkdown",
+    "content": "ID: **${streamerSuperLink(playerId)}** \\n分数: ${points}"
+  },
+  "accessory": {
+    "type": "image",
+    "src": "${rankToImage.get(rank)}",
+    "size": "lg"
   }
 }`)
 
@@ -60,27 +52,6 @@ const constructCard = (data: any) => {
           "text": {
             "type": "plain-text",
             "content": "Apex大逃杀榜单（PC端）"
-          }
-        },
-        {
-          "type": "section",
-          "text": {
-            "type": "paragraph",
-            "cols": 3,
-            "fields": [
-              {
-                "type": "kmarkdown",
-                "content": "**排名**"
-              },
-              {
-                "type": "kmarkdown",
-                "content": "**玩家**"
-              },
-              {
-                "type": "kmarkdown",
-                "content": "**分数**"
-              }
-            ]
           }
         }`
 
@@ -111,8 +82,8 @@ const constructCard = (data: any) => {
   res += headerContext;
   for (let i = 0; i < interationNumber; i++) {
     const playerInfo = data.data[i];
-
-    res += ',' + playerFiller((i + 1).toString(), playerInfo.name, playerInfo.value)
+    res += ',';
+    res += playerFiller((i + 1).toString(), playerInfo.name, playerInfo.value)
 
   }
   res += tailContext;
