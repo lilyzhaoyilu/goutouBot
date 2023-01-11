@@ -62,7 +62,6 @@ const constructPlayerInfoCard = (data: any) => {
 
   const br_rank = data.global.rank.ladderPosPlatform
   const areana_rank = data.global.arena.ladderPosPlatform;
-  const ban_info = data.global.bans.isActive ? "  封禁中:x:" : "  :white_check_mark:"
 
   return `,{
     "type": "section",
@@ -79,7 +78,7 @@ const constructPlayerInfoCard = (data: any) => {
       "fields": [
         {
           "type": "kmarkdown",
-          "content": "**账号信息**\\n在线:${data.realtime.isOnline === 1 ? " :white_check_mark:" : " :x:"}\\n账号等级:${data.global.level} \\n账号状态:${ban_info}"
+          "content": "**账号信息** \\n在线:${data.realtime.isOnline === 1 ? " :white_check_mark:" : " :x:"} \\n游戏中:${data.realtime.isInGame === 1 ? " :white_check_mark:" : " :x:"} \\n账号等级:${data.global.level}"
         },
         {
           "type": "kmarkdown",
@@ -87,7 +86,7 @@ const constructPlayerInfoCard = (data: any) => {
         },
         {
           "type": "kmarkdown",
-          "content": "**竞技场排位**\\n${translateRanking(data.global.arena.rankName, data.global.arena.rankDiv)} \\n${areana_rank === -1 ? "无排" : areana_rank}名 \\n${data.global.arena.rankScore} AP "
+          "content": "**竞技场排位** \\n${translateRanking(data.global.arena.rankName, data.global.arena.rankDiv)} \\n${areana_rank === -1 ? "无排" : areana_rank}名 \\n${data.global.arena.rankScore} AP "
         }
       ]
     }
@@ -106,7 +105,7 @@ const buildCustomizedStreamingTest = (isStreaming: boolean, isSanMingZhi: boolea
   }
 }
 
-export const constructLiveCard = async (streamerRoomNumber: string, isDouyuStreamer = true, playerId: string) => {
+export const constructLiveCard = async (streamerRoomNumber: string, isDouyuStreamer: boolean = true, playerId: string) => {
   const res = isDouyuStreamer ? await getDouyuLiveData(streamerRoomNumber) : await getBiliBiliLiveData(streamerRoomNumber);
   const streamingText = buildCustomizedStreamingTest(res.isStreaming, streamerRoomNumber === "1667826");
 
@@ -120,6 +119,24 @@ export const constructLiveCard = async (streamerRoomNumber: string, isDouyuStrea
       {
         "type": "plain-text",
         "content": "三明治~~~~~~~!  为什么会倒~~~~~~!"
+      }
+    ]
+  }`
+
+  let roieee = `,{
+    "type": "context",
+    "elements": [
+               {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/s2CDsNecvF02b02b.png"
+      },
+      {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/s2CDsNecvF02b02b.png"
+      },
+      {
+        "type": "plain-text",
+        "content": "你罩子交給他幹嘛阿 ~~~~! @#$@%@$%#%&^$ "
       }
     ]
   }`
@@ -146,6 +163,9 @@ export const constructLiveCard = async (streamerRoomNumber: string, isDouyuStrea
 
   if (streamerRoomNumber === "1667826") {
     headCard += sanmingzhi;
+  }
+  if (streamerRoomNumber === "10722927") {
+    headCard += roieee;
   }
 
   let liveCard = '';

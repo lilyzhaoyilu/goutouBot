@@ -53,6 +53,19 @@ const constructStreamerCard = () => (`[
         }
       },
       {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "\`.apex roieee\` 查询**百弟**的账号和直播间"
+        },
+        "mode": "left",
+        "accessory": {
+          "type": "image",
+          "src": "https://apic.douyucdn.cn/upload/avatar_v3/202203/f08daf1b788643b791954ee6b5af50c7_big.jpg",
+          "size": "lg"
+        }
+      },
+      {
         "type": "context",
         "elements": [
                    {

@@ -4,6 +4,7 @@ import { apexMenu } from './commands/apex/apex_menu';
 import { messagerMenu } from './commands/messager/messager_menu';
 import { apex3mz } from 'commands/apex/streamers/3mz';
 import { apexPite } from 'commands/apex/streamers/pite';
+import { apexRoieee } from 'commands/apex/streamers/roieee';
 
 
 bot.messageSource.on('message', (e: any) => {
@@ -36,8 +37,9 @@ bot.addCommands(echoMenu);
 bot.addAlias(echoMenu, "在吗");
 
 bot.addCommands(apexMenu);
-apexMenu.addAlias(apex3mz, "三明治", "王虎仙贝", "高冷仙贝", "whxb");
-apexMenu.addAlias(apexPite, "皮特", "皮将军", "pite174", "ptxb");
+apexMenu.addAlias(apex3mz, "三明治", "王虎仙贝", "高冷仙贝", "whxb", "xbwh", "王虎", "3Mz", "3MZ");
+apexMenu.addAlias(apexPite, "皮特", "皮将军", "pite174", "ptxb", "xbpt");
+apexMenu.addAlias(apexRoieee, "百弟", "Roieee", "百神", "陈柏瀚");
 bot.addCommands(messagerMenu);
 
 console.error('goutou Bot is connected at ', new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));

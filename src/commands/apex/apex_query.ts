@@ -181,7 +181,7 @@ const constructCard = (curUser: string, data: any) => (
           "type": "header",
           "text": {
             "type": "plain-text",
-            "content": "${data.global.name}的数据"
+            "content": "${data.global.name} 的数据"
           }
         },
         {
@@ -216,11 +216,11 @@ const constructCard = (curUser: string, data: any) => (
               },
               {
                 "type": "kmarkdown",
-                "content": "**是否在线**\n ${data.realtime.isOnline === 1 ? "在线" : "不在线"}"
+                "content": "**在线: **\n ${data.realtime.isOnline === 1 ? ":white_check_mark:" : " :x:"}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**账号状态**\n ${data.global.bans.isActive ? "已封禁" : "正常"}"
+                "content": "**游戏中: **\n ${data.realtime.isInGame === 1 ? ":white_check_mark:" : " :x:"}"
               }
             ]
           }
@@ -243,7 +243,7 @@ const constructCard = (curUser: string, data: any) => (
             "fields": [
               {
                 "type": "kmarkdown",
-                "content": "**当前段位** ${translateRanking(data.global.rank.rankName)}"
+                "content": "**当前段位** ${translateRanking(data.global.rank.rankName, data.global.rank.rankDiv)}"
               },
               {
                 "type": "kmarkdown",
@@ -274,7 +274,7 @@ const constructCard = (curUser: string, data: any) => (
             "fields": [
               {
                 "type": "kmarkdown",
-                "content": "**当前段位** ${translateRanking(data.global.arena.rankName)}"
+                "content": "**当前段位** ${translateRanking(data.global.arena.rankName, data.global.arena.rankDiv)}"
               },
               {
                 "type": "kmarkdown",
