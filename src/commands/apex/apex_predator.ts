@@ -9,7 +9,6 @@ class ApexPredator extends AppCommand {
   help = '`.apex p` 来查询现在需要达到猎杀的分数'; // 帮助文字
   intro = '`.apex p` 来查询现在需要达到猎杀的分数';
   func: AppFunc<BaseSession> = async (session) => {
-
     try {
       const res = await getReachPredatorOnPC();
       const data = res.data;
@@ -18,7 +17,6 @@ class ApexPredator extends AppCommand {
       bot.API.message.create(9, '9682242694390929', `:grey_question: predator 挂了`);
       return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
     }
-
   };
 }
 

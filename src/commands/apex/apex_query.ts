@@ -220,7 +220,7 @@ const constructCard = (curUser: string, data: any) => (
               },
               {
                 "type": "kmarkdown",
-                "content": "**队伍已满**\n ${data.realtime.partyFull === 1 ? "满" : "未满"}"
+                "content": "**账号状态**\n ${data.global.bans.isActive ? "已封禁" : "正常"}"
               }
             ]
           }

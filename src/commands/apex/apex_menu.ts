@@ -10,6 +10,7 @@ import { apexInvite } from './apex_invite';
 import { apexTime } from './apex_time';
 import { apexStreamers } from './apex_streamers';
 import { apexPite } from './streamers/pite';
+import { apex3mz } from './streamers/3mz';
 
 class ApexMenu extends MenuCommand {
   code = 'apex';
@@ -37,14 +38,14 @@ const apexMenuCard = `[
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "\`.apex q 橘子id\` 查询账户状态和排位分数"
+            "content": "\`.apex q 橘子id\` query 查询账户状态和排位分数"
           }
         },
         {
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "\`.apex p\` 查询现在达到猎杀的分数"
+            "content": "\`.apex p\` predator 查询现在达到猎杀的分数"
           }
         },
         {
@@ -72,7 +73,7 @@ const apexMenuCard = `[
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "\`.apex streamers\` [测试中]查看一些主播的直播间和账号信息"
+            "content": "\`.apex s\` [测试中] streamers 查看一些主播的直播间和账号信息"
           }
         },
         {
@@ -86,7 +87,7 @@ const apexMenuCard = `[
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "\`.apex c\` 查询现在复制器可以制造的东西"
+            "content": "\`.apex c\` craft 查询现在复制器可以制造的东西"
           }
         },
         {
@@ -140,4 +141,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexBest, apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexTopForty, apexInvite, apexTime, apexTopFifty, apexPite, apexStreamers);
+export const apexMenu = new ApexMenu(apexBest, apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexTopForty, apexInvite, apexTime, apexTopFifty, apexPite, apexStreamers, apex3mz);

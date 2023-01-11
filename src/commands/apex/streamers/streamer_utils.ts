@@ -62,6 +62,7 @@ const constructPlayerInfoCard = (data: any) => {
 
   const br_rank = data.global.rank.ladderPosPlatform
   const areana_rank = data.global.arena.ladderPosPlatform;
+  const ban_info = data.global.bans.isActive ? "  封禁中:x:" : "  :white_check_mark:"
 
   return `,{
     "type": "section",
@@ -78,7 +79,7 @@ const constructPlayerInfoCard = (data: any) => {
       "fields": [
         {
           "type": "kmarkdown",
-          "content": "**账号信息**\\n在线:${data.realtime.isOnline === 1 ? " :heavy_check_mark:" : " :x:"}\\n账号等级:${data.global.level}"
+          "content": "**账号信息**\\n在线:${data.realtime.isOnline === 1 ? " :white_check_mark:" : " :x:"}\\n账号等级:${data.global.level} \\n账号状态:${ban_info}"
         },
         {
           "type": "kmarkdown",
@@ -93,11 +94,37 @@ const constructPlayerInfoCard = (data: any) => {
   }`
 }
 
+const buildCustomizedStreamingTest = (isStreaming: boolean, isSanMingZhi: boolean = false) => {
+  if (isStreaming) {
+    return "*直播中*";
+  } else {
+    if (isSanMingZhi) {
+      return "倒地不起";
+    } else {
+      return "暂未开播";
+    }
+  }
+}
+
 export const constructLiveCard = async (streamerRoomNumber: string, isDouyuStreamer = true, playerId: string) => {
   const res = isDouyuStreamer ? await getDouyuLiveData(streamerRoomNumber) : await getBiliBiliLiveData(streamerRoomNumber);
-  const streamingText = res.isStreaming ? "*直播中*" : "暂未开播";
+  const streamingText = buildCustomizedStreamingTest(res.isStreaming, streamerRoomNumber === "1667826");
 
-  let resCard = `[
+  let sanmingzhi = `,{
+    "type": "context",
+    "elements": [
+               {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/XALKdJTw6802g02g.png"
+      },
+      {
+        "type": "plain-text",
+        "content": "三明治~~~~~~~!  为什么会倒~~~~~~!"
+      }
+    ]
+  }`
+
+  let headCard = `[
     {
       "type": "card",
       "theme": "secondary",
@@ -116,6 +143,10 @@ export const constructLiveCard = async (streamerRoomNumber: string, isDouyuStrea
       "size": "lg"
     }
   }`
+
+  if (streamerRoomNumber === "1667826") {
+    headCard += sanmingzhi;
+  }
 
   let liveCard = '';
   if (res.isStreaming) {
@@ -139,12 +170,43 @@ export const constructLiveCard = async (streamerRoomNumber: string, isDouyuStrea
   }
 
   const infoData = await getPlayerInfo(playerId);
-  console.log(infoData);
 
-  const tailCard = "]}]"
+  const tailCard = `,{
+    "type": "context",
+    "elements": [
+               {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      },
+      {
+        "type": "plain-text",
+        "content": "使用 .apex s 查看快速查询的主播列表"
+      },
+      {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      }
+    ]
+  },{
+    "type": "context",
+    "elements": [
+               {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      },
+      {
+        "type": "plain-text",
+        "content": "新春快乐！如果还有其他你想看到的主播，请私信狗头哦~"
+      },
+      {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      }
+    ]
+  }]}]`
 
 
-  return resCard + liveCard + constructPlayerInfoCard(infoData) + tailCard;
+  return headCard + liveCard + constructPlayerInfoCard(infoData) + tailCard;
 }
 
 

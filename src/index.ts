@@ -2,6 +2,8 @@ import { bot } from 'init/client';
 import { echoMenu } from './commands/echo/echo.menu';
 import { apexMenu } from './commands/apex/apex_menu';
 import { messagerMenu } from './commands/messager/messager_menu';
+import { apex3mz } from 'commands/apex/streamers/3mz';
+import { apexPite } from 'commands/apex/streamers/pite';
 
 
 bot.messageSource.on('message', (e: any) => {
@@ -34,6 +36,8 @@ bot.addCommands(echoMenu);
 bot.addAlias(echoMenu, "在吗");
 
 bot.addCommands(apexMenu);
+apexMenu.addAlias(apex3mz, "三明治", "王虎仙贝", "高冷仙贝", "whxb");
+apexMenu.addAlias(apexPite, "皮特", "皮将军", "pite174", "ptxb");
 bot.addCommands(messagerMenu);
 
 console.error('goutou Bot is connected at ', new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
