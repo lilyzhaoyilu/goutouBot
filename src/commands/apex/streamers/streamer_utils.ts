@@ -1,6 +1,6 @@
 const axios = require('axios');
 import { bot } from 'init/client';
-import { translateRanking } from '../apex_utils';
+import { translateRanking, translateCurrentState } from '../apex_utils';
 import auth from '../../../configs/auth';
 interface LiveData {
   streamerName: string,
@@ -30,7 +30,7 @@ const getBiliBiliLiveData = async (roomNumber: string) => {
 
 const getPlayerInfo = async (playerId: string) => {
   try {
-    const res = await axios.get(`https://api.mozambiquehe.re/bridge?auth=${auth.apexTracker}&player=${playerId}&platform=PC`)
+    const res = await axios.get(`https://api.mozambiquehe.re/bridge?auth=${auth.apexTracker}&player=${playerId}&platform=PC&enableClubsBeta=true&merge=true&removeMerged=true`)
     return res.data;
   } catch (err) {
     bot.API.message.create(9, '9682242694390929', `getPlayerInfo error: ${err}`);
@@ -62,6 +62,7 @@ const constructPlayerInfoCard = (data: any) => {
 
   const br_rank = data.global.rank.ladderPosPlatform
   const areana_rank = data.global.arena.ladderPosPlatform;
+  const club_name = data.club?.name === undefined ? '' : data.club.name;
 
   return `,{
     "type": "section",
@@ -78,7 +79,7 @@ const constructPlayerInfoCard = (data: any) => {
       "fields": [
         {
           "type": "kmarkdown",
-          "content": "**账号信息** \\n在线:${data.realtime.isOnline === 1 ? " :white_check_mark:" : " :x:"} \\n游戏中:${data.realtime.isInGame === 1 ? " :white_check_mark:" : " :x:"} \\n账号等级:${data.global.level}"
+          "content": "**账号信息** \\n等级:${data.global.level} \\n状态:${translateCurrentState(data.realtime.currentState)} \\n俱乐部:${club_name}"
         },
         {
           "type": "kmarkdown",

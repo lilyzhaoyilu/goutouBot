@@ -1,5 +1,5 @@
 import { AppCommand, AppFunc, BaseSession } from 'kbotify';
-import { translateRanking } from './apex_utils';
+import { translateRanking, translateCurrentState } from './apex_utils';
 import auth from '../../configs/auth';
 const axios = require('axios');
 
@@ -15,8 +15,8 @@ class ApexQuery extends AppCommand {
 
     const curUser = session.user.nickname || session.user.username;
     const queryUser = session.args[0];
-    await axios.get(`https://api.mozambiquehe.re/bridge?auth=${auth.apexTracker}&player=${queryUser}&platform=PC`).then((res: any) => {
 
+    await axios.get(`https://api.mozambiquehe.re/bridge?auth=${auth.apexTracker}&player=${queryUser}&platform=PC&enableClubsBeta=true&merge=true&removeMerged=true`).then((res: any) => {
       // res might return 200 when not finding user data
       if (res.data.Error) {
         session.client.API.message.create(9, '9682242694390929', `:grey_question: Apex query notfound: currentUser ${curUser}#${session.user.identifyNum} has error: ${res.data.Error} when querying: ${queryUser}`);
@@ -27,7 +27,6 @@ class ApexQuery extends AppCommand {
     }).catch((err: any) => {
 
       if (!axios.isAxiosError(err)) {
-
         // Handle query in Chinese
         if (err.code === 'ERR_UNESCAPED_CHARACTERS') {
           return session.quote('暂时不支持对中文ID的查询。如果你的Origin ID是中文的，请私信狗头这个问题。提交bug，狗头有小红包给你哦~');
@@ -170,8 +169,11 @@ const constructOverlimitCard = (curUser: string) => {
 }
 
 
-const constructCard = (curUser: string, data: any) => (
-  `[
+const constructCard = (curUser: string, data: any) => {
+
+  const club_name = data.club?.name === undefined ? '' : data.club.name;
+
+  return `[
     {
       "type": "card",
       "theme": "secondary",
@@ -216,11 +218,11 @@ const constructCard = (curUser: string, data: any) => (
               },
               {
                 "type": "kmarkdown",
-                "content": "**在线: **\n ${data.realtime.isOnline === 1 ? ":white_check_mark:" : " :x:"}"
+                "content": "**状态: **\n ${translateCurrentState(data.realtime.currentState)}"
               },
               {
                 "type": "kmarkdown",
-                "content": "**游戏中: **\n ${data.realtime.isInGame === 1 ? ":white_check_mark:" : " :x:"}"
+                "content": "**俱乐部: **\n ${club_name}"
               }
             ]
           }
@@ -299,7 +301,7 @@ const constructCard = (curUser: string, data: any) => (
       ]
     }
   ]`
-)
+}
 
 
 // text format
