@@ -29,6 +29,8 @@ export class StringTranslation {
         return '晴雨表';
       case 'Lava Siphon':
         return '熔岩虹吸';
+      case 'Hammond Labs':
+        return '哈蒙德实验室';
       default:
         return map
     }
