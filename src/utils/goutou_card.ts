@@ -39,7 +39,7 @@ export class GoutouCard {
         "fields": [
           {
             "type": "kmarkdown",
-            "content": `**账号信息** \n等级:${data.global.level} \n状态:${StringTranslation.translateCurrentState(data.realtime.currentState)} \n俱乐部:${club_name}`
+            "content": `**账号信息** \n等级:${data.global.level} \n${StringTranslation.translateCurrentState(data)} \n俱乐部:${club_name}`
           },
           {
             "type": "kmarkdown",
