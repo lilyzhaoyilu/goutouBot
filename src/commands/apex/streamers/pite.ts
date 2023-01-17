@@ -1,5 +1,4 @@
 import { AppCommand, AppFunc, BaseSession, TextMessage } from 'kbotify';
-import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { Streamer } from 'utils/streamer_handler';
 

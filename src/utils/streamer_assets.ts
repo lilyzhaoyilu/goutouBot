@@ -30,7 +30,7 @@ const SANMINGZHI: StreamerAsset = {
 }
 
 const PITE: StreamerAsset = {
-  name: "pite",
+  name: "Pite",
   origin_id: "DF_174_o",
   platform: "douyu",
   roomNumber: 5684726,
@@ -49,8 +49,20 @@ const ROIEEE: StreamerAsset = {
   }
 }
 
+const JACKY: StreamerAsset = {
+  name: "Jacky",
+  origin_id: "AVG_Jacky1",
+  platform: "douyu",
+  roomNumber: 6490082,
+  avatar: "https://apic.douyucdn.cn/upload/avatar_v3/202107/e3170c90309547b5bb0bc38b8cae0a16_big.jpg",
+  customized: {
+    sloganText: "黑丝妹妹加我，阿里嘎多！"
+  }
+}
+
 export const STREAMER: Record<string, StreamerAsset> = {
   "3mz": SANMINGZHI,
   "Pite": PITE,
   "Roieee": ROIEEE,
+  "Jacky": JACKY,
 }

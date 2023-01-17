@@ -66,6 +66,19 @@ const constructStreamerCard = () => (`[
         }
       },
       {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "\`.apex jacky\` 查询**Jacky**的账号和直播间"
+        },
+        "mode": "left",
+        "accessory": {
+          "type": "image",
+          "src": "https://apic.douyucdn.cn/upload/avatar_v3/202107/e3170c90309547b5bb0bc38b8cae0a16_big.jpg",
+          "size": "lg"
+        }
+      },
+      {
         "type": "context",
         "elements": [
                    {

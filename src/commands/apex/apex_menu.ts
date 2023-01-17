@@ -10,6 +10,7 @@ import { apexStreamers } from './apex_streamers';
 import { apexPite } from './streamers/pite';
 import { apex3mz } from './streamers/3mz';
 import { apexRoieee } from './streamers/roieee';
+import { apexJacky } from './streamers/jacky';
 
 class ApexMenu extends MenuCommand {
   code = 'apex';
@@ -140,4 +141,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPite, apexStreamers, apex3mz, apexRoieee);
+export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky);

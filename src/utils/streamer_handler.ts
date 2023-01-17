@@ -18,6 +18,7 @@ export class Streamer {
     const query_res = await ApexLegendsStatus.getQuery(session, streamer.origin_id);
     Streamer.buildStreamerTopSection(card, live_res, streamer);
     GoutouCard.buildPlayerInfoSection(card, query_res, false)
+    Streamer.buildStreamerTail(card);
     return card;
   }
 
@@ -45,6 +46,36 @@ export class Streamer {
     card.addImage(res.roomThumb)
   }
 
+  static buildStreamerTail(card: Card) {
+    card.addModule({
+      type: "context", elements: [{
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      },
+      {
+        "type": "plain-text",
+        "content": "`.apex s` 查看其它支持快速查询的主播"
+      },
+      {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      }]
+    })
+    card.addModule({
+      type: "context", elements: [{
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      },
+      {
+        "type": "plain-text",
+        "content": "新春快乐！如果还有其他你想看到的主播，请私信狗头哦~"
+      },
+      {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      }]
+    })
+  }
 
   static buildCustomizedStreamingTest(isStreaming: boolean, streamer: StreamerAsset) {
     if (isStreaming) {
@@ -55,31 +86,38 @@ export class Streamer {
   }
 
   static buildSloganSection(streamer: StreamerAsset, card: Card) {
-    if (!streamer.customized?.sloganImage && !streamer.customized?.sloganText) {
-      return ``;
+
+    if (!streamer.customized?.sloganImage && streamer.customized?.sloganText) {
+      card.addModule({
+        type: "context",
+        elements: [
+          {
+            "type": "plain-text",
+            "content": `${streamer.customized?.sloganText}`
+          }
+        ]
+      })
+      return ``
     }
 
-    card.addModule({
-      type: "context",
-      elements: [
-        {
-          "type": "image",
-          "src": `${streamer.customized?.sloganImage}`
-        },
-        {
-          "type": "image",
-          "src": `${streamer.customized?.sloganImage}`
-        },
-        {
-          "type": "plain-text",
-          "content": `${streamer.customized?.sloganText}`
-        }
-      ]
-    })
+    if (streamer.customized?.sloganImage && streamer.customized?.sloganText) {
+      card.addModule({
+        type: "context",
+        elements: [
+          {
+            "type": "image",
+            "src": `${streamer.customized?.sloganImage}`
+          },
+          {
+            "type": "image",
+            "src": `${streamer.customized?.sloganImage}`
+          },
+          {
+            "type": "plain-text",
+            "content": `${streamer.customized?.sloganText}`
+          }
+        ]
+      })
+    };
   }
-
-  static buildTailSection() {
-
-  }
-
 }

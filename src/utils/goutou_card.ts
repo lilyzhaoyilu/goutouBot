@@ -52,9 +52,7 @@ export class GoutouCard {
         ]
       }
     })
-
     return card;
-
   }
 
   static async sendQueringCard(session: BaseSession) {
