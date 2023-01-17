@@ -13,9 +13,13 @@ import { apexMap } from 'commands/apex/apex_map';
 import { apexCraft } from 'commands/apex/apex_craft';
 import { apexTopTen, apexTopFifty } from 'commands/apex/apex_leaderboard';
 import { apexTime } from 'commands/apex/apex_time';
+import dotenv from "dotenv";
+dotenv.config();
 
 bot.messageSource.on('message', (e: any) => {
-  console.log(e);
+  if (process.env.ENV === "test") {
+    console.log(e);
+  }
   PrivateMessage.privateMessage(e);
 });
 

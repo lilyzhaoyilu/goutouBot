@@ -16,7 +16,7 @@ export class ApexLegendsStatus {
       const res = await axios.get(`https://api.mozambiquehe.re/maprotation?auth=${auth.APEXSTATUS}&version=2`)
       return res.data;
     } catch (err) {
-      ErrorHandler.sendErrorMessageToLogChannel(session, "map rotation");
+      ErrorHandler.sendErrorMessageToLogChannel(session, `map rotation: ${err}`);
       return GoutouCard.buildGenericErrorCard(session);
     }
   }
@@ -26,7 +26,7 @@ export class ApexLegendsStatus {
       const res = await axios.get(`https://api.mozambiquehe.re/predator?auth=${auth.APEXSTATUS}`)
       return res.data;
     } catch (err) {
-      ErrorHandler.sendErrorMessageToLogChannel(session, "reach predator on PC");
+      ErrorHandler.sendErrorMessageToLogChannel(session, `reach predator on PC: ${err}`);
       return GoutouCard.buildGenericErrorCard(session);
     }
   }
@@ -36,7 +36,7 @@ export class ApexLegendsStatus {
       const res = await axios.get(`https://api.mozambiquehe.re/crafting?auth=${auth.APEXSTATUS}`)
       return res.data;
     } catch (err) {
-      ErrorHandler.sendErrorMessageToLogChannel(session, "reach predator on PC");
+      ErrorHandler.sendErrorMessageToLogChannel(session, `get craft: ${err}`);
       return GoutouCard.buildGenericErrorCard(session);
     }
   }
@@ -77,7 +77,7 @@ export class ApexLegendsStatus {
       const res = await axios.get(`https://api.mozambiquehe.re/leaderboard?auth=${auth.APEXSTATUS}&legend=Any&platform=PC&key=rankScore`)
       return res.data;
     } catch (err) {
-      ErrorHandler.sendErrorMessageToLogChannel(session, "reach predator on PC");
+      ErrorHandler.sendErrorMessageToLogChannel(session, `leaderboard: ${err}`);
       return GoutouCard.buildGenericErrorCard(session);
     }
   }
