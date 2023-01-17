@@ -22,13 +22,12 @@ class ApexQuery extends AppCommand {
     } else if (data) {
       session.replyCard(card)
     }
-
   }
 };
 
 const buildQueryCard = (data: any) => {
   const card = new Card().setSize('lg').setTheme('secondary')
-  card.addTitle(`${data.global.name}的数据`)
+  card.addTitle(`${data.global?.name}的数据`)
   GoutouCard.buildPlayerInfoSection(card, data);
   return card;
 }

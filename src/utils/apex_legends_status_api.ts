@@ -52,22 +52,20 @@ export class ApexLegendsStatus {
     } catch (err: any) {
       if (!axios.isAxiosError(err) && err?.code == 'ERR_UNESCAPED_CHARACTERS') {
         ErrorHandler.sendErrorMessageToLogChannel(session, `queried chinese: ${queryUser}`);
-        await session.replyCard(GoutouCard.buildNoCNOriginIdCard(session));
+        return (GoutouCard.buildNoCNOriginIdCard(session));
       }
       switch (err.response?.status) {
         // did not find data
         case 404:
           ErrorHandler.sendErrorMessageToLogChannel(session, `query notfound 404: ${queryUser}`)
-          await session.replyCard(GoutouCard.buildQueryNotFoundCard(session));
-          break;
+          return (GoutouCard.buildQueryNotFoundCard(session));
         // over rate limit
         case 429:
           ErrorHandler.sendErrorMessageToLogChannel(session, `overlimit q: ${queryUser}`)
-          await session.replyCard(GoutouCard.buildOverLimitCard(session));
-          break;
+          return (GoutouCard.buildOverLimitCard(session));
         default:
           ErrorHandler.sendErrorMessageToLogChannel(session, `generic error querying ${queryUser}`)
-          await session.replyCard(GoutouCard.buildGenericErrorCard(session));
+          return (GoutouCard.buildGenericErrorCard(session));
       }
     }
   }
