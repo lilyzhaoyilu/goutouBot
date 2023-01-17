@@ -104,3 +104,4 @@ dist
 .tern-port
 
 src/configs/auth*
+src/init/client.ts

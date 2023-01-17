@@ -1,5 +1,7 @@
 import { AppCommand, AppFunc, BaseSession, TextMessage } from 'kbotify';
-import { constructLiveCard } from './streamer_utils';
+import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
+import { GoutouCard } from 'utils/goutou_card';
+import { Streamer } from 'utils/streamer_handler';
 
 class Apex3mz extends AppCommand {
   code = '3mz'; // 只是用作标记
@@ -7,8 +9,14 @@ class Apex3mz extends AppCommand {
   help = '发送`.apex 3mz`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
-    const res = await constructLiveCard("1667826", true, "DF_3Mz_o");
-    return session.replyCard(res)
+
+    const msg_id = await GoutouCard.sendQueringCard(session);
+    const card = await Streamer.assembleStreamerCard('3mz', session);
+    if (msg_id) {
+      return session.updateMessage(msg_id, [card]);
+    } else {
+      return session.replyCard(card);
+    }
   };
 }
 

@@ -1,7 +1,8 @@
-import { AppCommand, AppFunc, BaseSession } from 'kbotify';
-import auth from '../../configs/auth';
+import { AppCommand, AppFunc, BaseSession, Card, ModuleObject } from 'kbotify';
 import { bot } from 'init/client';
-const axios = require('axios');
+import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
+import { GoutouCard } from 'utils/goutou_card';
+import { StringTranslation } from 'utils/string_translation';
 
 class ApexMap extends AppCommand {
   code = 'map'; // 只是用作标记
@@ -9,359 +10,110 @@ class ApexMap extends AppCommand {
   help = '发送`.apex map`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
-    try {
-      const res = await getCurrentMapRotation();
-      const data = res.data;
-      return session.sendCard(constructCard(data));
-    } catch (err) {
-      bot.API.message.create(9, '9682242694390929', `:grey_question: MAP 挂了`);
-      return session.quote('查询失败, 可能是一个bug, 请休息一下并且联系开发者~')
+    const msg_id = await GoutouCard.sendQueringCard(session);
+    const data = await ApexLegendsStatus.getMapRotation(session);
+    const card: Card = data instanceof Card ? data : buildMapCard(data);
+    if (msg_id && data) {
+      return session.updateMessage(msg_id, [card]);
+    } else if (data) {
+      return session.replyCard(card);
     }
   };
 }
 
-const getCurrentMapRotation = () => {
-  return axios.get(`https://api.mozambiquehe.re/maprotation?auth=${auth.apexTracker}&version=2`)
+const expandTime = (time: number): number => {
+  return time * 1000;
 }
 
-
-const translateMap = (map: string) => {
-  switch (map) {
-    case 'Storm Point':
-      return '风暴点';
-      break;
-    case 'World\'s Edge':
-      return '世界尽头';
-      break;
-    case 'Olympus':
-      return '奥林匹斯';
-      break;
-    case 'Kings Canyon':
-      return '诸王峡谷';
-      break;
-    case 'Party crasher':
-      return '派对破坏者'
-      break;
-    case 'Phase runner':
-      return '相位穿梭器'
-      break;
-    case 'Drop Off':
-      return '原料厂'
-      break;
-    case 'Habitat':
-      return '栖息地4'
-      break;
-    case 'Encore':
-      return '再来一次'
-      break;
-    case 'Broken Moon':
-      return '残月'
-      break;
-    default:
-      return map
-  }
-}
-
-const constructCard = (data: any) => {
-  return `[
-  {
-    "type": "card",
-    "theme": "secondary",
-    "size": "lg",
-    "modules": [
+const buildMapCard = (data: any) => {
+  return new Card({
+    type: "card",
+    theme: "secondary",
+    size: "lg",
+    modules: [
       {
-        "type": "header",
-        "text": {
-          "type": "plain-text",
-          "content": "地图查询（大逃杀）"
+        type: "section",
+        text: {
+          type: "kmarkdown",
+          content: ":world_map: (font)大逃杀(font)[success]"
         }
       },
       {
-        "type": "section",
-        "text": {
-          "type": "kmarkdown",
-          "content": "**匹配**"
+        type: "section",
+        text: {
+          type: "kmarkdown",
+          content: `**排位** [${StringTranslation.translateMap(data.ranked.current.map)}](${data.ranked.current.asset}) (emj)arrow(emj)[1613997086764422/v0f2vkdaJ303h03h] [${StringTranslation.translateMap(data.ranked.next.map)}](${data.ranked.next.asset})`
         }
       },
       {
-        "type": "section",
-        "text": {
-          "type": "paragraph",
-          "cols": 3,
-          "fields": [
-            {
-              "type": "kmarkdown",
-              "content": "**当前地图**    
-              [${translateMap(data.battle_royale.current.map)}](${data.battle_royale.current.asset})"
-            },
-            {
-              "type": "kmarkdown",
-              "content": "**剩余时间**    
-              ${data.battle_royale.current.remainingTimer}"
-            },
-            {
-              "type": "kmarkdown",
-              "content": "**下张地图**    
-              [${translateMap(data.battle_royale.next.map)}](${data.battle_royale.next.asset})"
-            }
-          ]
+        type: "countdown",
+        mode: "day",
+        endTime: expandTime(data.ranked.current.end)
+      },
+      {
+        type: "section",
+        text: {
+          type: "kmarkdown",
+          content: `**匹配** [${StringTranslation.translateMap(data.battle_royale.current.map)}](${data.battle_royale.current.asset}) (emj)arrow(emj)[1613997086764422/v0f2vkdaJ303h03h] [${StringTranslation.translateMap(data.battle_royale.next.map)}](${data.battle_royale.next.asset})`
         }
       },
       {
-        "type": "section",
-        "text": {
-          "type": "kmarkdown",
-          "content": "**排位**"
+        type: "countdown",
+        mode: "day",
+        endTime: expandTime(data.battle_royale.current.end)
+      },
+      {
+        type: "section",
+        text: {
+          type: "kmarkdown",
+          content: ":world_map: (font)竞技场(font)[success]"
         }
       },
       {
-        "type": "section",
-        "text": {
-          "type": "paragraph",
-          "cols": 2,
-          "fields": [
-            {
-              "type": "kmarkdown",
-              "content": "**当前地图**   
-              [${translateMap(data.ranked.current.map)}](${data.ranked.current.asset})"
-            },
-            {
-              "type": "kmarkdown",
-              "content": "**下张地图**    
-              [${translateMap(data.ranked.next.map)}](${data.ranked.next.asset})"
-            }
-          ]
+        type: "section",
+        text: {
+          type: "kmarkdown",
+          content: `**排位** [${StringTranslation.translateMap(data.arenasRanked.current.map)}](${data.battle_royale.current.asset}) (emj)arrow(emj)[1613997086764422/v0f2vkdaJ303h03h]  [${StringTranslation.translateMap(data.arenasRanked.next.map)}](${data.arenasRanked.next.asset})`
         }
       },
       {
-        "type": "divider"
+        type: "countdown",
+        mode: "day",
+        endTime: expandTime(data.arenasRanked.current.end)
       },
       {
-        "type": "header",
-        "text": {
-          "type": "plain-text",
-          "content": "地图查询 (竞技场)"
+        type: "section",
+        text: {
+          type: "kmarkdown",
+          content: `**匹配** [${StringTranslation.translateMap(data.arenas.current.map)}](${data.arenas.current.asset}) (emj)arrow(emj)[1613997086764422/v0f2vkdaJ303h03h] [${StringTranslation.translateMap(data.arenas.next.map)}](${data.arenas.next.asset})`
         }
       },
       {
-        "type": "section",
-        "text": {
-          "type": "kmarkdown",
-          "content": "**匹配**"
+        type: "countdown",
+        mode: "day",
+        endTime: expandTime(data.arenas.current.end)
+      },
+      {
+        type: "section",
+        text: {
+          type: "kmarkdown",
+          content: ":world_map: (font)控制(font)[success]"
         }
       },
       {
-        "type": "section",
-        "text": {
-          "type": "paragraph",
-          "cols": 3,
-          "fields": [
-            {
-              "type": "kmarkdown",
-              "content": "**当前地图**    
-              [${translateMap(data.arenas.current.map)}](${data.arenas.current.asset})"
-            },
-            {
-              "type": "kmarkdown",
-              "content": "**剩余时间**    
-              ${data.arenas.current.remainingTimer}"
-            },
-            {
-              "type": "kmarkdown",
-              "content": "**下张地图**    
-              [${translateMap(data.arenas.next.map)}](${data.arenas.next.asset})"
-            }
-          ]
+        type: "section",
+        text: {
+          type: "kmarkdown",
+          content: `[${StringTranslation.translateMap(data.ltm?.current?.map)}](${data.ltm?.current?.asset}) (emj)arrow(emj)[1613997086764422/v0f2vkdaJ303h03h] [${StringTranslation.translateMap(data.ltm?.next?.map)}](${data.ltm?.next?.asset})`
         }
       },
       {
-        "type": "section",
-        "text": {
-          "type": "kmarkdown",
-          "content": "**排位**"
-        }
-      },
-      {
-        "type": "section",
-        "text": {
-          "type": "paragraph",
-          "cols": 3,
-          "fields": [
-            {
-              "type": "kmarkdown",
-              "content": "**当前地图**    
-              [${translateMap(data.arenasRanked.current.map)}](${data.arenasRanked.current.asset})"
-            },
-            {
-              "type": "kmarkdown",
-              "content": "**剩余时间**    
-              ${translateMap(data.arenasRanked.current.remainingTimer)}"
-            },
-            {
-              "type": "kmarkdown",
-              "content": "**下张地图**    
-              [${translateMap(data.arenasRanked.next.map)}](${data.arenasRanked.next.asset})"
-            }
-          ]
-        }
-      },
-      {
-        "type": "context",
-        "elements": [
-          {
-            "type": "plain-text",
-            "content": "特别感谢Niko指出的错误<3"
-          }
-        ]
+        type: "countdown",
+        mode: "day",
+        endTime: expandTime(data.ltm.current.end)
       }
     ]
-  }
-]`
-
+  });
 }
 
 export const apexMap = new ApexMap();
-
-
-
-// Note: add THREE spaces after section's title to make "next line" work
-
-// [
-//   {
-//     "type": "card",
-//     "theme": "secondary",
-//     "size": "lg",
-//     "modules": [
-//       {
-//         "type": "header",
-//         "text": {
-//           "type": "plain-text",
-//           "content": "地图查询（大逃杀）"
-//         }
-//       },
-//       {
-//         "type": "section",
-//         "text": {
-//           "type": "kmarkdown",
-//           "content": "**匹配**"
-//         }
-//       },
-//       {
-//         "type": "section",
-//         "text": {
-//           "type": "paragraph",
-//           "cols": 3,
-//           "fields": [
-//             {
-//               "type": "kmarkdown",
-//               "content": "**当前地图**\n白给Doc"
-//             },
-//             {
-//               "type": "kmarkdown",
-//               "content": "**剩余时间**\n吐槽中心"
-//             },
-//             {
-//               "type": "kmarkdown",
-//               "content": "**下张地图**\n9:00-21:00"
-//             }
-//           ]
-//         }
-//       },
-//       {
-//         "type": "section",
-//         "text": {
-//           "type": "kmarkdown",
-//           "content": "**排位**"
-//         }
-//       },
-//       {
-//         "type": "section",
-//         "text": {
-//           "type": "paragraph",
-//           "cols": 2,
-//           "fields": [
-//             {
-//               "type": "kmarkdown",
-//               "content": "**上半赛季**\n白给Doc"
-//             },
-//             {
-//               "type": "kmarkdown",
-//               "content": "**下半赛季**\n吐槽中心"
-//             }
-//           ]
-//         }
-//       },
-//       {
-//         "type": "divider"
-//       },
-//       {
-//         "type": "header",
-//         "text": {
-//           "type": "plain-text",
-//           "content": "地图查询 (竞技场)"
-//         }
-//       },
-//       {
-//         "type": "section",
-//         "text": {
-//           "type": "kmarkdown",
-//           "content": "**匹配**"
-//         }
-//       },
-//       {
-//         "type": "section",
-//         "text": {
-//           "type": "paragraph",
-//           "cols": 3,
-//           "fields": [
-//             {
-//               "type": "kmarkdown",
-//               "content": "**当前地图**\n怪才君"
-//             },
-//             {
-//               "type": "kmarkdown",
-//               "content": "**剩余时间**\n活动中心"
-//             },
-//             {
-//               "type": "kmarkdown",
-//               "content": "**下张地图**\n9:00-21:00"
-//             }
-//           ]
-//         }
-//       },
-//       {
-//         "type": "section",
-//         "text": {
-//           "type": "kmarkdown",
-//           "content": "**排位**"
-//         }
-//       },
-//       {
-//         "type": "section",
-//         "text": {
-//           "type": "paragraph",
-//           "cols": 2,
-//           "fields": [
-//             {
-//               "type": "kmarkdown",
-//               "content": "**当前地图**\n怪才君"
-//             },
-//             {
-//               "type": "kmarkdown",
-//               "content": "**剩余时间**\n活动中心"
-//             }
-//           ]
-//         }
-//       },
-//       {
-//         "type": "context",
-//         "elements": [
-//           {
-//             "type": "plain-text",
-//             "content": "如果有更好的地图翻译建议，请联系作者，感谢~"
-//           }
-//         ]
-//       }
-//     ]
-//   }
-// ]

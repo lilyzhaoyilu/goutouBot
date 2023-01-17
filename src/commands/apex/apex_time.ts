@@ -1,7 +1,7 @@
-import { AppCommand, AppFunc, BaseSession } from 'kbotify';
-import { convertEpochToDate } from './apex_utils';
-import auth from '../../configs/auth';
-const axios = require('axios');
+import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
+import { StringTranslation } from 'utils/string_translation';
+import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
+import { GoutouCard } from 'utils/goutou_card';
 
 class ApexTime extends AppCommand {
   code = 'time'; // 只是用作标记
@@ -9,53 +9,48 @@ class ApexTime extends AppCommand {
   help = '发送`.apex time`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
-    try {
-      const res = await getCurrentMapRotation();
-      const data = res.data;
-      return session.sendCard(constructCard(data));
-    } catch (err) {
-      return session.quote('查询失败, 可能是一个bug, 请私信狗头反馈~')
+    const msg_id = await GoutouCard.sendQueringCard(session);
+    const data = await ApexLegendsStatus.getMapRotation(session);
+    const card: Card = data instanceof Card ? data : buildTimeCard(data);
+    if (msg_id && data) {
+      return session.updateMessage(msg_id, [card]);
+    } else if (data) {
+      return session.replyCard(card);
     }
   };
 }
 
-const getCurrentMapRotation = () => {
-  return axios.get(`https://api.mozambiquehe.re/maprotation?auth=${auth.apexTracker}&version=2`)
-}
-
-const constructCard = (data: any) => {
-  return `
-  [
+const buildTimeCard = (data: any) => {
+  return new Card(
     {
-      "type": "card",
-      "theme": "secondary",
-      "size": "lg",
-      "modules": [
+      type: "card",
+      theme: "secondary",
+      size: "lg",
+      modules: [
         {
-          "type": "header",
-          "text": {
-            "type": "plain-text",
-            "content": "本赛季赛段时间"
+          type: "header",
+          text: {
+            type: "plain-text",
+            content: "本赛季赛段时间"
           }
         },
         {
-          "type": "section",
-          "text": {
-            "type": "kmarkdown",
-            "content": "开始时间：${convertEpochToDate(data.ranked.current.start)}"
+          type: "section",
+          text: {
+            type: "kmarkdown",
+            content: `开始时间：${StringTranslation.convertEpochToDate(data.ranked.current.start)}`
           }
         },
         {
-          "type": "section",
-          "text": {
-            "type": "kmarkdown",
-            "content": "结束时间：${convertEpochToDate(data.ranked.current.end)}"
+          type: "section",
+          text: {
+            type: "kmarkdown",
+            content: `结束时间：${StringTranslation.convertEpochToDate(data.ranked.current.end)}`
           }
         }
       ]
     }
-  ]`
+  )
 }
-
 
 export const apexTime = new ApexTime();
