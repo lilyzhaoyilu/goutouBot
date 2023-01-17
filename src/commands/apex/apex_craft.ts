@@ -82,7 +82,6 @@ const constructCraftCard = (data: any): Card => {
         }
       ]
     })
-
 }
 
 export const apexCraft = new ApexCraft();
