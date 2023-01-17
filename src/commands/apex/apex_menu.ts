@@ -73,7 +73,7 @@ const apexMenuCard = `[
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "\`.apex s\` [测试中] streamers 查看一些主播的直播间和账号信息，比如皮特和三明治"
+            "content": "\`.apex s\`或\`。apex 主播\`查看一些主播的直播间和账号信息，比如皮特和三明治"
           }
         },
         {

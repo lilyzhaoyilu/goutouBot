@@ -10,6 +10,7 @@ import { apexMap } from 'commands/apex/apex_map';
 import { apexCraft } from 'commands/apex/apex_craft';
 import { apexTopTen, apexTopFifty } from 'commands/apex/apex_leaderboard';
 import { apexTime } from 'commands/apex/apex_time';
+import { apexStreamers } from 'commands/apex/apex_streamers';
 
 import { apexJacky } from 'commands/apex/streamers/jacky';
 import { apex3mz } from 'commands/apex/streamers/3mz';
@@ -38,6 +39,7 @@ bot.addAlias(apexMap, "地图", "图");
 bot.addAlias(apexCraft, "制造", "造");
 bot.addAlias(apexTopTen, "前十");
 bot.addAlias(apexTopFifty, "前五十", "五十");
+apexMenu.addAlias(apexStreamers, "主播")
 
 // apex streamers
 apexMenu.addAlias(apex3mz, "三明治", "王虎仙贝", "高冷仙贝", "whxb", "xbwh", "王虎", "3Mz", "3MZ");

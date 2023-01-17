@@ -54,7 +54,7 @@ export class Streamer {
       },
       {
         "type": "plain-text",
-        "content": "`.apex s` 查看其它支持快速查询的主播"
+        "content": ".apex s 查看其它支持快速查询的主播"
       },
       {
         "type": "image",
