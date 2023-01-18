@@ -240,7 +240,7 @@ export class GoutouCard {
             "type": "header",
             "text": {
               "type": "plain-text",
-              "content": "${name}的查询结果"
+              "content": `${name}的查询结果`
             }
           },
           {

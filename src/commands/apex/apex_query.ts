@@ -17,6 +17,7 @@ class ApexQuery extends AppCommand {
     const msgId = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getQuery(session, queryUser, msgId);
     const card: Card = data instanceof Card ? data : buildQueryCard(data);
+    addCardTail(card);
     if (msgId && data) {
       session.updateMessage(msgId, [card]);
     } else if (data) {
@@ -30,6 +31,24 @@ const buildQueryCard = (data: any) => {
   card.addTitle(`${data.global?.name}的数据`)
   GoutouCard.buildPlayerInfoSection(card, data);
   return card;
+}
+
+// temprory for promotion
+const addCardTail = (card: Card) => {
+  card.addModule({
+    type: "context", elements: [{
+      "type": "image",
+      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+    },
+    {
+      "type": "plain-text",
+      "content": "新春快乐！如果想查询查主播，看看 .apex s 吧"
+    },
+    {
+      "type": "image",
+      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+    }]
+  })
 }
 
 export const apexQuery = new ApexQuery();
