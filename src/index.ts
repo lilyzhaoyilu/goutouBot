@@ -16,6 +16,8 @@ import { apexJacky } from 'commands/apex/streamers/jacky';
 import { apex3mz } from 'commands/apex/streamers/3mz';
 import { apexPite } from 'commands/apex/streamers/pite';
 import { apexRoieee } from 'commands/apex/streamers/roieee';
+import { apexKuku } from 'commands/apex/streamers/kuku';
+import { apexQq } from 'commands/apex/streamers/qq';
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -46,6 +48,8 @@ apexMenu.addAlias(apex3mz, "三明治", "王虎仙贝", "高冷仙贝", "whxb", 
 apexMenu.addAlias(apexPite, "皮特", "皮将军", "pite174", "ptxb", "xbpt");
 apexMenu.addAlias(apexRoieee, "百弟", "Roieee", "百神", "陈柏瀚");
 apexMenu.addAlias(apexJacky, "Jacky", "佛山第一密客");
+apexMenu.addAlias(apexKuku, "Kuku", "小浣熊", "浣熊");
+apexMenu.addAlias(apexQq, "QQ", "Qq");
 // messager
 bot.addCommands(messagerMenu);
 

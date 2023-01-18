@@ -23,12 +23,19 @@ export class Streamer {
   }
 
   static async getLiveData(streamer: StreamerAsset) {
-    const res = streamer.platform === "douyu" ? await LivePlatform.getDouyuLiveData(streamer.roomNumber) : await LivePlatform.getBiliBiliLiveData(streamer.roomNumber);
-    return res;
+    switch (streamer.platform) {
+      case "douyu":
+        return await LivePlatform.getDouyuLiveData(streamer.roomNumber);
+      case "bilibili":
+        if (!streamer.biliuid) return;
+        return await LivePlatform.getBiliBiliLiveData(streamer.roomNumber, streamer.biliuid);
+      default:
+        return;
+    }
   }
 
   static async buildStreamerTopSection(card: Card, res: any, streamer: StreamerAsset) {
-    card.addText(`[${res.streamerName}的直播间](${res.url})  ${Streamer.buildCustomizedStreamingTest(res.isStreaming, streamer)}`, true, 'left', {
+    card.addText(`[${res.streamerName}的直播间](${res.url})  ${Streamer.buildCustomizedLiveText(res.isStreaming, streamer)}`, true, 'left', {
       "type": "image",
       "src": res.avatar,
       "size": "lg"
@@ -42,8 +49,8 @@ export class Streamer {
   }
 
   static async BuildLiveSection(card: Card, res: any) {
-    card.addText(`${res.roomName}`);
-    card.addImage(res.roomThumb)
+    card.addText(`**${res.roomName}**`);
+    card.addImage(res.roomThumb);
   }
 
   static buildStreamerTail(card: Card) {
@@ -77,7 +84,7 @@ export class Streamer {
     })
   }
 
-  static buildCustomizedStreamingTest(isStreaming: boolean, streamer: StreamerAsset) {
+  static buildCustomizedLiveText(isStreaming: boolean, streamer: StreamerAsset) {
     if (isStreaming) {
       return streamer.customized?.textStreaming ? streamer.customized?.textStreaming : "直播中";
     } else {

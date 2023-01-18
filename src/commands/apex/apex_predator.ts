@@ -81,6 +81,21 @@ const buildReachPredatorCard = (data: any) => {
               }
             ]
           }
+        }, {
+          "type": "context",
+          "elements": [{
+            "type": "image",
+            "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+          },
+          {
+            "type": "plain-text",
+            "content": "新赛季数据库需要一定时间收集玩家信息。"
+          },
+          {
+            "type": "image",
+            "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+          }
+          ]
         }
       ]
     })

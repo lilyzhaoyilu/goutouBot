@@ -110,6 +110,21 @@ export class GoutouCard {
               "type": "kmarkdown",
               "content": "查询出现了错误，狗头已经记录了这个错误，会在周末的时候进行维修和升级。:computer:"
             }
+          }, {
+            "type": "context",
+            "elements": [{
+              "type": "image",
+              "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+            },
+            {
+              "type": "plain-text",
+              "content": "新春快乐！想查询主播吗？.apex s 查看支持快速查询的主播！比如皮特三明治~"
+            },
+            {
+              "type": "image",
+              "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+            }
+            ]
           }
         ]
       })
@@ -142,6 +157,21 @@ export class GoutouCard {
               "type": "kmarkdown",
               "content": `没有查询到关于${session.args[0]}的数据，目前只支持用Origin平台的ID进行查询。`
             }
+          }, {
+            "type": "context",
+            "elements": [{
+              "type": "image",
+              "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+            },
+            {
+              "type": "plain-text",
+              "content": "新春快乐！想查询主播吗？.apex s 查看支持快速查询的主播！比如皮特三明治~"
+            },
+            {
+              "type": "image",
+              "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+            }
+            ]
           },
           {
             "type": "section",
@@ -172,7 +202,7 @@ export class GoutouCard {
             "type": "section",
             "text": {
               "type": "kmarkdown",
-              "content": "搜到自己之后找到虾图部分，右边的id是origin id"
+              "content": "搜到自己之后找到下图部分，右边的id是origin id"
             }
           },
           {

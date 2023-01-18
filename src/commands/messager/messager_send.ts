@@ -4,7 +4,7 @@ import auth from '../../configs/auth';
 class MessagerSend extends AppCommand {
   code = 'send'; // 只是用作标记
   // For goutou1, send2 for goutou2
-  trigger = 'send1'; // 用于触发的文字
+  trigger = auth.VERSION; // 用于触发的文字
   help = '.msg send receiverId content'; // 帮助文字
   intro = 'for test';
   func: AppFunc<BaseSession> = async (session) => {

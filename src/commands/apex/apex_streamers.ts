@@ -79,6 +79,32 @@ const constructStreamerCard = () => (`[
         }
       },
       {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "\`.apex kuku\` 查询**库库_sama**的账号和直播间"
+        },
+        "mode": "left",
+        "accessory": {
+          "type": "image",
+          "src": "https://i2.hdslb.com/bfs/face/22c40d9f5569da64fc3a2a2c8e219fed38722c6d.jpg",
+          "size": "lg"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "\`.apex qq\` 查询**MS_QQ-u-**的账号和直播间"
+        },
+        "mode": "left",
+        "accessory": {
+          "type": "image",
+          "src": "https://i1.hdslb.com/bfs/face/ac2c6d3112c9e97db9459ed89019c09b9b1bf431.jpg",
+          "size": "lg"
+        }
+      },
+      {
         "type": "context",
         "elements": [
                    {

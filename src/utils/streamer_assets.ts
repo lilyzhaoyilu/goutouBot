@@ -5,6 +5,7 @@ export interface StreamerAsset {
   origin_id: string;
   platform: "douyu" | "bilibili";
   roomNumber: number;
+  biliuid?: number; // platform = bilibili时必填
   avatar?: string;
   customized?: Customization;
 }
@@ -60,9 +61,29 @@ const JACKY: StreamerAsset = {
   }
 }
 
+const KUKU: StreamerAsset = {
+  name: "Kuku",
+  origin_id: "LG_notKuku",
+  platform: "bilibili",
+  roomNumber: 5194110,
+  biliuid: 5408366,
+  avatar: "https://i2.hdslb.com/bfs/face/22c40d9f5569da64fc3a2a2c8e219fed38722c6d.jpg",
+}
+
+const QQ: StreamerAsset = {
+  name: "Qq",
+  origin_id: "MS_QQ_BanXia-u-",
+  platform: "bilibili",
+  roomNumber: 26161543,
+  biliuid: 3461575992150130,
+  avatar: "https://i1.hdslb.com/bfs/face/ac2c6d3112c9e97db9459ed89019c09b9b1bf431.jpg",
+}
+
 export const STREAMER: Record<string, StreamerAsset> = {
   "3mz": SANMINGZHI,
   "Pite": PITE,
   "Roieee": ROIEEE,
   "Jacky": JACKY,
+  "Kuku": KUKU,
+  "Qq": QQ,
 }
