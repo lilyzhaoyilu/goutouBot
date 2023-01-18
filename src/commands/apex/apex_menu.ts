@@ -40,7 +40,7 @@ const apexMenuCard = `[
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "\`.apex q 橘子id\`或\` 。查询 橘子id\` 查询账户状态和排位分数"
+            "content": "\`.apex q 橘子id\`或\` 。查询 橘子id\` 查询账户状态和排位分数。橘子id只能是英文的，比如\`.apex q BestGuda\`"
           }
         },
         {

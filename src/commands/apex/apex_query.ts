@@ -6,11 +6,11 @@ const axios = require('axios');
 class ApexQuery extends AppCommand {
   code = 'q'; // 只是用作标记
   trigger = 'q'; // 用于触发的文字
-  help = '`.apex q 你的origin_id`'; // 帮助文字
+  help = '`.apex q 你的origin id`'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
     if (session.args.length != 1) {
-      return session.quote('输入的指令有误。格式是：.apex q {你的id}，比如 .apex q my_id');
+      return session.quote('输入的指令有误。格式是：.apex q {你的id}，比如 .apex q BestGuda');
     }
 
     const queryUser = session.args[0];
