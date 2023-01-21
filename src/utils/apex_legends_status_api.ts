@@ -79,4 +79,15 @@ export class ApexLegendsStatus {
       return GoutouCard.buildGenericErrorCard(session);
     }
   }
+
+  // TODO: make rank an enum/ interface
+  static async getPickRate(session: BaseSession, rank: string = '') {
+    try {
+      const res = await axios.get(`https://apexlegendsstatus.com/game-stats/legends-pick-rates${rank ? '/' + rank : ''}`)
+      return res.data;
+    } catch (err) {
+      ErrorHandler.sendErrorMessageToLogChannel(session, `Pick rate: ${err}`);
+      return GoutouCard.buildGenericErrorCard(session);
+    }
+  }
 }

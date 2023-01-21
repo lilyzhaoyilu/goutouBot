@@ -1,6 +1,40 @@
 
 
 export class StringTranslation {
+  static TRANSLATE_LEGEND = new Map([
+    ['Bangalore', '班加罗尔'],
+    ['Bloodhound', '寻血猎犬'],
+    ['Revenant', '亡灵'],
+    ['Crypto', '密客'],
+    ['Horizon', '地平线'],
+    ['Gibraltar', '直布罗陀'],
+    ['Wattson', '沃特森'],
+    ['Fuse', '暴雷'],
+    ['Wraith', '恶灵'],
+    ['Octane', '动力小子'],
+    ['Caustic', '侵蚀'],
+    ['Lifeline', '命脉'],
+    ['Pathfinder', '探路者'],
+    ['Loba', '罗芭'],
+    ['Mirage', '幻象'],
+    ['Rampart', '兰伯特'],
+    ['Valkyrie', '瓦尔基里'],
+    ['Seer', '希尔'],
+    ['Ash', '艾许'],
+    ['Mad', '疯玛吉'],
+    ['Mad Maggie', '疯玛吉'],
+    ['Newcastle', '纽卡斯尔'],
+    ['Vantage', '万蒂奇'],
+    ['Catalyst', '卡特莉丝']
+  ])
+
+  static TRANSLATE_QUERY_RANK = new Map([
+    ['pred', 'Masterpred'],
+    ['master', 'Masterpred'],
+    ['diamond', 'Diamond'],
+    ['platinum', 'Platinum'],
+  ])
+
   static translateMap(map: string): string {
     switch (map) {
       case 'Storm Point':
@@ -111,6 +145,7 @@ export class StringTranslation {
     }
   }
 
+  // TODO: Deprecate this
   static translateLegend(legend: string): string {
     switch (legend) {
       case 'Bangalore':

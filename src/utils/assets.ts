@@ -57,3 +57,30 @@ export const RANK_TO_IMAGE = new Map<string, string>(
     ["49", "https://img.kookapp.cn/assets/2023-01/TfwMDnvQyw023023.png"],
     ["50", "https://img.kookapp.cn/assets/2023-01/9HmVSvEDU7023023.png"],
   ]);
+
+export const LEGEND_TO_IMAGE = new Map<string, string>(
+  [
+    ["Octane", "https://img.kookapp.cn/assets/2023-01/bpwv7AWGep03c03d.png"],
+    ["Ash", "https://img.kookapp.cn/assets/2023-01/ISnb1kYCe303c03c.png"],
+    ["Bangalore", "https://img.kookapp.cn/assets/2023-01/ZnW5VjbVSq03c03c.png"],
+    ["Bloodhound", "https://img.kookapp.cn/assets/2023-01/9OjMPy4UFI03c03c.png"],
+    ["Catalyst", "https://img.kookapp.cn/assets/2023-01/FJKU0bJBZI03c03c.png"],
+    ["Caustic", "https://img.kookapp.cn/assets/2023-01/owQ9VoJL9v03c03c.png"],
+    ["Fuse", "https://img.kookapp.cn/assets/2023-01/VAZZUlc44q03c03c.png"],
+    ["Gibraltar", "https://img.kookapp.cn/assets/2023-01/CK9mv5mDrr03c03c.png"],
+    ["Horizon", "https://img.kookapp.cn/assets/2023-01/ADsrQZflxr03c03c.png"],
+    ["Lifeline", "https://img.kookapp.cn/assets/2023-01/7IwDyQgI5303c03c.png"],
+    ["Loba", "https://img.kookapp.cn/assets/2023-01/uZ1D7mNZdn03c03c.png"],
+    ["Mad", "https://img.kookapp.cn/assets/2023-01/cEsudvN5rj03c03c.png"],
+    ["Mirage", "https://img.kookapp.cn/assets/2023-01/gHLfQAhoJZ03c03c.png"],
+    ["Newcastle", "https://img.kookapp.cn/assets/2023-01/1m9zo2rf8403c03c.png"],
+    ["Pathfinder", "https://img.kookapp.cn/assets/2023-01/rq881mVAR003c03c.png"],
+    ["Rampart", "https://img.kookapp.cn/assets/2023-01/G5nvsfDukw03c03c.png"],
+    ["Revenant", "https://img.kookapp.cn/assets/2023-01/SR8EEkOnTG03c03c.png"],
+    ["Seer", "https://img.kookapp.cn/assets/2023-01/d4ZY9QSsjB03c03c.png"],
+    ["Valkyrie", "https://img.kookapp.cn/assets/2023-01/Is9UQFvUYH03c03c.png"],
+    ["Wraith", "https://img.kookapp.cn/assets/2023-01/TBQHJ7NEjJ03c03c.png"],
+    ["Vantage", "https://img.kookapp.cn/assets/2023-01/36BL1F01Bi03c03c.png"],
+    ["Crypto", "https://img.kookapp.cn/assets/2023-01/GzQAjXHDqr03c03c.png"],
+    ["Wattson", "https://img.kookapp.cn/assets/2023-01/TgXRBeFKmc03c03c.png"],
+  ]);

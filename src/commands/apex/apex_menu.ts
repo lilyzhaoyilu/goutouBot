@@ -6,6 +6,9 @@ import { apexCraft } from './apex_craft';
 import { apexTopTen, apexTopFifty } from './apex_leaderboard';
 import { apexInvite } from './apex_invite';
 import { apexTime } from './apex_time';
+import { apexPickRates, apexPickRatesDiamond, apexPickRatesMaster, apexPickRatesPlatinum } from './apex_pick_rates';
+
+// streamers related
 import { apexStreamers } from './apex_streamers';
 import { apexPite } from './streamers/pite';
 import { apex3mz } from './streamers/3mz';
@@ -48,6 +51,13 @@ const apexMenuCard = `[
           "text": {
             "type": "kmarkdown",
             "content": "\`.apex p\`或\`。冲猎\`查询现在达到猎杀的分数"
+          }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "\`.apex r\`或\`。选择率\`查询英雄选择率"
           }
         },
         {
@@ -143,4 +153,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq);
+export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq);

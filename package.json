@@ -22,6 +22,7 @@
   "homepage": "https://github.com/lilyzhaoyilu/goutouBot#readme",
   "dependencies": {
     "bunyan": "^1.8.15",
+    "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.0.0",
     "kbotify": "^0.2.5",
     "prettier": "^2.6.2"
