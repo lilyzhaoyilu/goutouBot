@@ -10,7 +10,10 @@ class MessagerSend extends AppCommand {
   func: AppFunc<BaseSession> = async (session) => {
 
     const receiverId = session.args[0];
-    const content = session.args[1];
+    let content = ''
+    for (let i = 1; i < session.args.length; i++) {
+      content += session.args[i] + ' ';
+    }
 
     if (session.user?.id == auth.devUserId) {
       if (!receiverId || !content) {
