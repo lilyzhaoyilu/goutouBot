@@ -84,3 +84,15 @@ export const LEGEND_TO_IMAGE = new Map<string, string>(
     ["Crypto", "https://img.kookapp.cn/assets/2023-01/GzQAjXHDqr03c03c.png"],
     ["Wattson", "https://img.kookapp.cn/assets/2023-01/TgXRBeFKmc03c03c.png"],
   ]);
+
+export const RANK_TO_EMOJI = new Map<string, string>(
+  [['Apex Predator', '(emj)apexpredator(emj)[1613997086764422/YGDDamgLlw0ay0a4]'],
+  ['Master', '(emj)apexmaster(emj)[1613997086764422/dJ4V7cks8j09s09s]'],
+  ['Diamond', '(emj)apexdiamond(emj)[1613997086764422/1BgsoSLJKA09s09s]'],
+  ['Platinum', '(emj)apexplatinum(emj)[1613997086764422/eEedz4LWuW09s09s]'],
+  ['Gold', '(emj)apexgold(emj)[1613997086764422/6jHbCAD7PG09s09s]'],
+  ['Silver', '(emj)apexsilver(emj)[1613997086764422/mqU8LlBeyy09s09s]'],
+  ['Bronze', '(emj)apexbronze(emj)[1613997086764422/HLggEiqqsa0am0a7]'],
+  ['Rookie', '(emj)apexrookie(emj)[1613997086764422/ufo2rAHuFZ03c03c]']
+  ]
+)

@@ -223,7 +223,8 @@ export class GoutouCard {
 
   static buildNoCNOriginIdCard(session: BaseSession) {
     const card = new Card();
-    card.addText("origin id没有中文的哦~ 可以在[apexlegendsstatus.com](https://apexlegendsstatus.com/stats/) 查找steam id。")
+    card.addText("origin id没有中文的哦~ origin id的组成是英文字母加上`-` `_`");
+    card.addText("可以在[apexlegendsstatus.com](https://apexlegendsstatus.com/stats/) 查找steam id。");
     return new Card(card);
   }
 

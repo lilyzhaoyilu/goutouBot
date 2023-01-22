@@ -12,6 +12,7 @@ import { apexTopTen, apexTopFifty } from 'commands/apex/apex_leaderboard';
 import { apexTime } from 'commands/apex/apex_time';
 import { apexStreamers } from 'commands/apex/apex_streamers';
 import { apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum } from 'commands/apex/apex_pick_rates';
+import { apexDistribution } from 'commands/apex/apex_distribution';
 
 import { apexJacky } from 'commands/apex/streamers/jacky';
 import { apex3mz } from 'commands/apex/streamers/3mz';
@@ -46,7 +47,8 @@ bot.addAlias(apexPickRates, "选择率", "选择");
 bot.addAlias(apexPickRatesMaster, "猎杀选择率", "大师选择率", "猎杀选择", "大师选择");
 bot.addAlias(apexPickRatesDiamond, "钻石选择率", "钻石选择");
 bot.addAlias(apexPickRatesPlatinum, "铂金选择率", "白金选择率", "铂金选择", "白金选择");
-apexMenu.addAlias(apexStreamers, "主播")
+apexMenu.addAlias(apexStreamers, "主播");
+bot.addAlias(apexDistribution, "分布");
 
 // apex streamers
 apexMenu.addAlias(apex3mz, "三明治", "王虎仙贝", "高冷仙贝", "whxb", "xbwh", "王虎", "3Mz", "3MZ");

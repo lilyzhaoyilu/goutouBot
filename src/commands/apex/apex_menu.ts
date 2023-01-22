@@ -7,6 +7,7 @@ import { apexTopTen, apexTopFifty } from './apex_leaderboard';
 import { apexInvite } from './apex_invite';
 import { apexTime } from './apex_time';
 import { apexPickRates, apexPickRatesDiamond, apexPickRatesMaster, apexPickRatesPlatinum } from './apex_pick_rates';
+import { apexDistribution } from './apex_distribution';
 
 // streamers related
 import { apexStreamers } from './apex_streamers';
@@ -99,6 +100,13 @@ const apexMenuCard = `[
           "type": "section",
           "text": {
             "type": "kmarkdown",
+            "content": "\`.apex d\`(代表distribution)或\`。分布\`查询现在的玩家段位分布"
+          }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
             "content": "\`.apex c\`或\`。制造\`查询现在复制器可以制造的东西"
           }
         },
@@ -153,4 +161,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq);
+export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum, apexDistribution, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq);

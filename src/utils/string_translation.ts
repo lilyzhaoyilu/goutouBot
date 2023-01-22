@@ -1,4 +1,4 @@
-
+import { RANK_TO_EMOJI } from './assets';
 
 export class StringTranslation {
   static TRANSLATE_LEGEND = new Map([
@@ -107,21 +107,21 @@ export class StringTranslation {
     let curDiv = rankDiv === "0" ? '' : rankDiv;
     switch (rank) {
       case 'Apex Predator':
-        return '(emj)apexpredator(emj)[1613997086764422/YGDDamgLlw0ay0a4] 猎杀';
+        return `${RANK_TO_EMOJI.get(rank)} 猎杀`;
       case 'Master':
-        return '(emj)apexmaster(emj)[1613997086764422/dJ4V7cks8j09s09s] 大师';
+        return `${RANK_TO_EMOJI.get(rank)} 大师`;
       case 'Diamond':
-        return `(emj)apexdiamond(emj)[1613997086764422/1BgsoSLJKA09s09s] 钻石${curDiv}`;
+        return `${RANK_TO_EMOJI.get(rank)} 钻石${curDiv}`;
       case 'Platinum':
-        return `(emj)apexplatinum(emj)[1613997086764422/eEedz4LWuW09s09s] 铂金${curDiv}`;
+        return `${RANK_TO_EMOJI.get(rank)} 铂金${curDiv}`;
       case 'Gold':
-        return `(emj)apexgold(emj)[1613997086764422/6jHbCAD7PG09s09s] 黄金${curDiv}`;
+        return `${RANK_TO_EMOJI.get(rank)} 黄金${curDiv}`;
       case 'Silver':
-        return `(emj)apexsilver(emj)[1613997086764422/mqU8LlBeyy09s09s] 白银${curDiv}`;
+        return `${RANK_TO_EMOJI.get(rank)} 白银${curDiv}`;
       case 'Bronze':
-        return `(emj)apexbronze(emj)[1613997086764422/HLggEiqqsa0am0a7] 青铜${curDiv}`;
+        return `${RANK_TO_EMOJI.get(rank)} 青铜${curDiv}`;
       case 'Rookie':
-        return `(emj)apexrookie(emj)[1613997086764422/ufo2rAHuFZ03c03c] 菜鸟${curDiv}`
+        return `${RANK_TO_EMOJI.get(rank)} 菜鸟${curDiv}`
       case 'Unranked':
         return '未定级';
       default:

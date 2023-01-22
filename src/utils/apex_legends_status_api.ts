@@ -42,6 +42,13 @@ export class ApexLegendsStatus {
   }
 
   static async getQuery(session: BaseSession, queryUser: string, msg_id: string = '') {
+
+    // block illegal origin id query
+    const origin_id_matcher = new RegExp('([A-z0-9-_])+');
+    if (!origin_id_matcher.test(queryUser)) {
+      return GoutouCard.buildNoCNOriginIdCard(session);
+    }
+
     try {
       const res = await axios.get(`https://api.mozambiquehe.re/bridge?auth=${auth.APEXSTATUS}&player=${queryUser}&platform=PC&enableClubsBeta=true&merge=true&removeMerged=true`)
       if (res.data.Error) {
@@ -87,6 +94,17 @@ export class ApexLegendsStatus {
       return res.data;
     } catch (err) {
       ErrorHandler.sendErrorMessageToLogChannel(session, `Pick rate: ${err}`);
+      return GoutouCard.buildGenericErrorCard(session);
+    }
+  }
+
+  static async getBrDistribution(session: BaseSession) {
+    // TODO: make url dynamic, its card coded season now
+    try {
+      const res = await axios.get("https://apexlegendsstatus.com/lib/php/rankdistrib.php?unranked=yes")
+      return res.data;
+    } catch (err) {
+      ErrorHandler.sendErrorMessageToLogChannel(session, `get BR distribution: ${err}`);
       return GoutouCard.buildGenericErrorCard(session);
     }
   }

@@ -1,7 +1,6 @@
 import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
-const axios = require('axios');
 
 class ApexCraft extends AppCommand {
   code = 'c'; // 只是用作标记

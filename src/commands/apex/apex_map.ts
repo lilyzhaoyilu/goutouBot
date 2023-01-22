@@ -1,5 +1,4 @@
 import { AppCommand, AppFunc, BaseSession, Card, ModuleObject } from 'kbotify';
-import { bot } from 'init/client';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { StringTranslation } from 'utils/string_translation';
