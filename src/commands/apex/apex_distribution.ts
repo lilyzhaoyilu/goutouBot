@@ -57,7 +57,6 @@ const buildDistributionCard = (br_data: any, ar_data: any = '') => {
       "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
     }]
   })
-  console.log("corgi: ", card);
   return card;
 }
 

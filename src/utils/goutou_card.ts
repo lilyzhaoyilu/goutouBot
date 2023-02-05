@@ -12,8 +12,8 @@ export class GoutouCard {
   }
 
   static async buildPlayerInfoSection(card: Card, data: any, noteSession: boolean = true) {
-    const br_rank = data.global.rank.ladderPosPlatform
-    const areana_rank = data.global.arena.ladderPosPlatform;
+    const br_rank = data.global?.rank?.ladderPosPlatform === undefined ? '数据错误' : data.global?.rank?.ladderPosPlatform;
+    const areana_rank = data.global?.arena?.ladderPosPlatform === undefined ? '数据错误' : data.global?.arena?.ladderPosPlatform
     const club_name = data.club?.name === undefined ? '' : data.club.name;
 
     if (noteSession) {
