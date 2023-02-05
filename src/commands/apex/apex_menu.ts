@@ -24,6 +24,7 @@ class ApexMenu extends MenuCommand {
   help = '这是apex指令的菜单';
   intro = '输入.apex 查看指令帮助';
   menu = apexMenuCard;
+  useTempMenu = false;
   useCardMenu = true; // 使用卡片菜单
 };
 
