@@ -1,6 +1,7 @@
 import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
+import { normalSendOutCardWrapper } from './helper_methods';
 
 class ApexCraft extends AppCommand {
   code = 'c'; // 只是用作标记
@@ -8,14 +9,11 @@ class ApexCraft extends AppCommand {
   help = '`.apex c` 来查询现在复制器里轮换的物品'; // 帮助文字
   intro = '`.apex c` 来查询现在复制器里轮换的物品';
   func: AppFunc<BaseSession> = async (session) => {
-    const msgId = await GoutouCard.sendQueringCard(session);
+    const msg_id = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getCraft(session);
     const card: Card = data instanceof Card ? data : constructCraftCard(data);
-    if (msgId && data) {
-      session.updateMessage(msgId, [card]);
-    } else if (data) {
-      session.replyCard(card)
-    }
+
+    await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
 

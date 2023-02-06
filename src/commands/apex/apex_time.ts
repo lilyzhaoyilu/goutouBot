@@ -2,6 +2,7 @@ import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { StringTranslation } from 'utils/string_translation';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
+import { normalSendOutCardWrapper } from './helper_methods';
 
 class ApexTime extends AppCommand {
   code = 'time'; // 只是用作标记
@@ -12,11 +13,7 @@ class ApexTime extends AppCommand {
     const msg_id = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getMapRotation(session);
     const card: Card = data instanceof Card ? data : buildTimeCard(data);
-    if (msg_id && data) {
-      return session.updateMessage(msg_id, [card]);
-    } else if (data) {
-      return session.replyCard(card);
-    }
+    await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
 

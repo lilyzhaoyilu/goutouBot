@@ -4,6 +4,7 @@ import { GoutouCard } from 'utils/goutou_card';
 import { StringTranslation } from 'utils/string_translation';
 import { LEGEND_TO_IMAGE } from 'utils/assets';
 import * as cheerio from 'cheerio';
+import { normalSendOutCardWrapper } from './helper_methods';
 
 class ApexPickRates extends AppCommand {
   code = 'rate'; // 只是用作标记
@@ -80,11 +81,7 @@ const pickRatesCommandWrapper = async (command: string, session: BaseSession) =>
   const msg_id = await GoutouCard.sendQueringCard(session);
   const data = await ApexLegendsStatus.getPickRate(session, rank);
   const card: Card = data instanceof Card ? data : buildPickRatesCard(data, title);
-  if (msg_id && data) {
-    return session.updateMessage(msg_id, [card]);
-  } else if (data) {
-    return session.replyCard(card);
-  }
+  await normalSendOutCardWrapper(session, card, msg_id);
 }
 
 

@@ -3,6 +3,7 @@ import { StringTranslation } from 'utils/string_translation';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { RANK_TO_IMAGE } from 'utils/assets';
+import { normalSendOutCardWrapper } from './helper_methods';
 class ApexTopFifty extends AppCommand {
   code = 'top_fifty'; // 只是用作标记
   trigger = 'top50'; // 用于触发的文字
@@ -12,11 +13,7 @@ class ApexTopFifty extends AppCommand {
     const msg_id = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getLeaderBoard(session);
     const card: Card = data instanceof Card ? data : buildLeaderboardCard(data, 'fifty');
-    if (msg_id && data) {
-      return session.updateMessage(msg_id, [card]);
-    } else if (data) {
-      return session.replyCard(buildLeaderboardCard(card));
-    }
+    await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
 
@@ -30,11 +27,7 @@ class ApexTopTen extends AppCommand {
     const data = await ApexLegendsStatus.getLeaderBoard(session);
     const card: Card = data instanceof Card ? data :
       buildLeaderboardCard(data, 'ten');
-    if (msg_id && data) {
-      return session.updateMessage(msg_id, [card]);
-    } else if (data) {
-      return session.replyCard(card);
-    }
+    await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
 

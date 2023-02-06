@@ -82,11 +82,11 @@ export class GoutouCard {
       const res = await session.replyCard(queryingCard);
       return res.msgSent?.msgId;
     } catch (err) {
-      ErrorHandler.sendErrorMessageToLogChannel(session, "querying")
+      ErrorHandler.sendErrorMessageToLogChannel(session, "querying card error")
     }
   }
 
-  static buildGenericErrorCard(session: BaseSession) {
+  static buildGenericErrorCard(session: BaseSession): Card {
     const name = GoutouCard.getName(session);
     const card = new Card(
       {

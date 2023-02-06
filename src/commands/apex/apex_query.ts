@@ -1,7 +1,7 @@
 import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
-const axios = require('axios');
+import { normalSendOutCardWrapper } from './helper_methods';
 
 class ApexQuery extends AppCommand {
   code = 'q'; // 只是用作标记
@@ -14,15 +14,12 @@ class ApexQuery extends AppCommand {
     }
 
     const queryUser = session.args[0];
-    const msgId = await GoutouCard.sendQueringCard(session);
-    const data = await ApexLegendsStatus.getQuery(session, queryUser, msgId);
+    const msg_id = await GoutouCard.sendQueringCard(session);
+    const data = await ApexLegendsStatus.getQuery(session, queryUser, msg_id);
     const card: Card = data instanceof Card ? data : buildQueryCard(data);
     addCardTail(card);
-    if (msgId && data) {
-      session.updateMessage(msgId, [card]);
-    } else if (data) {
-      session.replyCard(card)
-    }
+
+    await normalSendOutCardWrapper(session, card, msg_id);
   }
 };
 

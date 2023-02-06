@@ -6,7 +6,11 @@ class ApexInvite extends AppCommand {
   help = '发送`.apex invite`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
-    return session.sendCard(constructCard());
+    try {
+      session.sendCard(constructCard());
+    } catch (err) {
+      console.error('INVITE CARD session msg: ', session.msg, 'session err: ', err);
+    }
   };
 }
 

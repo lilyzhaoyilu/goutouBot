@@ -1,5 +1,5 @@
 import auth from 'configs/auth';
-import { BaseSession } from "kbotify";
+import { BaseSession, Card } from "kbotify";
 import { ErrorHandler } from "./error_handler";
 import { GoutouCard } from './goutou_card';
 
@@ -31,7 +31,7 @@ export class ApexLegendsStatus {
     }
   }
 
-  static async getCraft(session: BaseSession) {
+  static async getCraft(session: BaseSession): Promise<Card | any> {
     try {
       const res = await axios.get(`https://api.mozambiquehe.re/crafting?auth=${auth.APEXSTATUS}`)
       return res.data;

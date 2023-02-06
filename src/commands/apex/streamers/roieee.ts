@@ -1,6 +1,7 @@
 import { AppCommand, AppFunc, BaseSession, TextMessage } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { Streamer } from 'utils/streamer_handler';
+import { normalSendOutCardWrapper } from '../helper_methods';
 
 class ApexRoieee extends AppCommand {
   code = 'roieee'; // 只是用作标记
@@ -10,11 +11,7 @@ class ApexRoieee extends AppCommand {
   func: AppFunc<BaseSession> = async (session) => {
     const msg_id = await GoutouCard.sendQueringCard(session);
     const card = await Streamer.assembleStreamerCard('Roieee', session);
-    if (msg_id) {
-      return session.updateMessage(msg_id, [card]);
-    } else {
-      return session.replyCard(card);
-    }
+    await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
 

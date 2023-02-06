@@ -1,6 +1,7 @@
 import { AppCommand, AppFunc, BaseSession, TextMessage } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { Streamer } from 'utils/streamer_handler';
+import { normalSendOutCardWrapper } from '../helper_methods';
 
 class ApexKuku extends AppCommand {
   code = 'kuku'; // 只是用作标记
@@ -11,11 +12,7 @@ class ApexKuku extends AppCommand {
 
     const msg_id = await GoutouCard.sendQueringCard(session);
     const card = await Streamer.assembleStreamerCard('Kuku', session);
-    if (msg_id) {
-      return session.updateMessage(msg_id, [card]);
-    } else {
-      return session.replyCard(card);
-    }
+    await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
 

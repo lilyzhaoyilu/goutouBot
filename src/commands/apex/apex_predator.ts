@@ -11,9 +11,18 @@ class ApexPredator extends AppCommand {
     const msg_id = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getReachPredatorOnPC(session);
     if (msg_id && data) {
-      return session.updateMessage(msg_id, [buildReachPredatorCard(data)]);
+      try {
+        session.updateMessage(msg_id, [buildReachPredatorCard(data)]);
+      }
+      catch (err) {
+        console.error('UPDATE CARD session msg: ', session.msg, 'session err: ', err);
+      }
     } else if (data) {
-      return session.replyCard(buildReachPredatorCard(data));
+      try {
+        session.replyCard(buildReachPredatorCard(data));
+      } catch (err) {
+        console.error('REPLY CARD session msg: ', session.msg, 'session err: ', err);
+      }
     }
   };
 }
