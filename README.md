@@ -4,6 +4,9 @@ A [Kook](https://kookapp.cn/) bot based on [Kbotify](https://github.com/fi6/kBot
 
 This bot provides Apex Legends related queries.
 
+This bot currently servers more than 10,000 servers :)
+
+
 Tips to dev:
 
 1. node link typescript
