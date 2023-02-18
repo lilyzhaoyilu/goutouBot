@@ -79,8 +79,18 @@ export class ApexLegendsStatus {
 
   static async getLeaderBoard(session: BaseSession) {
     try {
-      const res = await axios.get(`https://api.mozambiquehe.re/leaderboard?auth=${auth.APEXSTATUS}&legend=Any&platform=PC&key=rankScore`)
+      const res = await axios.get(`https://api.mozambiquehe.re/leaderboard?auth=${auth.APEXSTATUS}&legend=Any&platform=PC&key=rankScore`);
       return res.data;
+    } catch (err) {
+      ErrorHandler.sendErrorMessageToLogChannel(session, `leaderboard: ${err}`);
+      return GoutouCard.buildGenericErrorCard(session);
+    }
+  }
+
+  static async getLiveLeaderboard(session: BaseSession) {
+    try {
+      const res = await axios.get(`https://apexlegendsstatus.com/live-ranked-leaderboards/Battle_Royale/PC`);
+      return res;
     } catch (err) {
       ErrorHandler.sendErrorMessageToLogChannel(session, `leaderboard: ${err}`);
       return GoutouCard.buildGenericErrorCard(session);

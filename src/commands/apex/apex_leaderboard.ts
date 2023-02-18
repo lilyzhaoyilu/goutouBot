@@ -4,6 +4,8 @@ import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { RANK_TO_IMAGE } from 'utils/assets';
 import { normalSendOutCardWrapper } from './helper_methods';
+import * as cheerio from 'cheerio';
+
 class ApexTopFifty extends AppCommand {
   code = 'top_fifty'; // 只是用作标记
   trigger = 'top50'; // 用于触发的文字
@@ -11,8 +13,9 @@ class ApexTopFifty extends AppCommand {
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
     const msg_id = await GoutouCard.sendQueringCard(session);
-    const data = await ApexLegendsStatus.getLeaderBoard(session);
-    const card: Card = data instanceof Card ? data : buildLeaderboardCard(data, 'fifty');
+    const data = await ApexLegendsStatus.getLiveLeaderboard(session);
+    const card: Card = data instanceof Card ? data :
+      buildLiveLeaderboardCard(data.data, 50);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
@@ -24,9 +27,9 @@ class ApexTopTen extends AppCommand {
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
     const msg_id = await GoutouCard.sendQueringCard(session);
-    const data = await ApexLegendsStatus.getLeaderBoard(session);
+    const data = await ApexLegendsStatus.getLiveLeaderboard(session);
     const card: Card = data instanceof Card ? data :
-      buildLeaderboardCard(data, 'ten');
+      buildLiveLeaderboardCard(data.data, 10);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
@@ -34,24 +37,34 @@ class ApexTopTen extends AppCommand {
 export const apexTopFifty = new ApexTopFifty();
 export const apexTopTen = new ApexTopTen();
 
+const buildLiveLeaderboardCard = (data: any, option: number = 10) => {
+  const $ = cheerio.load(data);
+  const $tbody = $('tbody');
+  let $line = $tbody.find('tr:first');
 
+  const card = buildBaseCard();
+  for (let i = 0; i < option; i++) {
+    const firstItem = $line.find('td:first');
+    const rank = firstItem.text();
+    const thirdItem = firstItem.next().next();
+    const name = thirdItem.find('a').text();
+    const score = thirdItem.next().find('span').text();
 
-const buildLeaderboardCard = (data: any, option: string = 'ten') => {
-  const latestUpdate = StringTranslation.convertEpochToDate(data.meta.lastUpdate);
-  const numberOfPlayers = Number(data.meta.numberOfPlayers);
-  switch (option) {
-    case "fifty":
-      let total = numberOfPlayers < 50 ? numberOfPlayers : 50;
-      return buildTopFiftyCard(data, total);
-    case "ten":
-      let total2 = numberOfPlayers < 10 ? numberOfPlayers : 10;
-      return buildTopTenCard(data, total2);
-    default:
-      return buildBaseCard().addText("error");
+    buildPlayersSection(card, rank, name, score)
+    $line = $line.next();
   }
+
+  if (option === 10) {
+    card.addText("如果榜上有国内主播，并且他的名字没有连接到直播间的请私信机器人。第一个私信的赠送通行证升级码或者其他小礼物。主播们改名字太快了:sob:", true)
+    card.addText(`数据由Apex Legends Stats 提供: [https://apexlegendsstatus.com](https://apexlegendsstatus.com)`)
+  }
+
+  return card;
 }
 
-const buildPlayersSection = (card: Card, rank: string, id: string, points: string, total: number): Card => {
+const buildPlayersSection = (card: Card, rank: string, id: string, points: string): Card => {
+  id = id ? id : "该用户选择隐藏自己的信息 或 该用户不存在";
+  points = points ? points : "无";
   card.addText(`ID: **${StringTranslation.streamerSuperLink(id)}** \n分数: ${points}`, true, "left", {
     type: "image",
     src: `${RANK_TO_IMAGE.get(rank)}`,
@@ -59,32 +72,6 @@ const buildPlayersSection = (card: Card, rank: string, id: string, points: strin
   })
   return card;
 }
-
-const buildTopFiftyCard = (data: any, total: number = 50) => {
-  let card = buildBaseCard();
-  for (let i = 0; i < total; i++) {
-    const playerInfo = data.data[i];
-    buildPlayersSection(card, (i + 1).toString(), playerInfo.name, playerInfo.value, total);
-  }
-  return card;
-}
-
-const buildTopTenCard = (data: any, total: number = 10) => {
-  let card = buildBaseCard();
-  card.addTitle("Apex大逃杀榜单（PC端）");
-  for (let i = 0; i < total; i++) {
-    const playerInfo = data.data[i];
-    buildPlayersSection(card, (i + 1).toString(), playerInfo.name, playerInfo.value, total);
-  }
-
-  card.addText("如果榜上有国内主播，并且他的名字没有连接到直播间的请私信机器人。第一个私信的赠送通行证升级码或者其他小礼物。主播们改名字太快了:sob:", true)
-  card.addText(`数据由Apex Legends Stats 提供: [https://apexlegendsstatus.com](https://apexlegendsstatus.com)`)
-  card.addModule({
-    type: "context", elements: [`最后更新于 北京时间 ${StringTranslation.convertEpochToDate(data.meta.lastUpdate)}`]
-  })
-  return card;
-}
-
 
 const buildBaseCard = (): Card => {
   const card = new Card();
