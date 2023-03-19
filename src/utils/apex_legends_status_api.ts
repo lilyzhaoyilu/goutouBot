@@ -118,4 +118,14 @@ export class ApexLegendsStatus {
       return GoutouCard.buildGenericErrorCard(session);
     }
   }
+
+  static async getSeasonTimeInfo(session: BaseSession) {
+    try {
+      const res = await axios.get("https://api.jumpmaster.xyz/seasons/Current")
+      return res.data;
+    } catch (err) {
+      ErrorHandler.sendErrorMessageToLogChannel(session, `get SeasonTimeInfo: ${err}`);
+      return GoutouCard.buildGenericErrorCard(session);
+    }
+  }
 }

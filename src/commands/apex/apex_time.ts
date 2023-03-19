@@ -11,7 +11,7 @@ class ApexTime extends AppCommand {
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
     const msg_id = await GoutouCard.sendQueringCard(session);
-    const data = await ApexLegendsStatus.getMapRotation(session);
+    const data = await ApexLegendsStatus.getSeasonTimeInfo(session);
     const card: Card = data instanceof Card ? data : buildTimeCard(data);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
@@ -28,21 +28,31 @@ const buildTimeCard = (data: any) => {
           type: "header",
           text: {
             type: "plain-text",
-            content: "本赛季赛段时间"
+            content: `${data.info.ID} 赛季时间`
           }
         },
         {
           type: "section",
           text: {
             type: "kmarkdown",
-            content: `开始时间：${StringTranslation.convertEpochToDate(data.ranked.current.start)}`
+            content: `上半赛季开始时间：${StringTranslation.convertEpochToDate(data.dates
+              .Start)}`
           }
         },
         {
           type: "section",
           text: {
             type: "kmarkdown",
-            content: `结束时间：${StringTranslation.convertEpochToDate(data.ranked.current.end)}`
+            content: `下半赛季开始时间：${StringTranslation.convertEpochToDate(data.dates
+              .Split)}`
+          }
+        },
+        {
+          type: "section",
+          text: {
+            type: "kmarkdown",
+            content: `结束时间：${StringTranslation.convertEpochToDate(data.dates
+              .End)}`
           }
         }
       ]
