@@ -109,7 +109,7 @@ const buildPickRatesCard = (data: any, rank: string = "全部") => {
     },
     {
       "type": "plain-text",
-      "content": "新春快乐！如果有其他的意见和问题，可以直接私信狗头机器人~"
+      "content": "如果有其他的意见和问题，可以直接私信狗头机器人~"
     },
     {
       "type": "image",

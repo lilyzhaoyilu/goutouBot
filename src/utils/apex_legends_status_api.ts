@@ -41,7 +41,7 @@ export class ApexLegendsStatus {
     }
   }
 
-  static async getQuery(session: BaseSession, queryUser: string, msg_id: string = '') {
+  static async getQuery(session: BaseSession, queryUser: string) {
 
     // block illegal origin id query
     const origin_id_matcher = new RegExp('([A-z0-9-_])+');

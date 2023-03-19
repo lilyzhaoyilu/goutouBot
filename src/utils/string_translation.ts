@@ -65,6 +65,8 @@ export class StringTranslation {
         return '熔岩虹吸';
       case 'Hammond Labs':
         return '哈蒙德实验室';
+      case 'Siphone':
+        return '熔岩虹吸';
       default:
         return map
     }
@@ -130,8 +132,8 @@ export class StringTranslation {
   }
 
   static translateCurrentState(data: any): string {
-    const state = data.realtime.currentState;
-    const party_full = data.realtime.partyFull === 0 ? "" : "(三人队)"
+    const state = data.realtime?.currentState;
+    const party_full = data.realtime?.partyFull === 0 ? "" : "(三人队)"
     const selected_legend = StringTranslation.translateLegend(data.realtime.selectedLegend);
     switch (state) {
       case 'inLobby':
@@ -143,6 +145,7 @@ export class StringTranslation {
       default:
         return state;
     }
+    return '';
   }
 
   // TODO: Deprecate this

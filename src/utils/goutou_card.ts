@@ -11,12 +11,16 @@ export class GoutouCard {
     return name;
   }
 
-  static async buildPlayerInfoSection(card: Card, data: any, noteSession: boolean = true) {
+  static async buildPlayerInfoSection(card: Card, data: any, addNoteInSession: boolean = true, isStreamerQuery = false) {
+    // TODO: Find a better way to merge Error Cards and querying
+    if (isStreamerQuery && data instanceof Card) {
+      return card;
+    }
     const br_rank = data.global?.rank?.ladderPosPlatform === undefined ? '数据错误' : data.global?.rank?.ladderPosPlatform;
-    const areana_rank = data.global?.arena?.ladderPosPlatform === undefined ? '数据错误' : data.global?.arena?.ladderPosPlatform
-    const club_name = data.club?.name === undefined ? '' : data.club.name;
+    const club_name = data.club?.name ? data.club?.name : '狗头没有查到';
+    const account_level = data.global?.level === undefined ? '狗头没有查到' : data.global?.level;
 
-    if (noteSession) {
+    if (addNoteInSession) {
       card.addModule({
         type: "context", elements: [{
           "type": "image",
@@ -35,19 +39,15 @@ export class GoutouCard {
     card.addModule({
       type: "section", text: {
         "type": "paragraph",
-        "cols": 3,
+        "cols": 2,
         "fields": [
           {
             "type": "kmarkdown",
-            "content": `**账号信息** \n等级:${data.global.level} \n${StringTranslation.translateCurrentState(data)} \n俱乐部:${club_name}`
+            "content": `**账号信息** \n等级:${account_level} \n${StringTranslation.translateCurrentState(data)} \n俱乐部:${club_name}`
           },
           {
             "type": "kmarkdown",
             "content": `**大逃杀排位** \n${StringTranslation.translateRanking(data.global.rank.rankName, data.global.rank.rankDiv)} \n${br_rank === -1 ? '无排' : br_rank}名 \n${data.global.rank.rankScore} RP`
-          },
-          {
-            "type": "kmarkdown",
-            "content": `**竞技场排位** \n${StringTranslation.translateRanking(data.global.arena.rankName, data.global.arena.rankDiv)} \n${areana_rank === -1 ? '无排' : areana_rank}名 \n${data.global.arena.rankScore} AP`
           }
         ]
       }
@@ -66,7 +66,7 @@ export class GoutouCard {
           "type": "section",
           "text": {
             "type": "plain-text",
-            "content": "正在努力查询中"
+            "content": "正在努力查询中~ 请不要删除查询消息~ "
           },
           "mode": "left",
           "accessory": {
@@ -118,7 +118,7 @@ export class GoutouCard {
             },
             {
               "type": "plain-text",
-              "content": "新春快乐！想查询主播吗？.apex s 查看支持快速查询的主播！比如皮特三明治~"
+              "content": "新春快乐！想查询主播吗？.主播 查看支持快速查询的主播！比如皮特三明治~"
             },
             {
               "type": "image",
@@ -165,7 +165,7 @@ export class GoutouCard {
             },
             {
               "type": "plain-text",
-              "content": "新春快乐！想查询主播吗？.apex s 查看支持快速查询的主播！比如皮特三明治~"
+              "content": "想查询主播吗？.apex s 查看支持快速查询的主播！比如皮特三明治~"
             },
             {
               "type": "image",

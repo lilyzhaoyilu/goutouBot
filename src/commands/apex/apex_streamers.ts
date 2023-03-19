@@ -95,7 +95,7 @@ const constructStreamerCard = () => (`[
         "type": "section",
         "text": {
           "type": "kmarkdown",
-          "content": "\`.apex qq\` 查询**MS_QQ-u-**的账号和直播间"
+          "content": "\`.apex qq\` 查询**QQ**的账号和直播间"
         },
         "mode": "left",
         "accessory": {
@@ -113,7 +113,7 @@ const constructStreamerCard = () => (`[
           },
           {
             "type": "plain-text",
-            "content": "新春快乐！如果还有其他你想看到的主播，请私信狗头哦~"
+            "content": "如果还有其他你想看到的主播，请私信狗头哦~"
           },
           {
             "type": "image",

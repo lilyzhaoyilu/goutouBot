@@ -31,7 +31,6 @@ const buildReachPredatorCard = (data: any) => {
   const card = new Card().setSize('lg').setTheme('secondary');
   card.addTitle("猎杀分数线 (PC端)");
   buildReachPredatorBrSection(card, data);
-  buildReachPredatorArSection(card, data);
   card.addModule({
     "type": "context",
     "elements": [{
@@ -71,33 +70,6 @@ const buildReachPredatorBrSection = (card: Card, data: any) => {
         {
           type: "kmarkdown",
           content: `**当前大师及猎杀人数** \n${data.RP.PC.totalMastersAndPreds}`
-        }
-      ]
-    }
-  })
-}
-
-
-const buildReachPredatorArSection = (card: Card, data: any) => {
-  card.addDivider();
-  card.addTitle('竞技场')
-  card.addModule({
-    type: "section",
-    text: {
-      type: "paragraph",
-      cols: 3,
-      fields: [
-        {
-          type: "kmarkdown",
-          content: `**当前猎杀最低排名** \n${data.AP.PC.foundRank}`
-        },
-        {
-          type: "kmarkdown",
-          content: `**当前猎杀最低分数** \n${data.AP.PC.val}`
-        },
-        {
-          type: "kmarkdown",
-          content: `**当前大师及猎杀人数** \n${data.AP.PC.totalMastersAndPreds} `
         }
       ]
     }

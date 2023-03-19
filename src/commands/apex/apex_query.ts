@@ -15,7 +15,7 @@ class ApexQuery extends AppCommand {
 
     const queryUser = session.args[0];
     const msg_id = await GoutouCard.sendQueringCard(session);
-    const data = await ApexLegendsStatus.getQuery(session, queryUser, msg_id);
+    const data = await ApexLegendsStatus.getQuery(session, queryUser);
     const card: Card = data instanceof Card ? data : buildQueryCard(data);
     addCardTail(card);
 
@@ -25,7 +25,7 @@ class ApexQuery extends AppCommand {
 
 const buildQueryCard = (data: any) => {
   const card = new Card().setSize('lg').setTheme('secondary')
-  card.addTitle(`${data.global?.name}的数据`)
+  card.addTitle(`${data.global?.name}的数据`);
   GoutouCard.buildPlayerInfoSection(card, data);
   return card;
 }
@@ -39,7 +39,7 @@ const addCardTail = (card: Card) => {
     },
     {
       "type": "plain-text",
-      "content": "新春快乐！如果想查询查主播，看看 .apex s 吧"
+      "content": "如果想查询查主播，看看 .主播 吧"
     },
     {
       "type": "image",

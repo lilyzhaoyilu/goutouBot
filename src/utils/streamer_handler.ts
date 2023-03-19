@@ -17,7 +17,7 @@ export class Streamer {
 
     const query_res = await ApexLegendsStatus.getQuery(session, streamer.origin_id);
     Streamer.buildStreamerTopSection(card, live_res, streamer);
-    GoutouCard.buildPlayerInfoSection(card, query_res, false)
+    GoutouCard.buildPlayerInfoSection(card, query_res, false, true);
     Streamer.buildStreamerTail(card);
     return card;
   }
@@ -61,7 +61,7 @@ export class Streamer {
       },
       {
         "type": "plain-text",
-        "content": ".apex s 查看其它支持快速查询的主播"
+        "content": ".主播 查看其它支持快速查询的主播"
       },
       {
         "type": "image",
@@ -75,7 +75,7 @@ export class Streamer {
       },
       {
         "type": "plain-text",
-        "content": "新春快乐！如果还有其他你想看到的主播，请私信狗头哦~"
+        "content": "如果还有其他你想看到的主播，请私信狗头哦~"
       },
       {
         "type": "image",

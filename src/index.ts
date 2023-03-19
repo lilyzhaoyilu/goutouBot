@@ -47,7 +47,9 @@ bot.addAlias(apexPickRates, "选择率", "选择");
 bot.addAlias(apexPickRatesMaster, "猎杀选择率", "大师选择率", "猎杀选择", "大师选择");
 bot.addAlias(apexPickRatesDiamond, "钻石选择率", "钻石选择");
 bot.addAlias(apexPickRatesPlatinum, "铂金选择率", "白金选择率", "铂金选择", "白金选择");
+
 apexMenu.addAlias(apexStreamers, "主播");
+bot.addAlias(apexStreamers, "主播");
 bot.addAlias(apexDistribution, "分布");
 
 // apex streamers

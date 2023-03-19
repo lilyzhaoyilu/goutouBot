@@ -62,37 +62,6 @@ const buildMapCard = (data: any) => {
         type: "section",
         text: {
           type: "kmarkdown",
-          content: ":world_map: (font)竞技场(font)[success]"
-        }
-      },
-      {
-        type: "section",
-        text: {
-          type: "kmarkdown",
-          content: `**排位** [${StringTranslation.translateMap(data.arenasRanked.current.map)}](${data.battle_royale.current.asset}) (emj)arrow(emj)[1613997086764422/v0f2vkdaJ303h03h]  [${StringTranslation.translateMap(data.arenasRanked.next.map)}](${data.arenasRanked.next.asset})`
-        }
-      },
-      {
-        type: "countdown",
-        mode: "day",
-        endTime: expandTime(data.arenasRanked.current.end)
-      },
-      {
-        type: "section",
-        text: {
-          type: "kmarkdown",
-          content: `**匹配** [${StringTranslation.translateMap(data.arenas.current.map)}](${data.arenas.current.asset}) (emj)arrow(emj)[1613997086764422/v0f2vkdaJ303h03h] [${StringTranslation.translateMap(data.arenas.next.map)}](${data.arenas.next.asset})`
-        }
-      },
-      {
-        type: "countdown",
-        mode: "day",
-        endTime: expandTime(data.arenas.current.end)
-      },
-      {
-        type: "section",
-        text: {
-          type: "kmarkdown",
           content: ":world_map: (font)控制(font)[success]"
         }
       },

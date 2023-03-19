@@ -72,7 +72,8 @@ const KUKU: StreamerAsset = {
 
 const QQ: StreamerAsset = {
   name: "Qq",
-  origin_id: "MS_QQ_BanXia-u-",
+  origin_id: "AGL_QQ-w-",
+  // origin_id: "MS_QQ_Banxia-u-",
   platform: "bilibili",
   roomNumber: 26161543,
   biliuid: 3461575992150130,
