@@ -6,11 +6,11 @@ export const MESSAGE_CHANNEL = "1965837510857703";
 
 export const RANK_TO_IMAGE = new Map<string, string>(
   [
-    ["1", "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"],
-    ["2", "https://img.kookapp.cn/assets/2023-01/GW5ajSOOvF15o15o.png"],
-    ["3", "https://img.kookapp.cn/assets/2023-01/kmhzzszZYj15o15o.png"],
-    ["4", "https://img.kookapp.cn/assets/2023-01/nf0GRGA0qa15o15o.png"],
-    ["5", "https://img.kookapp.cn/assets/2023-01/0kxkaqW8CB15o15o.png"],
+    ["1", "https://img.kookapp.cn/assets/2023-03/GpLrxr1ddX046046.png"],
+    ["2", "https://img.kookapp.cn/assets/2023-03/Ntk3sqA0rq046046.png"],
+    ["3", "https://img.kookapp.cn/assets/2023-03/NAUnnasL7p046046.png"],
+    ["4", "https://img.kookapp.cn/assets/2023-03/oNLrNOhRsm023023.png"],
+    ["5", "https://img.kookapp.cn/assets/2023-03/8uJOTRqCrl023023.png"],
     ["6", "https://img.kookapp.cn/assets/2023-01/VMycxIlJrq023023.png"],
     ["7", "https://img.kookapp.cn/assets/2023-01/NUukfQkl42023023.png"],
     ["8", "https://img.kookapp.cn/assets/2023-01/6fshKjO6Ga023023.png"],
