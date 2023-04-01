@@ -60,7 +60,7 @@ apexMenu.addAlias(apexRoieee, "百弟", "Roieee", "百神", "陈柏瀚");
 apexMenu.addAlias(apexJacky, "Jacky", "佛山第一密客");
 apexMenu.addAlias(apexKuku, "Kuku", "小浣熊", "浣熊");
 apexMenu.addAlias(apexQq, "QQ", "Qq");
-apexMenu.addAlias(apexFeiju, "Feiju", "飞天狙", "飞狙", "狙狙公主", "老馋");
+apexMenu.addAlias(apexFeiju, "Feiju", "飞天狙", "飞狙", "狙狙公主", "老馋", "狙神", "郭0俊", "百年难得一遇的天才完美的123号位");
 // messager
 bot.addCommands(messagerMenu);
 
