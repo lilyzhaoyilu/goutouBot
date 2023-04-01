@@ -80,6 +80,15 @@ const QQ: StreamerAsset = {
   avatar: "https://i1.hdslb.com/bfs/face/ac2c6d3112c9e97db9459ed89019c09b9b1bf431.jpg",
 }
 
+const FEIJU: StreamerAsset = {
+  name: "Feiju",
+  origin_id: "MDY_FeiJu",
+  platform: "bilibili",
+  roomNumber: 23197314,
+  biliuid: 51628309,
+  avatar: "https://i1.hdslb.com/bfs/face/6a63e73ed7a9c85744df88c3db6d866b7b6e9fe2.jpg",
+}
+
 export const STREAMER: Record<string, StreamerAsset> = {
   "3mz": SANMINGZHI,
   "Pite": PITE,
@@ -87,4 +96,5 @@ export const STREAMER: Record<string, StreamerAsset> = {
   "Jacky": JACKY,
   "Kuku": KUKU,
   "Qq": QQ,
+  "Feiju": FEIJU,
 }

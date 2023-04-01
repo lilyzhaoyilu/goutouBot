@@ -105,6 +105,19 @@ const constructStreamerCard = () => (`[
         }
       },
       {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "\`.apex feiju\` 查询**飞天狙**的账号和直播间"
+        },
+        "mode": "left",
+        "accessory": {
+          "type": "image",
+          "src": "https://i1.hdslb.com/bfs/face/6a63e73ed7a9c85744df88c3db6d866b7b6e9fe2.jpg",
+          "size": "lg"
+        }
+      },
+      {
         "type": "context",
         "elements": [
                    {

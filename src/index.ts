@@ -21,6 +21,7 @@ import { apexRoieee } from 'commands/apex/streamers/roieee';
 import { apexKuku } from 'commands/apex/streamers/kuku';
 import { apexQq } from 'commands/apex/streamers/qq';
 import dotenv from "dotenv";
+import { apexFeiju } from 'commands/apex/streamers/feiju';
 dotenv.config();
 
 bot.messageSource.on('message', (e: any) => {
@@ -41,7 +42,7 @@ bot.addAlias(apexInvite, "邀请");
 bot.addAlias(apexTime, "赛季", "时间");
 bot.addAlias(apexMap, "地图", "图");
 bot.addAlias(apexCraft, "制造", "造");
-bot.addAlias(apexTopTen, "前十");
+bot.addAlias(apexTopTen, "前十", "top");
 bot.addAlias(apexTopFifty, "前五十", "五十");
 bot.addAlias(apexPickRates, "选择率", "选择");
 bot.addAlias(apexPickRatesMaster, "猎杀选择率", "大师选择率", "猎杀选择", "大师选择");
@@ -59,6 +60,7 @@ apexMenu.addAlias(apexRoieee, "百弟", "Roieee", "百神", "陈柏瀚");
 apexMenu.addAlias(apexJacky, "Jacky", "佛山第一密客");
 apexMenu.addAlias(apexKuku, "Kuku", "小浣熊", "浣熊");
 apexMenu.addAlias(apexQq, "QQ", "Qq");
+apexMenu.addAlias(apexFeiju, "Feiju", "飞天狙", "飞狙", "狙狙公主", "老馋");
 // messager
 bot.addCommands(messagerMenu);
 
