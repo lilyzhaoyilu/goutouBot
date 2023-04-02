@@ -87,6 +87,10 @@ const FEIJU: StreamerAsset = {
   roomNumber: 23197314,
   biliuid: 51628309,
   avatar: "https://i1.hdslb.com/bfs/face/6a63e73ed7a9c85744df88c3db6d866b7b6e9fe2.jpg",
+  customized: {
+    sloganImage: "https://img.kookapp.cn/assets/2023-04/QVGwNM6f6G02o02o.png",
+    sloganText: "怎么会被8滴血反杀！！￥#￥#@%@￥%#￥%#￥…………&…………"
+  }
 }
 
 export const STREAMER: Record<string, StreamerAsset> = {
