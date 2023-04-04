@@ -14,10 +14,14 @@ export class Streamer {
     };
     const streamer = STREAMER[name];
     const live_res = await Streamer.getLiveData(streamer);
-
-    const query_res = await ApexLegendsStatus.getQuery(session, streamer.origin_id);
     Streamer.buildStreamerTopSection(card, live_res, streamer);
-    GoutouCard.buildPlayerInfoSection(card, query_res, false, true);
+    // TODO: Refactor this code
+    if (streamer.origin_id) {
+      const query_res = await ApexLegendsStatus.getQuery(session, streamer.origin_id);
+      GoutouCard.buildPlayerInfoSection(card, query_res, false, true);
+    } else {
+      Streamer.buildNoOriginIdSection(card);
+    }
     Streamer.buildStreamerTail(card);
     return card;
   }
@@ -46,6 +50,23 @@ export class Streamer {
     }
 
     return card;
+  }
+
+  static buildNoOriginIdSection(card: Card) {
+    card.addModule({
+      type: "context", elements: [{
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
+      },
+      {
+        "type": "plain-text",
+        "content": "这个主播暂时还没有提供他想展示的账号，如果你知道他的账号的话，请私信Apex查询狗头~"
+      },
+      {
+        "type": "image",
+        "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
+      }]
+    })
   }
 
   static async BuildLiveSection(card: Card, res: any) {

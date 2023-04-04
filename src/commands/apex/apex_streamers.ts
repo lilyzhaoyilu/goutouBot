@@ -118,6 +118,19 @@ const constructStreamerCard = () => (`[
         }
       },
       {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "\`.apex laodiao\` 查询**老吊QuQ**的直播间 （嗯我也不知道他账号是啥"
+        },
+        "mode": "left",
+        "accessory": {
+          "type": "image",
+          "src": "https://i1.hdslb.com/bfs/face/56aff59eb6a4ab68dbf1a029fa2161b912fcce48.jpg",
+          "size": "lg"
+        }
+      },
+      {
         "type": "context",
         "elements": [
                    {

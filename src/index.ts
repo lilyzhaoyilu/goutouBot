@@ -22,6 +22,7 @@ import { apexKuku } from 'commands/apex/streamers/kuku';
 import { apexQq } from 'commands/apex/streamers/qq';
 import dotenv from "dotenv";
 import { apexFeiju } from 'commands/apex/streamers/feiju';
+import { apexLaodiao } from 'commands/apex/streamers/laodiao';
 dotenv.config();
 
 bot.messageSource.on('message', (e: any) => {
@@ -61,6 +62,7 @@ apexMenu.addAlias(apexJacky, "Jacky", "佛山第一密客");
 apexMenu.addAlias(apexKuku, "Kuku", "小浣熊", "浣熊");
 apexMenu.addAlias(apexQq, "QQ", "Qq");
 apexMenu.addAlias(apexFeiju, "Feiju", "飞天狙", "飞狙", "狙狙公主", "老馋", "狙神", "郭0俊", "百年难得一遇的天才完美的123号位");
+apexMenu.addAlias(apexLaodiao, "Laodiao", "老吊", "老吊QuQ");
 // messager
 bot.addCommands(messagerMenu);
 

@@ -2,7 +2,7 @@
 
 export interface StreamerAsset {
   name: string;
-  origin_id: string;
+  origin_id?: string;
   platform: "douyu" | "bilibili";
   roomNumber: number;
   biliuid?: number; // platform = bilibili时必填
@@ -93,6 +93,15 @@ const FEIJU: StreamerAsset = {
   }
 }
 
+// MDY 老吊
+const LAODIAO: StreamerAsset = {
+  name: "Laodiao",
+  platform: "bilibili",
+  roomNumber: 23097212,
+  biliuid: 404145981,
+  avatar: "https://i1.hdslb.com/bfs/face/56aff59eb6a4ab68dbf1a029fa2161b912fcce48.jpg",
+}
+
 export const STREAMER: Record<string, StreamerAsset> = {
   "3mz": SANMINGZHI,
   "Pite": PITE,
@@ -101,4 +110,5 @@ export const STREAMER: Record<string, StreamerAsset> = {
   "Kuku": KUKU,
   "Qq": QQ,
   "Feiju": FEIJU,
+  "Laodiao": LAODIAO,
 }
