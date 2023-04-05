@@ -74,25 +74,13 @@ export class StringTranslation {
 
   static streamerSuperLink(streamerId: string) {
     switch (streamerId) {
-      case "DF_Pite":
-        return '[DF_Pite](https://www.douyu.com/5684726)';
-      case "DF_3Mz_o":
-        return '[DF_3Mz_o](https://www.douyu.com/1667826)';
+      case "DF_":
+        return '[DF_巴巴托斯](https://www.douyu.com/5684726)';
+      case "DF_3Mz4090":
+        return '[DF_3Mz4090](https://www.douyu.com/1667826)';
       // 带鱼辰
-      case "糕":
-        return '[糕](https://live.bilibili.com/23504744)';
-      // 青野 ε=(´ο｀*)))唉 他咋总改名啊
-      case "Aono CN":
-        return '[Aono CN](https://live.bilibili.com/21624651)';
-      // 无名Noname
-      case "Noname CN":
-        return '[Noname CN](https://live.bilibili.com/9078252)';
-      case "FPS_Bugs_Bunny":
-        return '[FPS_Bugs_Bunny](https://www.huya.com/kasha233)';
-      case "炸房死妈":
-        return '[炸房死妈](https://www.douyu.com/6218591)';
-      case "FC_WenXx":
-        return "[FC_WenXx](https://live.bilibili.com/25803826)";
+      case "AGL_QQ-w-":
+        return '[AGL_QQ-w-](http://live.douyin.com/458897981613)';
       // TODO: seprate the banned user out
       case "\\天使天才天王寺/":
         return "天使天才天王寺";
@@ -141,7 +129,7 @@ export class StringTranslation {
       case 'inMatch':
         return `${selected_legend}游戏中${party_full}`;
       case 'offline':
-        return '离线'
+        return '离线或只能邀请'
       default:
         return state;
     }

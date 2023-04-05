@@ -17,8 +17,8 @@ export class GoutouCard {
       return card;
     }
     const br_rank = data.global?.rank?.ladderPosPlatform === undefined ? '数据错误' : data.global?.rank?.ladderPosPlatform;
-    const club_name = data.club?.name ? data.club?.name : '狗头没有查到';
-    const account_level = data.global?.level === undefined ? '狗头没有查到' : data.global?.level;
+    const club_name = data.club?.name ? data.club?.name : '狗头没查到';
+    const account_level = data.global?.level === undefined ? '狗头没查到' : data.global?.level;
 
     if (addNoteInSession) {
       card.addModule({

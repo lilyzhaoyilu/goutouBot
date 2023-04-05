@@ -19,7 +19,8 @@ interface Customization {
 
 const SANMINGZHI: StreamerAsset = {
   name: "3mz",
-  origin_id: "DF_3Mz_o",
+  // origin_id: "DF_3Mz_o",
+  origin_id: "DF_3mz4090",
   platform: "douyu",
   roomNumber: 1667826,
   avatar: "https://apic.douyucdn.cn/upload/avatar_v3/202209/d5b9d408f15f44129094fe2c8d51e7ee_big.jpg",
