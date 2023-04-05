@@ -120,20 +120,12 @@ export class StringTranslation {
   }
 
   static translateCurrentState(data: any): string {
-    const state = data.realtime?.currentState;
     const party_full = data.realtime?.partyFull === 0 ? "" : "(三人队)"
-    const selected_legend = StringTranslation.translateLegend(data.realtime.selectedLegend);
-    switch (state) {
-      case 'inLobby':
-        return `${selected_legend}在大厅`
-      case 'inMatch':
-        return `${selected_legend}游戏中${party_full}`;
-      case 'offline':
-        return '离线或只能邀请'
-      default:
-        return state;
+    const selected_legend = StringTranslation.translateLegend(data.realtime?.selectedLegend);
+    if (!data.realtime?.isOnline) {
+      return '离线';
     }
-    return '';
+    return `${selected_legend} 在线 ${party_full}`
   }
 
   // TODO: Deprecate this
