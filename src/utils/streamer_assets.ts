@@ -103,6 +103,15 @@ const LAODIAO: StreamerAsset = {
   avatar: "https://i1.hdslb.com/bfs/face/56aff59eb6a4ab68dbf1a029fa2161b912fcce48.jpg",
 }
 
+const LIZHI: StreamerAsset = {
+  name: "Lizhi",
+  origin_id: "HNP_KOuun",
+  platform: "bilibili",
+  roomNumber: 22734699,
+  biliuid: 345564775,
+  avatar: "https://i1.hdslb.com/bfs/face/d92ff20bf8c468e6f1fdf129fc75d81962989dd9.jpg",
+}
+
 export const STREAMER: Record<string, StreamerAsset> = {
   "3mz": SANMINGZHI,
   "Pite": PITE,
@@ -112,4 +121,5 @@ export const STREAMER: Record<string, StreamerAsset> = {
   "Qq": QQ,
   "Feiju": FEIJU,
   "Laodiao": LAODIAO,
+  "Lizhi": LIZHI,
 }

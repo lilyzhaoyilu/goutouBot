@@ -61,15 +61,15 @@ const buildReachPredatorBrSection = (card: Card, data: any) => {
       fields: [
         {
           type: "kmarkdown",
-          content: `**当前猎杀最低排名** \n${data.RP.PC.foundRank}`
+          content: `**当前猎杀最低排名** \n${data.RP?.PC?.foundRank}`
         },
         {
           type: "kmarkdown",
-          content: `**当前猎杀最低分数** \n${data.RP.PC.val}`
+          content: `**当前猎杀最低分数** \n${data.RP?.PC?.val}`
         },
         {
           type: "kmarkdown",
-          content: `**当前大师及猎杀人数** \n${data.RP.PC.totalMastersAndPreds}`
+          content: `**当前大师及猎杀人数** \n${data.RP?.PC?.totalMastersAndPreds}`
         }
       ]
     }

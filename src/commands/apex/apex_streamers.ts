@@ -131,6 +131,19 @@ const constructStreamerCard = () => (`[
         }
       },
       {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "\`.apex lizhi\` 查询**荔枝Kouun**的账号和直播间"
+        },
+        "mode": "left",
+        "accessory": {
+          "type": "image",
+          "src": "https://i1.hdslb.com/bfs/face/d92ff20bf8c468e6f1fdf129fc75d81962989dd9.jpg",
+          "size": "lg"
+        }
+      },
+      {
         "type": "context",
         "elements": [
                    {

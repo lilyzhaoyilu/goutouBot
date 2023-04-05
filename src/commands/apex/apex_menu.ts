@@ -19,6 +19,7 @@ import { apexKuku } from './streamers/kuku';
 import { apexQq } from './streamers/qq';
 import { apexFeiju } from './streamers/feiju';
 import { apexLaodiao } from './streamers/laodiao';
+import { apexLizhi } from './streamers/lizhi';
 
 class ApexMenu extends MenuCommand {
   code = 'apex';
@@ -164,4 +165,4 @@ const apexMenuCard = `[
 
 
 
-export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum, apexDistribution, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq, apexFeiju, apexLaodiao);
+export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum, apexDistribution, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq, apexFeiju, apexLaodiao, apexLizhi);

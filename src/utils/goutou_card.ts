@@ -78,11 +78,14 @@ export class GoutouCard {
       ]
     }
   ]`
+
+    let res;
     try {
-      const res = await session.replyCard(queryingCard);
-      return res.msgSent?.msgId;
+      res = await session.replyCard(queryingCard);
     } catch (err) {
       ErrorHandler.sendErrorMessageToLogChannel(session, "querying card error")
+    } finally {
+      return res ? res.msgSent?.msgId : '';
     }
   }
 

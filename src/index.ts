@@ -23,6 +23,7 @@ import { apexQq } from 'commands/apex/streamers/qq';
 import dotenv from "dotenv";
 import { apexFeiju } from 'commands/apex/streamers/feiju';
 import { apexLaodiao } from 'commands/apex/streamers/laodiao';
+import { apexLizhi } from 'commands/apex/streamers/lizhi';
 dotenv.config();
 
 bot.messageSource.on('message', (e: any) => {
@@ -43,7 +44,7 @@ bot.addAlias(apexInvite, "邀请");
 bot.addAlias(apexTime, "赛季", "时间");
 bot.addAlias(apexMap, "地图", "图");
 bot.addAlias(apexCraft, "制造", "造");
-bot.addAlias(apexTopTen, "前十", "top");
+bot.addAlias(apexTopTen, "前十");
 bot.addAlias(apexTopFifty, "前五十", "五十");
 bot.addAlias(apexPickRates, "选择率", "选择");
 bot.addAlias(apexPickRatesMaster, "猎杀选择率", "大师选择率", "猎杀选择", "大师选择");
@@ -54,6 +55,8 @@ apexMenu.addAlias(apexStreamers, "主播");
 bot.addAlias(apexStreamers, "主播");
 bot.addAlias(apexDistribution, "分布");
 
+apexMenu.addAlias(apexTopFifty, "top");
+
 // apex streamers
 apexMenu.addAlias(apex3mz, "三明治", "王虎仙贝", "高冷仙贝", "whxb", "xbwh", "王虎", "3Mz", "3MZ");
 apexMenu.addAlias(apexPite, "皮特", "皮将军", "pite174", "ptxb", "xbpt");
@@ -63,6 +66,7 @@ apexMenu.addAlias(apexKuku, "Kuku", "小浣熊", "浣熊");
 apexMenu.addAlias(apexQq, "QQ", "Qq");
 apexMenu.addAlias(apexFeiju, "Feiju", "飞天狙", "飞狙", "狙狙公主", "老馋", "狙神", "郭0俊", "百年难得一遇的天才完美的123号位");
 apexMenu.addAlias(apexLaodiao, "Laodiao", "老吊", "老吊QuQ");
+apexMenu.addAlias(apexLizhi, "Lizhi", "荔枝", "daidaizhi");
 // messager
 bot.addCommands(messagerMenu);
 
