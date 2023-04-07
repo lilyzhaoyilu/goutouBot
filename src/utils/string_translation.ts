@@ -74,8 +74,8 @@ export class StringTranslation {
 
   static streamerSuperLink(streamerId: string) {
     switch (streamerId) {
-      case "DF_":
-        return '[DF_巴巴托斯](https://www.douyu.com/5684726)';
+      case "DF_Pite174":
+        return '[DF_Pite174](https://www.douyu.com/5684726)';
       case "DF_3Mz4090":
         return '[DF_3Mz4090](https://www.douyu.com/1667826)';
       // 带鱼辰
