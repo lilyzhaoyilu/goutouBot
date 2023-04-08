@@ -46,13 +46,13 @@ export class StringTranslation {
       case 'Kings Canyon':
         return '诸王峡谷';
       case 'Party crasher':
-        return '派对破坏者'
+        return '不速之客'
       case 'Phase runner':
         return '相位穿梭器'
       case 'Drop Off':
         return '原料厂'
       case 'Habitat':
-        return '栖息地4'
+        return '4号栖息地'
       case 'Encore':
         return '再来一次'
       case 'Broken Moon':
@@ -67,8 +67,23 @@ export class StringTranslation {
         return '哈蒙德实验室';
       case 'Siphone':
         return '熔岩虹吸';
+      case 'Skulltown':
+        return '骷髅镇';
       default:
         return map
+    }
+  }
+
+  static translateMixtapMode(mode: string): string {
+    switch (mode) {
+      case 'Gun Run':
+        return '枪战';
+      case 'Control':
+        return '控制';
+      case 'TDM':
+        return '团队死斗';
+      default:
+        return mode
     }
   }
 

@@ -62,14 +62,14 @@ const buildMapCard = (data: any) => {
         type: "section",
         text: {
           type: "kmarkdown",
-          content: ":world_map: (font)控制(font)[success]"
+          content: ":world_map: (font)混合模式(font)[success]"
         }
       },
       {
         type: "section",
         text: {
           type: "kmarkdown",
-          content: `[${StringTranslation.translateMap(data.ltm?.current?.map)}](${data.ltm?.current?.asset}) (emj)arrow(emj)[1613997086764422/v0f2vkdaJ303h03h] [${StringTranslation.translateMap(data.ltm?.next?.map)}](${data.ltm?.next?.asset})`
+          content: `**${StringTranslation.translateMixtapMode(data.ltm?.current?.eventName)}** [${StringTranslation.translateMap(data.ltm?.current?.map)}](${data.ltm?.current?.asset}) (emj)arrow(emj)[1613997086764422/v0f2vkdaJ303h03h] **${StringTranslation.translateMixtapMode(data.ltm?.next?.eventName)}** [${StringTranslation.translateMap(data.ltm?.next?.map)}](${data.ltm?.next?.asset})`
         }
       },
       {
