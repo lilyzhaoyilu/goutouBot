@@ -104,5 +104,4 @@ dist
 .tern-port
 
 src/configs/auth*
-src/init/client.ts
 src/utils/streamer_assets.ts
