@@ -11,7 +11,7 @@ class ApexKuku extends AppCommand {
   func: AppFunc<BaseSession> = async (session) => {
 
     const msg_id = await GoutouCard.sendQueringCard(session);
-    const card = await Streamer.assembleStreamerCard('Kuku', session);
+    const card = await Streamer.assembleStreamerCard('kuku', session);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }

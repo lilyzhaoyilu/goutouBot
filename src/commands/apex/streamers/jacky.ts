@@ -11,7 +11,7 @@ class ApexJacky extends AppCommand {
   func: AppFunc<BaseSession> = async (session) => {
 
     const msg_id = await GoutouCard.sendQueringCard(session);
-    const card = await Streamer.assembleStreamerCard('Jacky', session);
+    const card = await Streamer.assembleStreamerCard('jacky', session);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }

@@ -10,7 +10,7 @@ class ApexFeiju extends AppCommand {
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
     const msg_id = await GoutouCard.sendQueringCard(session);
-    const card = await Streamer.assembleStreamerCard('Feiju', session);
+    const card = await Streamer.assembleStreamerCard('feiju', session);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }

@@ -24,6 +24,8 @@ import dotenv from "dotenv";
 import { apexFeiju } from 'commands/apex/streamers/feiju';
 import { apexLaodiao } from 'commands/apex/streamers/laodiao';
 import { apexLizhi } from 'commands/apex/streamers/lizhi';
+import { apexTianyao } from 'commands/apex/streamers/tianyao';
+import { apexYouling } from 'commands/apex/streamers/youling';
 dotenv.config();
 
 bot.messageSource.on('message', (e: any) => {
@@ -67,6 +69,8 @@ apexMenu.addAlias(apexQq, "QQ", "Qq");
 apexMenu.addAlias(apexFeiju, "Feiju", "飞天狙", "飞狙", "狙狙公主", "老馋", "狙神", "郭0俊", "百年难得一遇的天才完美的123号位");
 apexMenu.addAlias(apexLaodiao, "Laodiao", "老吊", "老吊QuQ");
 apexMenu.addAlias(apexLizhi, "Lizhi", "荔枝", "daidaizhi");
+apexMenu.addAlias(apexTianyao, "Tianyao", "甜药");
+apexMenu.addAlias(apexYouling, "Youling", "幽灵");
 // messager
 bot.addCommands(messagerMenu);
 

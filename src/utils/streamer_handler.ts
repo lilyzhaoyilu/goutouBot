@@ -1,6 +1,6 @@
 
 import { Card, BaseSession } from 'kbotify';
-import { STREAMER, StreamerAsset } from './streamer_assets';
+import { STREAMER, StreamerAsset, UidToStreamerAsset } from './streamer_assets';
 import { LivePlatform, LiveData } from './live_platform_api';
 import { GoutouCard } from './goutou_card';
 import { ApexLegendsStatus } from './apex_legends_status_api';
@@ -16,8 +16,8 @@ export class Streamer {
     const live_res = await Streamer.getLiveData(streamer);
     Streamer.buildStreamerTopSection(card, live_res, streamer);
     // TODO: Refactor this code
-    if (streamer.origin_id) {
-      const query_res = await ApexLegendsStatus.getQuery(session, streamer.origin_id);
+    if (streamer.eaInfo?.id) {
+      const query_res = await ApexLegendsStatus.getQuery(session, streamer.eaInfo?.id);
       GoutouCard.buildPlayerInfoSection(card, query_res, false, true);
     } else {
       Streamer.buildNoOriginIdSection(card);
@@ -31,8 +31,8 @@ export class Streamer {
       case "douyu":
         return await LivePlatform.getDouyuLiveData(streamer.roomNumber);
       case "bilibili":
-        if (!streamer.biliuid) return;
-        return await LivePlatform.getBiliBiliLiveData(streamer.roomNumber, streamer.biliuid);
+        if (!streamer.biliUid) return;
+        return await LivePlatform.getBiliBiliLiveData(streamer.roomNumber, streamer.biliUid);
       default:
         return;
     }
@@ -147,5 +147,24 @@ export class Streamer {
         ]
       })
     };
+  }
+
+  static addStreamerRoomLinkBasedOnUid(uid: string | undefined) {
+    if (!uid) return '';
+    if (UidToStreamerAsset[uid] && UidToStreamerAsset[uid]["platform"] && UidToStreamerAsset[uid]["roomNumber"]) {
+      switch (UidToStreamerAsset[uid]["platform"]) {
+        case 'douyu':
+          return `https://www.douyu.com/${UidToStreamerAsset[uid]["roomNumber"]}`;
+        case 'huya':
+          return `https://www.huya.com/${UidToStreamerAsset[uid]["roomNumber"]}`;
+        case 'douyin':
+          return `https://live.douyin.com/${UidToStreamerAsset[uid]["roomNumber"]}`;
+        case 'bilibili':
+          return `https://live.bilibili.com/${UidToStreamerAsset[uid]["roomNumber"]}`;
+        default:
+          return '';
+      }
+    }
+    return '';
   }
 }

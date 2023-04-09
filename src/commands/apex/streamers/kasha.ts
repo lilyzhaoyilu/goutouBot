@@ -11,7 +11,7 @@ class ApexKasha extends AppCommand {
   func: AppFunc<BaseSession> = async (session) => {
     // TODO: add Huya api
     const msg_id = await GoutouCard.sendQueringCard(session);
-    const card = await Streamer.assembleStreamerCard('Kasha', session);
+    const card = await Streamer.assembleStreamerCard('kasha', session);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }

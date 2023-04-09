@@ -4,6 +4,7 @@ import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { RANK_TO_IMAGE } from 'utils/assets';
 import { normalSendOutCardWrapper } from './helper_methods';
+import { Streamer } from '../../utils/streamer_handler';
 import * as cheerio from 'cheerio';
 
 class ApexTopFifty extends AppCommand {
@@ -44,13 +45,21 @@ const buildLiveLeaderboardCard = (data: any, option: number = 10) => {
 
   const card = buildBaseCard();
   for (let i = 0; i < option; i++) {
-    const firstItem = $line.find('td:first');
-    const rank = firstItem.text();
-    const thirdItem = firstItem.next().next();
-    const name = thirdItem.find('a').text();
-    const score = thirdItem.next().find('span').text();
+    const $firstItem = $line.find('td:first');
+    const rank = $firstItem.text();
+    const $thirdItem = $firstItem.next().next();
+    const name = $thirdItem.find('a').text();
+    const hyperlink = $thirdItem.find('a').attr("href");
 
-    buildPlayersSection(card, rank, name, score)
+    let uid: string = '';
+    if (hyperlink) {
+      uid = hyperlink.slice(hyperlink.lastIndexOf('/') + 1);
+    }
+    // const nameAndHyperLinkItem = thirdItem.find('a');
+    // const name = nameAndHyperLinkItem.text();
+    const score = $thirdItem.next().find('span').text();
+
+    buildPlayersSection(card, rank, name, score, uid)
     $line = $line.next();
   }
 
@@ -62,10 +71,17 @@ const buildLiveLeaderboardCard = (data: any, option: number = 10) => {
   return card;
 }
 
-const buildPlayersSection = (card: Card, rank: string, id: string, points: string): Card => {
-  id = id ? id : "该用户选择隐藏自己的信息 或 该用户不存在";
+const buildPlayersSection = (card: Card, rank: string, name: string, points: string, uid?: string): Card => {
+  name = name ? name : "该用户选择隐藏自己的信息 或 该用户不存在";
   points = points ? points : "无";
-  card.addText(`ID: **${StringTranslation.streamerSuperLink(id)}** \n分数: ${points}`, true, "left", {
+  let displayName = StringTranslation.rankBoardBlockedNames(name);
+  const hyperLink = Streamer.addStreamerRoomLinkBasedOnUid(uid);
+
+  if (name != "该用户选择隐藏自己的信息 或 该用户不存在" && displayName != "此id被屏蔽无法显示" && hyperLink) {
+    displayName = `[${displayName}](${hyperLink})`;
+  }
+
+  card.addText(`ID: **${displayName}** \n分数: ${points}`, true, "left", {
     type: "image",
     src: `${RANK_TO_IMAGE.get(rank)}`,
     size: "lg"

@@ -87,22 +87,22 @@ export class StringTranslation {
     }
   }
 
-  static streamerSuperLink(streamerId: string) {
+  static rankBoardBlockedNames(streamerId: string) {
     switch (streamerId) {
-      case "DF_Pite174":
-        return '[DF_Pite174](https://www.douyu.com/5684726)';
-      case "DF_3Mz4090":
-        return '[DF_3Mz4090](https://www.douyu.com/1667826)';
-      // 带鱼辰
-      case "AGL_QQ-w-":
-        return '[AGL_QQ-w-](http://live.douyin.com/458897981613)';
+      // case "DF_Pite174":
+      //   return '[DF_Pite174](https://www.douyu.com/5684726)';
+      // case "DF_3Mz4090":
+      //   return '[DF_3Mz4090](https://www.douyu.com/1667826)';
+      // // 带鱼辰
+      // case "AGL_QQ-w-":
+      //   return '[AGL_QQ-w-](http://live.douyin.com/458897981613)';
       // TODO: seprate the banned user out
       case "\\天使天才天王寺/":
         return "天使天才天王寺";
       case "JackieChan":
         return '此id被屏蔽无法显示';
       case "دعونا نختطف":
-        return '此id无法显示'
+        return '此id被屏蔽无法显示'
       default:
         return streamerId;
     }
