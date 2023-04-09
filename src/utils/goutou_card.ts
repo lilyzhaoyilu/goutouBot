@@ -19,7 +19,7 @@ export class GoutouCard {
     const br_rank = data.global?.rank?.ladderPosPlatform === undefined ? '数据错误' : data.global?.rank?.ladderPosPlatform;
     const club_name = data.club?.name ? data.club?.name : '狗头没查到';
     const account_level = data.global?.level === undefined ? '狗头没查到' : data.global?.level;
-
+    const level_presitige = data.global?.levelPrestige ? `声望(转生):${data.global?.levelPrestige}` : ''
     if (addNoteInSession) {
       card.addModule({
         type: "context", elements: [{
@@ -43,7 +43,7 @@ export class GoutouCard {
         "fields": [
           {
             "type": "kmarkdown",
-            "content": `**账号信息** \n等级:${account_level} \n${StringTranslation.translateCurrentState(data)} \n俱乐部:${club_name}`
+            "content": `**账号信息** \n等级:${account_level} ${level_presitige} \n${StringTranslation.translateCurrentState(data)} \n俱乐部:${club_name}`
           },
           {
             "type": "kmarkdown",
