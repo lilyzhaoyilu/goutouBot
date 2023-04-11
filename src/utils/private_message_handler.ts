@@ -158,6 +158,17 @@ const AUTO_REPLY_CONTENT = `[
           "type": "kmarkdown",
           "content": "不知道怎么用？[点这里看使用视频](https://www.bilibili.com/video/BV1Eg41127y3?p=2)。"
         }
+      },
+      {
+        "type": "header",
+        "text": {
+          "type": "plain-text",
+          "content": "加入Apex查询狗头的频道"
+        }
+      },
+      {
+        "type": "invite",
+        "code": "8nnMWN"
       }
     ]
   }

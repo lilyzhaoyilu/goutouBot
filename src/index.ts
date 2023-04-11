@@ -40,6 +40,7 @@ bot.addAlias(echoMenu, "在吗");
 
 // apex
 bot.addCommands(apexMenu);
+bot.addAlias(apexMenu, "帮助");
 bot.addAlias(apexPredator, "冲猎", "猎杀");
 bot.addAlias(apexQuery, "查询", "查");
 bot.addAlias(apexInvite, "邀请");
