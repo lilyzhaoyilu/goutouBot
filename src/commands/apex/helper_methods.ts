@@ -5,6 +5,7 @@ import { ErrorHandler } from '../../utils/error_handler';
 export const normalSendOutCardWrapper = async (session: BaseSession, card: Card, msg_id: string | undefined) => {
   if (msg_id) {
     try {
+      console.log(JSON.stringify(card));
       await session.updateMessage(msg_id, [card]);
     } catch (err) {
       console.error('UPDATE CARD session msg: ', session.msg, 'session err: ', err);

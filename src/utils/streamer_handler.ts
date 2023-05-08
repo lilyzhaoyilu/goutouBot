@@ -33,6 +33,8 @@ export class Streamer {
       case "bilibili":
         if (!streamer.biliUid) return;
         return await LivePlatform.getBiliBiliLiveData(streamer.roomNumber, streamer.biliUid);
+      case "huya":
+        return await LivePlatform.getHuyaLiveData(streamer.roomNumber);
       default:
         return;
     }

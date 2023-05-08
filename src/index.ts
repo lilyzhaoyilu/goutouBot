@@ -26,6 +26,8 @@ import { apexLaodiao } from 'commands/apex/streamers/laodiao';
 import { apexLizhi } from 'commands/apex/streamers/lizhi';
 import { apexTianyao } from 'commands/apex/streamers/tianyao';
 import { apexYouling } from 'commands/apex/streamers/youling';
+import { apexKasha } from 'commands/apex/streamers/kasha';
+import { apexMingyue } from 'commands/apex/streamers/mingyue';
 dotenv.config();
 
 bot.messageSource.on('message', (e: any) => {
@@ -72,6 +74,8 @@ apexMenu.addAlias(apexLaodiao, "Laodiao", "老吊", "老吊QuQ");
 apexMenu.addAlias(apexLizhi, "Lizhi", "荔枝", "daidaizhi");
 apexMenu.addAlias(apexTianyao, "Tianyao", "甜药");
 apexMenu.addAlias(apexYouling, "Youling", "幽灵");
+apexMenu.addAlias(apexKasha, "Kasha", "卡莎");
+apexMenu.addAlias(apexMingyue, "Mingyue", "明月", "五更明月");
 // messager
 bot.addCommands(messagerMenu);
 
