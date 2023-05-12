@@ -28,7 +28,7 @@ class ApexTopTen extends AppCommand {
   help = '发送`.apex top10`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
-    session.replyCard(buildLeaderboardNote());
+    // session.replyCard(buildLeaderboardNote());
     const msg_id = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getLiveLeaderboard(session);
     const card: Card = data instanceof Card ? data :
