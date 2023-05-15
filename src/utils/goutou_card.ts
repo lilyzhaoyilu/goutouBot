@@ -121,7 +121,7 @@ export class GoutouCard {
             },
             {
               "type": "plain-text",
-              "content": "新春快乐！想查询主播吗？.主播 查看支持快速查询的主播！比如皮特三明治~"
+              "content": "想查询主播吗？.主播 查看支持快速查询的主播！比如皮特三明治~"
             },
             {
               "type": "image",
