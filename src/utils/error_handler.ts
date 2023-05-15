@@ -15,4 +15,8 @@ export class ErrorHandler {
   static async sendChatMessageToChatChannel(e: any) {
     bot.API.message.create(9, auth.DIRECT_MESSAGE_CHANNEL as string, `${e.extra.author.username}#${e.extra.author.identify_num}: ${e.content} \n author_id: ${e.author_id} `)
   }
+
+  static async forwardAtMessageToChatChannel(e: any) {
+    bot.API.message.create(9, auth.DIRECT_MESSAGE_CHANNEL as string, `${e.extra.author.username}#${e.extra.author.identify_num}: ${e.content} \n author_id: ${e.author_id} `)
+  }
 }

@@ -47,7 +47,7 @@ export class GoutouCard {
           },
           {
             "type": "kmarkdown",
-            "content": `**大逃杀排位** \n${StringTranslation.translateRanking(data.global.rank.rankName, data.global.rank.rankDiv)} \n${br_rank === -1 ? '无排' : br_rank}名 \n${data.global.rank.rankScore} RP`
+            "content": `**大逃杀排位** \n${StringTranslation.translateRanking(data.global?.rank?.rankName, data.global?.rank?.rankDiv)} \n${br_rank === -1 ? '无排' : br_rank}名 \n${data.global?.rank?.rankScore} RP`
           }
         ]
       }
@@ -111,7 +111,7 @@ export class GoutouCard {
             "type": "section",
             "text": {
               "type": "kmarkdown",
-              "content": "查询出现了错误，狗头已经记录了这个错误，会在周末的时候进行维修和升级。:computer:"
+              "content": "查询出现了错误，请等一下再试。狗头已经记录了这个错误，会在周末的时候进行维修和升级。:computer:\n如果还有问题，可以点击机器人头像 -> 私信。看到了就会回复的！"
             }
           }, {
             "type": "context",
