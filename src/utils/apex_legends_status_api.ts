@@ -121,7 +121,7 @@ export class ApexLegendsStatus {
 
   static async getSeasonTimeInfo(session: BaseSession) {
     try {
-      const res = await axios.get("https://api.jumpmaster.xyz/seasons/Current")
+      const res = await axios.get(auth.SEASON_TIME)
       return res.data;
     } catch (err) {
       ErrorHandler.sendErrorMessageToLogChannel(session, `get SeasonTimeInfo: ${err}`);

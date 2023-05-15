@@ -35,16 +35,8 @@ const buildTimeCard = (data: any) => {
           type: "section",
           text: {
             type: "kmarkdown",
-            content: `上半赛季开始时间：${StringTranslation.convertEpochToDate(data.dates
+            content: `赛季开始时间：${StringTranslation.convertEpochToDate(data.dates
               .Start)}`
-          }
-        },
-        {
-          type: "section",
-          text: {
-            type: "kmarkdown",
-            content: `下半赛季开始时间：${StringTranslation.convertEpochToDate(data.dates
-              .Split)}`
           }
         },
         {

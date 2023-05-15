@@ -66,7 +66,7 @@ export class GoutouCard {
           "type": "section",
           "text": {
             "type": "plain-text",
-            "content": "正在努力查询中~ 请不要删除查询消息~ "
+            "content": "正在努力查询中~ 如果不能更新卡片请截图私信机器人~"
           },
           "mode": "left",
           "accessory": {
