@@ -32,7 +32,7 @@ const constructCard = () => {
           "type": "section",
           "text": {
             "type": "kmarkdown",
-            "content": "请在**电脑**[点这个二狗邀请链接](https://www.kaiheila.cn/app/oauth2/authorize?id=12733&permissions=536870911&client_id=8_4R7kB3Eh6b9GhM&redirect_uri=&scope=bot)。手机不行哦。"
+            "content": "请在**电脑**[点这个二狗邀请链接](https://www.kookapp.cn/app/oauth2/authorize?id=12733&permissions=536870908&client_id=8_4R7kB3Eh6b9GhM&redirect_uri=&scope=bot)。手机不行哦。"
           }
         }
       ]
