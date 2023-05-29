@@ -20,6 +20,28 @@ export class LivePlatform {
     return res
   }
 
+  static async getDouyinLiveData(room_number: number) {
+    const response = await axios.get(`https://live.douyin.com/webcast/room/web/enter/?aid=6383&app_name=douyin_web&live_id=1&device_platform=web&language=en-US&cookie_enabled=true&browser_language=en-US&browser_platform=Win32&browser_name=Chrome&browser_version=113.0.0.0&web_rid=${room_number}&Room-Enter-User-Login-Ab=0&is_need_double_stream=false`, {
+      headers: {
+        "Host": "live.douyin.com",
+        "Cookie": " ttwid=1%7CsNQyw6rqczRl5Am1vOYGUzKaFane7Mem0bykbWas17U%7C1680373537%7Caf697f98820791c3a819fc8b9b9b69711237a5d7ec808f19113da136e9424f0d",
+      }
+    });
+    const data = response.data.data;
+
+    // Kook limits image url length, so I have to trim some.
+    const rawRoomThumb = data.data[0].cover?.url_list[0];
+    let roomThumb = 'https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png';
+    if (rawRoomThumb) {
+      const l = rawRoomThumb.indexOf("?");
+      const r = rawRoomThumb.indexOf("x-expires");
+      roomThumb = rawRoomThumb.slice(0, l + 1) + rawRoomThumb.slice(r);
+    }
+
+    const res: LiveData = { streamerName: data.user.nickname, roomName: data.data[0].title, url: `https://live.douyin.com/${room_number}`, isStreaming: data.room_status === 0, avatar: data.user.avatar_thumb.url_list[0], roomThumb: roomThumb }
+    return res
+  }
+
   static async getBiliBiliLiveData(room_number: number, uid: number) {
     const live_response = await axios.get(`http://api.live.bilibili.com/room/v1/Room/get_info?room_id=${room_number}`)
     const user_response = await axios.get(`https://api.live.bilibili.com/live_user/v1/Master/info?uid=${uid}`)

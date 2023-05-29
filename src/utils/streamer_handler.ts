@@ -35,6 +35,8 @@ export class Streamer {
         return await LivePlatform.getBiliBiliLiveData(streamer.roomNumber, streamer.biliUid);
       case "huya":
         return await LivePlatform.getHuyaLiveData(streamer.roomNumber);
+      case "douyin":
+        return await LivePlatform.getDouyinLiveData(streamer.roomNumber);
       default:
         return;
     }
