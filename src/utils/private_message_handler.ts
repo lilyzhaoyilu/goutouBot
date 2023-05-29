@@ -7,9 +7,9 @@ export class PrivateMessage {
   static async privateMessage(e: any) {
 
     if (e.extra?.author?.bot === false && !e.extra?.author?.is_sys && e.content && e.content.includes(`(met)${auth.SELF_ID}(met)`)) {
-      ErrorHandler.forwardAtMessageToChatChannel(e);
+      // ErrorHandler.forwardAtMessageToChatChannel(e); Disable forwarding because it's mostly noise.
       try {
-        bot.API.message.create(9, e.target_id?.toString(), "Apex查询狗头已经收到你的@信息，但是机器人不方便在频道里回消息。\n如果有使用问题请点机器人头像 -> 私信。\n如果想使用机器人，请在频道里发送.apex \n如果需要使用帮助，可以私信狗头获得教程视频。", e.msg_id?.toString());
+        bot.API.message.create(9, e.target_id?.toString(), "如果想使用机器人，请发送.apex \n如果有使用问题请点机器人头像 -> 私信。私信的自动回复有教程视频~\n", e.msg_id?.toString());
       } catch (err) {
         bot.API.message.create(9, '9682242694390929', `:fire: ERROR: ${e.extra?.author?.username}#${e.extra?.author?.identify_num} says ${e.content.toString()} || Author_id: ${e.author_id?.toString()}`);
       }

@@ -51,10 +51,6 @@ export class ApexLegendsStatus {
 
     try {
       const res = await axios.get(`https://api.mozambiquehe.re/bridge?auth=${auth.APEXSTATUS}&player=${queryUser}&platform=PC&enableClubsBeta=true&merge=true&removeMerged=true`)
-      if (res.data.Error) {
-        ErrorHandler.sendErrorMessageToLogChannel(session, `notfound when querying: ${queryUser}`)
-        return GoutouCard.buildQueryNotFoundCard(session);
-      }
       return res.data;
     } catch (err: any) {
       if (!axios.isAxiosError(err) && err?.code == 'ERR_UNESCAPED_CHARACTERS') {
@@ -109,7 +105,6 @@ export class ApexLegendsStatus {
   }
 
   static async getBrDistribution(session: BaseSession) {
-    // TODO: make url dynamic, its card coded season now
     try {
       const res = await axios.get("https://apexlegendsstatus.com/lib/php/rankdistrib.php?unranked=yes")
       return res.data;

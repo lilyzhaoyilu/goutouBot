@@ -12,7 +12,6 @@ export class GoutouCard {
   }
 
   static async buildPlayerInfoSection(card: Card, data: any, addNoteInSession: boolean = true, isStreamerQuery = false) {
-    // TODO: Find a better way to merge Error Cards and querying
     if (isStreamerQuery && data instanceof Card) {
       return card;
     }
@@ -56,28 +55,18 @@ export class GoutouCard {
   }
 
   static async sendQueringCard(session: BaseSession) {
-    const queryingCard = `[
-    {
-      "type": "card",
-      "theme": "secondary",
-      "size": "lg",
-      "modules": [
-        {
-          "type": "section",
-          "text": {
-            "type": "plain-text",
-            "content": "正在努力查询中~ 如果不能更新卡片请截图私信机器人~"
-          },
-          "mode": "left",
-          "accessory": {
-            "type": "image",
-            "src": "https://img.kookapp.cn/assets/2023-01/P6NOVViwut046046.gif",
-            "size": "sm"
-          }
-        }
-      ]
-    }
-  ]`
+    const queryingCard = new Card().setSize("lg").setTheme("secondary").addModule({
+      type: "section", "text": {
+        "type": "kmarkdown",
+        "content": `(font)正在努力查询中~(font)[success]\n如果不能更新卡片请再试一下~\n请不要删除查询信息\n请确保机器人在频道内有以下权限:\n-能更新卡片\n-没有被限速`
+      },
+      mode: "left",
+      accessory: {
+        "type": "image",
+        "src": `https://img.kookapp.cn/assets/2023-01/P6NOVViwut046046.gif`,
+        "size": "sm"
+      }
+    })
 
     let res;
     try {
