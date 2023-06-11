@@ -83,6 +83,7 @@ export const LEGEND_TO_IMAGE = new Map<string, string>(
     ["Vantage", "https://img.kookapp.cn/assets/2023-01/36BL1F01Bi03c03c.png"],
     ["Crypto", "https://img.kookapp.cn/assets/2023-01/GzQAjXHDqr03c03c.png"],
     ["Wattson", "https://img.kookapp.cn/assets/2023-01/TgXRBeFKmc03c03c.png"],
+    ["Ballistic", "https://img.kookapp.cn/assets/2023-06/C1KoZWTonf03c03c.png"],
   ]);
 
 export const RANK_TO_EMOJI = new Map<string, string>(

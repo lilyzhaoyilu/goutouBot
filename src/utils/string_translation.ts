@@ -25,7 +25,8 @@ export class StringTranslation {
     ['Mad Maggie', '疯玛吉'],
     ['Newcastle', '纽卡斯尔'],
     ['Vantage', '万蒂奇'],
-    ['Catalyst', '卡特莉丝']
+    ['Catalyst', '卡特莉丝'],
+    ['Ballistic', '弹道'],
   ])
 
   static TRANSLATE_QUERY_RANK = new Map([
@@ -192,6 +193,8 @@ export class StringTranslation {
         return '万蒂奇';
       case 'Catalyst':
         return '卡特莉丝';
+      case 'Ballistic':
+        return '弹道';
       default:
         return legend;
     }
