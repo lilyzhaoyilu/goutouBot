@@ -3,7 +3,7 @@ import { AppCommand, AppFunc, BaseSession, Card, ModuleObject } from 'kbotify';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { StringTranslation } from 'utils/string_translation';
-import { normalSendOutCardWrapper } from './helper_methods';
+import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
 
 class ApexDistribution extends AppCommand {
   code = 'distribution'; // 只是用作标记
@@ -15,7 +15,7 @@ class ApexDistribution extends AppCommand {
     const br_data = await ApexLegendsStatus.getBrDistribution(session);
     // const ar_data = await ApexLegendsStatus.getAr(session);
     const card: Card = br_data instanceof Card ? br_data : buildDistributionCard(br_data);
-
+    addTailTempMessage(card);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }

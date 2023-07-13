@@ -42,6 +42,7 @@ bot.messageSource.on('message', (e: any) => {
 });
 
 bot.addCommands(algsMenu);
+bot.addAlias(algsMenu, "比赛");
 
 bot.addCommands(echoMenu);
 bot.addAlias(echoMenu, "在吗");

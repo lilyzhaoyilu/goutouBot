@@ -3,7 +3,7 @@ import { StringTranslation } from 'utils/string_translation';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { RANK_TO_IMAGE } from 'utils/assets';
-import { normalSendOutCardWrapper } from './helper_methods';
+import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
 import { Streamer } from '../../utils/streamer_handler';
 import * as cheerio from 'cheerio';
 
@@ -33,6 +33,7 @@ class ApexTopTen extends AppCommand {
     const data = await ApexLegendsStatus.getLiveLeaderboard(session);
     const card: Card = data instanceof Card ? data :
       buildLiveLeaderboardCard(data.data, 10);
+    addTailTempMessage(card);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }

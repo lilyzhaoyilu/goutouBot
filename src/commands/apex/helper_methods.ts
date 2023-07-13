@@ -19,3 +19,20 @@ export const normalSendOutCardWrapper = async (session: BaseSession, card: Card,
     }
   }
 }
+
+export const addTailTempMessage = (card: Card) => {
+  card.addModule({
+    type: "context", elements: [{
+      "type": "image",
+      "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
+    },
+    {
+      "type": "plain-text",
+      "content": "想查看ALSG比赛相关信息吗？试试 .ALGS"
+    },
+    {
+      "type": "image",
+      "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
+    }]
+  })
+}

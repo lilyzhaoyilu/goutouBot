@@ -2,7 +2,7 @@ import { AppCommand, AppFunc, BaseSession, Card, ModuleObject } from 'kbotify';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { StringTranslation } from 'utils/string_translation';
-import { normalSendOutCardWrapper } from './helper_methods';
+import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
 
 class ApexMap extends AppCommand {
   code = 'map'; // 只是用作标记
@@ -13,6 +13,7 @@ class ApexMap extends AppCommand {
     const msg_id = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getMapRotation(session);
     const card: Card = data instanceof Card ? data : buildMapCard(data);
+    addTailTempMessage(card);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }

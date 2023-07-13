@@ -1,7 +1,8 @@
 import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
-import { normalSendOutCardWrapper } from './helper_methods';
+import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
+
 
 class ApexQuery extends AppCommand {
   code = 'q'; // 只是用作标记
@@ -18,7 +19,7 @@ class ApexQuery extends AppCommand {
     const data = await ApexLegendsStatus.getQuery(session, queryUser);
     const card: Card = data instanceof Card ? data : buildQueryCard(data);
     addCardTail(card);
-
+    addTailTempMessage(card);
     await normalSendOutCardWrapper(session, card, msg_id);
   }
 };
@@ -35,7 +36,7 @@ const addCardTail = (card: Card) => {
   card.addModule({
     type: "context", elements: [{
       "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
     },
     {
       "type": "plain-text",
@@ -43,7 +44,7 @@ const addCardTail = (card: Card) => {
     },
     {
       "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
     }]
   })
 }

@@ -1,6 +1,7 @@
 import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
+import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
 
 class ApexPredator extends AppCommand {
   code = 'p'; // 只是用作标记
@@ -47,6 +48,7 @@ const buildReachPredatorCard = (data: any) => {
     }
     ]
   });
+  addTailTempMessage(card);
   return card;
 }
 
