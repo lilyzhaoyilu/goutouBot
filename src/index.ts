@@ -29,6 +29,9 @@ import { apexYouling } from 'commands/apex/streamers/youling';
 import { apexKasha } from 'commands/apex/streamers/kasha';
 import { apexMingyue } from 'commands/apex/streamers/mingyue';
 import { apexXiaore } from 'commands/apex/streamers/xiaore';
+
+import { algsMenu } from 'commands/algs/menu';
+import { groupA, groupB, groupC, groupD } from 'commands/algs/groups';
 dotenv.config();
 
 bot.messageSource.on('message', (e: any) => {
@@ -37,6 +40,8 @@ bot.messageSource.on('message', (e: any) => {
   }
   PrivateMessage.privateMessage(e);
 });
+
+bot.addCommands(algsMenu);
 
 bot.addCommands(echoMenu);
 bot.addAlias(echoMenu, "在吗");

@@ -105,3 +105,4 @@ dist
 
 src/configs/auth*
 src/utils/streamer_assets.ts
+src/utils/team_assets.ts
