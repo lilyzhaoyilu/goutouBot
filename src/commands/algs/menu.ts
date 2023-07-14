@@ -1,6 +1,8 @@
 import { MenuCommand, Card } from 'kbotify';
 import { GROUPA, GROUPB, GROUPC, GROUPD, Team } from 'utils/team_assets';
 import { groupA, groupB, groupC, groupD } from './groups';
+import { algsResults } from './results';
+import { algsSchedule } from './schedule';
 
 
 
@@ -34,25 +36,32 @@ export const constructTeamSection = (card: Card, teams: Team[]) => {
       }
     });
   }
-
-
-
 }
 
 const constructCard = () => {
   const card = new Card().setSize("lg").setTheme("secondary");
 
-  card.addTitle("ALGS比赛时间(Group Stage) 北京时间");
 
-  constructScheduleSection(card);
 
-  card.addTitle("ALGS比赛分组(Group Stage) -- C组");
-  constructTeamSection(card, GROUPC);
   card.addModule({
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `查看其它分组请用\n\`.algs A\` 查看A组\n\`.algs B\` 查看B组\n\`.algs C\` 查看C组\n\`.algs D\` 查看D组`
+      "content": `**查看小组赛积分和排名(实时更新)**\`.algs r\`或 \`.积分\``
+    }
+  })
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `**查看赛程**\`.algs s\`或 \`.赛程\``
+    }
+  })
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `**查看分组**\n\`.algs A\` 查看A组\n\`.algs B\` 查看B组\n\`.algs C\` 查看C组\n\`.algs D\` 查看D组`
     }
   })
 
@@ -68,9 +77,13 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `数据来源自[battlefy](https://battlefy.com/apex-legends-global-series-year-3/pro-league-split-2-playoffs/teams)`
+      "content": `数据来源自[Battlefy](https://battlefy.com/apex-legends-global-series-year-3/pro-league-split-2-playoffs/teams)`
     }
   });
+
+  card.addTitle("ALGS比赛时间(Group Stage) 北京时间");
+
+  constructScheduleSection(card);
 
   return [card];
 }
@@ -90,4 +103,4 @@ class AlgsMenu extends MenuCommand {
   useCardMenu = true; // 使用卡片菜单
 }
 
-export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD);
+export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule);

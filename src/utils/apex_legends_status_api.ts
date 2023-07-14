@@ -123,4 +123,15 @@ export class ApexLegendsStatus {
       return GoutouCard.buildGenericErrorCard(session);
     }
   }
+
+  // BATTLEFY
+  static async getGroupStageResults(session: BaseSession) {
+    try {
+      const res = await axios.get(auth.ALGS_GROUP_STAGE_RESULTS)
+      return res.data;
+    } catch (err) {
+      ErrorHandler.sendErrorMessageToLogChannel(session, `getGroupStageResults: ${err}`);
+      return GoutouCard.buildGenericErrorCard(session);
+    }
+  }
 }

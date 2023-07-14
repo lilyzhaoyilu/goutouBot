@@ -32,6 +32,8 @@ import { apexXiaore } from 'commands/apex/streamers/xiaore';
 
 import { algsMenu } from 'commands/algs/menu';
 import { groupA, groupB, groupC, groupD } from 'commands/algs/groups';
+import { algsResults } from 'commands/algs/results';
+import { algsSchedule } from 'commands/algs/schedule';
 dotenv.config();
 
 bot.messageSource.on('message', (e: any) => {
@@ -43,6 +45,8 @@ bot.messageSource.on('message', (e: any) => {
 
 bot.addCommands(algsMenu);
 bot.addAlias(algsMenu, "比赛");
+bot.addAlias(algsResults, "积分");
+bot.addAlias(algsSchedule, "赛程", "日程");
 
 bot.addCommands(echoMenu);
 bot.addAlias(echoMenu, "在吗");
