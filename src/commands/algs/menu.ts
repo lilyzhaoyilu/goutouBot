@@ -4,6 +4,7 @@ import { groupA, groupB, groupC, groupD, groupLosers, groupWinners } from './gro
 import { algsResults, algsGroupResults, algsLoser1Results, algsLoser2Results, algsWinnerResults, algsFinalResults } from './results';
 import { algsSchedule } from './schedule';
 import { algsPlayersData } from './player_data';
+import { algsDrop } from './drop';
 
 
 export const constructTeamSection = (card: Card, teams: Team[]) => {
@@ -81,6 +82,13 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
+      "content": `\`。跳点\`或\`.algs d\` (**d**rop) 获取跳点图`
+    }
+  })
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
       "content": `\`。赛程\`或\`.algs s\`**查看赛程**`
     }
   })
@@ -131,4 +139,4 @@ class AlgsMenu extends MenuCommand {
   useCardMenu = true; // 使用卡片菜单
 }
 
-export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule, algsPlayersData, groupLosers, groupWinners, algsGroupResults, algsLoser1Results, algsLoser2Results, algsWinnerResults, algsFinalResults);
+export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule, algsPlayersData, groupLosers, groupWinners, algsGroupResults, algsLoser1Results, algsLoser2Results, algsWinnerResults, algsFinalResults, algsDrop);
