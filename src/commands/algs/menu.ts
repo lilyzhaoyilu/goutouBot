@@ -1,7 +1,7 @@
 import { MenuCommand, Card } from 'kbotify';
 import { GROUPA, GROUPB, GROUPC, GROUPD, Team } from 'utils/team_assets';
 import { groupA, groupB, groupC, groupD, groupLosers, groupWinners } from './groups';
-import { algsResults, algsGroupResults, algsLoser1Results, algsLoser2Results, algsWinnerResults } from './results';
+import { algsResults, algsGroupResults, algsLoser1Results, algsLoser2Results, algsWinnerResults, algsFinalResults } from './results';
 import { algsSchedule } from './schedule';
 import { algsPlayersData } from './player_data';
 
@@ -53,7 +53,7 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `\`。败者组1积分\`或\`.algs lr2\` (**l**oser **r**esults **2**) 败者组1 积分和排名`
+      "content": `\`。败者组1积分\`或\`.algs lr2\` (**l**oser **r**esults **1**) 败者组1 积分和排名`
     }
   })
   card.addModule({
@@ -68,6 +68,13 @@ const constructCard = () => {
     "text": {
       "type": "kmarkdown",
       "content": `\`。胜者组积分\`或\`.algs wr\` (**w**inner **r**esults) 胜者组积分和排名`
+    }
+  })
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `\`决赛积分\`或\`.algs fr\` (**f**inal **r**esults) 决赛积分和排名`
     }
   })
   card.addModule({
@@ -124,4 +131,4 @@ class AlgsMenu extends MenuCommand {
   useCardMenu = true; // 使用卡片菜单
 }
 
-export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule, algsPlayersData, groupLosers, groupWinners, algsGroupResults, algsLoser1Results, algsLoser2Results, algsWinnerResults);
+export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule, algsPlayersData, groupLosers, groupWinners, algsGroupResults, algsLoser1Results, algsLoser2Results, algsWinnerResults, algsFinalResults);

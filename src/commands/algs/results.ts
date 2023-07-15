@@ -4,15 +4,27 @@ import { TEAMS } from 'utils/team_assets';
 import { normalSendOutCardWrapper } from '../apex/helper_methods';
 import { ApexLegendsStatus } from '../../utils/apex_legends_status_api';
 
+const LOSER2_TIME = new Date('July 16, 2023 1:30 GMT+8:00');
+const FINAL_TIME = new Date('July 16, 2023 11:00 GMT+8:00');
+
 class AlgsResults extends AppCommand {
   code = 'r'; // 只是用作标记
   trigger = 'r'; // 用于触发的文字
   help = '发送`.algs r`就可以啦~'; // 帮助文字
   intro = '有问题私信狗头';
   func: AppFunc<BaseSession> = async (session) => {
+    const now = new Date();
     const msg_id = await GoutouCard.sendQueringCard(session);
-    const data = await ApexLegendsStatus.getBracketStageResult(session, 0, 0);
-    await normalSendOutCardWrapper(session, constructBracketStageCard(data, "胜者组实时积分榜"), msg_id);
+    if (now >= LOSER2_TIME && now < FINAL_TIME) {
+      const data = await ApexLegendsStatus.getBracketStageResult(session, 1, 2);
+      await normalSendOutCardWrapper(session, constructBracketStageCard(data, "败者组第二轮实时积分榜"), msg_id);
+    } else if (now >= FINAL_TIME) {
+      const data = await ApexLegendsStatus.getBracketStageResult(session, 2, 3);
+      await normalSendOutCardWrapper(session, constructBracketStageCard(data, "决赛实时积分榜"), msg_id);
+    } else {
+      const data = await ApexLegendsStatus.getBracketStageResult(session, 0, 0);
+      await normalSendOutCardWrapper(session, constructBracketStageCard(data, "胜者组实时积分榜"), msg_id);
+    }
   };
 }
 export const algsResults = new AlgsResults();
@@ -69,11 +81,24 @@ class AlgsWinnerResults extends AppCommand {
 }
 export const algsWinnerResults = new AlgsWinnerResults();
 
+class AlgsFinalResults extends AppCommand {
+  code = 'fr'; // 只是用作标记
+  trigger = 'fr'; // 用于触发的文字
+  help = '发送`.algs fr`就可以啦~'; // 帮助文字
+  intro = '有问题私信狗头';
+  func: AppFunc<BaseSession> = async (session) => {
+    const msg_id = await GoutouCard.sendQueringCard(session);
+    const data = await ApexLegendsStatus.getBracketStageResult(session, 2, 3);
+    await normalSendOutCardWrapper(session, constructBracketStageCard(data, "决赛实时积分榜"), msg_id);
+  };
+}
+export const algsFinalResults = new AlgsFinalResults();
+
 const constructBracketStageCard = (data: any, title: string) => {
   const card = new Card().setSize("lg").setTheme("secondary");
   card.addTitle(title);
 
-  if (data.standings.length === 0) {
+  if (data.standings === undefined || data.standings.length === 0) {
     card.addModule({
       "type": "section",
       "text": {
@@ -86,16 +111,14 @@ const constructBracketStageCard = (data: any, title: string) => {
 
   // always 20 teams
   for (let i = 0; i < 20; i++) {
-    const rank = i + 1;
+    const rank = i + 1 <= 10 ? `(font)${i + 1}(font)[success]` : `(font)${i + 1}(font)[warning]`;
     const team = data.standings[i]
     const name = team.name;
     const kills = team.kills;
     const points = team.points;
 
-    const players = team.players;
-    const playersArray = [];
     let content = `**${name}**  #${rank} ${points}分 ${kills}杀\n`;
-    for (const player of players) {
+    for (const player of team.players) {
       content += `${player.name}: ${player.kills} `
     }
     card.addModule({
