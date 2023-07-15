@@ -18,7 +18,8 @@ export const algsDrop = new AlgsDrop();
 
 const constructCard = () => {
   const card = new Card().setSize("lg").setTheme("secondary");
-  card.addTitle("败者组第二轮跳点图")
+  card.addTitle("决赛跳点");
+
   card.addModule({
     "type": "section",
     "text": {
@@ -26,6 +27,9 @@ const constructCard = () => {
       "content": `如果图片显示不全，请点开查看`
     }
   });
+  card.addImage("https://img.kookapp.cn/attachments/2023-07/16/TqHySH7Oog1kw1js.png");
+  card.addImage("https://img.kookapp.cn/assets/2023-07/rgE6MdpI4y1kw1js.jpg");
+  card.addTitle("败者组第二轮跳点");
   card.addImage("https://img.kookapp.cn/attachments/2023-07/16/ioeA7eO6Ej1kw1js.png");
   card.addImage("https://img.kookapp.cn/assets/2023-07/Tt7y5vhqlU1kw1js.png");
   card.addModule({
