@@ -68,7 +68,7 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `**查看分组**\n\`.algs a\` 查看A组\n\`.algs b\` 查看B组\n\`.algs c\` 查看C组\n\`.algs d\` 查看D组`
+      "content": `**查看分组**\n\`.胜者组\`或\`.algs winners\` 查看胜者组\n\`.败者组\`或\`.algs losers\` 查看败者组\n\`.algs a\` 查看A组\n\`.algs b\` 查看B组\n\`.algs c\` 查看C组\n\`.algs d\` 查看D组`
     }
   })
   card.addTitle("ALGS 简讯");

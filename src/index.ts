@@ -31,7 +31,7 @@ import { apexMingyue } from 'commands/apex/streamers/mingyue';
 import { apexXiaore } from 'commands/apex/streamers/xiaore';
 
 import { algsMenu } from 'commands/algs/menu';
-import { groupA, groupB, groupC, groupD } from 'commands/algs/groups';
+import { groupA, groupB, groupC, groupD, groupLosers, groupWinners } from 'commands/algs/groups';
 import { algsResults } from 'commands/algs/results';
 import { algsSchedule } from 'commands/algs/schedule';
 import { algsPlayerData } from 'commands/algs/player_data';
@@ -49,10 +49,12 @@ bot.addAlias(algsMenu, "比赛");
 bot.addAlias(algsResults, "积分");
 bot.addAlias(algsSchedule, "赛程", "日程");
 bot.addAlias(algsPlayerData, "选手");
+bot.addAlias(groupLosers, "败者组", "败者");
+bot.addAlias(groupWinners, "胜者组", "胜者");
 algsMenu.addAlias(groupA, "A", "A组");
-algsMenu.addAlias(groupA, "B", "B组");
-algsMenu.addAlias(groupA, "C", "C组");
-algsMenu.addAlias(groupA, "D", "D组");
+algsMenu.addAlias(groupB, "B", "B组");
+algsMenu.addAlias(groupC, "C", "C组");
+algsMenu.addAlias(groupD, "D", "D组");
 
 bot.addCommands(echoMenu);
 bot.addAlias(echoMenu, "在吗");
