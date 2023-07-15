@@ -5,9 +5,9 @@ import { normalSendOutCardWrapper } from '../apex/helper_methods';
 import { ApexLegendsStatus } from '../../utils/apex_legends_status_api';
 import * as cheerio from 'cheerio';
 
-class AlgsPlayerData extends AppCommand {
-  code = 'player'; // 只是用作标记
-  trigger = 'player'; // 用于触发的文字
+class AlgsPlayersData extends AppCommand {
+  code = 'players'; // 只是用作标记
+  trigger = 'players'; // 用于触发的文字
   help = '发送`.algs player`就可以啦~'; // 帮助文字
   intro = '有问题私信狗头';
   func: AppFunc<BaseSession> = async (session) => {
@@ -16,7 +16,7 @@ class AlgsPlayerData extends AppCommand {
     await normalSendOutCardWrapper(session, constructCard(data), msg_id);
   };
 }
-export const algsPlayerData = new AlgsPlayerData();
+export const algsPlayersData = new AlgsPlayersData();
 
 interface PlayerPerformance {
   name: string;

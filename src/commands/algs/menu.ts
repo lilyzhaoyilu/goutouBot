@@ -1,25 +1,10 @@
 import { MenuCommand, Card } from 'kbotify';
 import { GROUPA, GROUPB, GROUPC, GROUPD, Team } from 'utils/team_assets';
 import { groupA, groupB, groupC, groupD, groupLosers, groupWinners } from './groups';
-import { algsResults } from './results';
+import { algsResults, algsGroupResults, algsLoser1Results, algsLoser2Results, algsWinnerResults } from './results';
 import { algsSchedule } from './schedule';
-import { algsPlayerData } from './player_data';
+import { algsPlayersData } from './player_data';
 
-
-
-const schedule = ["7月13日 下午5:15 C组 *(有DF 和 MDY-WHITE)* vs. D组", "7月13日 下午9:30 A组 vs. B组", "7月14日 凌晨1:45 A组 vs. C组*(有DF 和 MDY-WHITE)*", "7月14日 下午5:15 B组 vs. D组", "7月14日 下午9:30 A组 vs. D组", "7月15日 凌晨1:45 B组 vs. C组*(有DF 和 MDY-WHITE)*"]
-
-const constructScheduleSection = (card: Card) => {
-  for (const s of schedule) {
-    card.addModule({
-      "type": "section",
-      "text": {
-        "type": "kmarkdown",
-        "content": `${s}`
-      }
-    })
-  }
-}
 
 export const constructTeamSection = (card: Card, teams: Team[]) => {
 
@@ -47,21 +32,56 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `**查看小组赛积分和排名(实时更新)**\`.algs r\`或 \`.积分\``
+      "content": `**查看积分**`
     }
   })
   card.addModule({
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `**查看赛程**\`.algs s\`或 \`.赛程\``
+      "content": `\`。积分\`或\`.algs r\` (**r**esults) 最近比赛积分和队伍排名(实时更新) `
     }
   })
   card.addModule({
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `**查看选手数据统计**\`.algs player\`或 \`.选手\``
+      "content": `\`。小组积分\`或\`.algs gr\` (**g**roup **r**esults) 小组赛积分和排名`
+    }
+  })
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `\`。败者组1积分\`或\`.algs lr2\` (**l**oser **r**esults **2**) 败者组1 积分和排名`
+    }
+  })
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `\`。败者组2积分\`或\`.algs lr2\` (**l**oser **r**esults **2**) 败者组2 积分和排名`
+    }
+  })
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `\`。胜者组积分\`或\`.algs wr\` (**w**inner **r**esults) 胜者组积分和排名`
+    }
+  })
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `\`。赛程\`或\`.algs s\`**查看赛程**`
+    }
+  })
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `**查看选手数据统计**\`.algs players\`或 \`。选手\``
     }
   })
   card.addModule({
@@ -76,7 +96,7 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `TSM第一, Alliance第二. DreamFire 第26, MDY-WHITE 第30. 两只中国队伍都会进入败者组比赛. 败者组比赛分两场, 每场比赛的前十支队伍会进入到下一轮.\n可以用\`。积分\`查看更多队伍积分。\n百弟以20人头在击杀榜上排名第30, 皮特以18人头紧随其后. \n可以用\`。选手\`查看更多选手表现.\n狗头于7月15日 上午11点报道`
+      "content": `DF进入败者组第二轮, MDY-WHITE 遗憾离场. 如果DF能再次前十, 就可以继续晋级. \n可以用\`。积分\`查看更多队伍积分 \n可以用\`。选手\`查看更多选手表现.\n狗头于7月16日 凌晨报道`
     }
   });
   card.addModule({
@@ -104,4 +124,4 @@ class AlgsMenu extends MenuCommand {
   useCardMenu = true; // 使用卡片菜单
 }
 
-export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule, algsPlayerData, groupLosers, groupWinners);
+export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule, algsPlayersData, groupLosers, groupWinners, algsGroupResults, algsLoser1Results, algsLoser2Results, algsWinnerResults);

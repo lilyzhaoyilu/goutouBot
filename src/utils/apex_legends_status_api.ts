@@ -135,7 +135,17 @@ export class ApexLegendsStatus {
     }
   }
 
-  //DGS
+  static async getBracketStageResult(session: BaseSession, round: number, match: number) {
+    try {
+      const res = await axios.get(`${auth.ALGS_BRACKET_STAGE_RESULTS}&roundNumber=${round}&matchNumber=${match}`);
+      return res.data;
+    } catch (err) {
+      ErrorHandler.sendErrorMessageToLogChannel(session, `getBracketStageResult: ${err}`);
+      return GoutouCard.buildGenericErrorCard(session);
+    }
+  }
+
+  //ALS's ALGS
   static async getALGSPlayerData(session: BaseSession) {
     try {
       const res = await axios.get("https://apexlegendsstatus.com/algs/Y3-Split2/ALGS-Playoffs/Global/Overview")

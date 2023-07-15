@@ -29,7 +29,7 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `**淘汰赛**\n(font)7月15日 (星期六) 下午5:00 败者组第一轮*(有DF 和 MDY-WHITE)*(font)[warning]\n7月15日 (星期六) 下午9:15 胜者组\n(font)7月16日 (星期日) 凌晨01:30 败者组第二轮*(有DF 和 MDY-WHITE)*(font)[warning]`
+      "content": `**淘汰赛**\n(font)7月15日 (星期六) 下午5:00 败者组第一轮(有DF 和 MDY-WHITE)(font)[warning]\n7月15日 (星期六) 下午9:15 胜者组\n(font)7月16日 (星期日) 凌晨01:30 败者组第二轮(有DF)(font)[warning]`
     }
   });
   card.addModule({

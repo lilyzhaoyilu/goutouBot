@@ -32,9 +32,9 @@ import { apexXiaore } from 'commands/apex/streamers/xiaore';
 
 import { algsMenu } from 'commands/algs/menu';
 import { groupA, groupB, groupC, groupD, groupLosers, groupWinners } from 'commands/algs/groups';
-import { algsResults } from 'commands/algs/results';
+import { algsResults, algsGroupResults, algsWinnerResults, algsLoser1Results, algsLoser2Results } from 'commands/algs/results';
 import { algsSchedule } from 'commands/algs/schedule';
-import { algsPlayerData } from 'commands/algs/player_data';
+import { algsPlayersData } from 'commands/algs/player_data';
 dotenv.config();
 
 bot.messageSource.on('message', (e: any) => {
@@ -47,8 +47,19 @@ bot.messageSource.on('message', (e: any) => {
 bot.addCommands(algsMenu);
 bot.addAlias(algsMenu, "比赛");
 bot.addAlias(algsResults, "积分");
+bot.addAlias(algsGroupResults, "小组积分");
+bot.addAlias(algsWinnerResults, "胜者组积分");
+bot.addAlias(algsLoser1Results, "败者组1积分");
+bot.addAlias(algsLoser2Results, "败者组2积分");
+
+algsMenu.addAlias(algsResults, "R", "积分");
+algsMenu.addAlias(algsGroupResults, "GR", "小组积分");
+algsMenu.addAlias(algsWinnerResults, "WR", "胜者组积分");
+algsMenu.addAlias(algsLoser1Results, "LR1", "败者组1积分");
+algsMenu.addAlias(algsLoser2Results, "LR2", "败者组2积分");
+
 bot.addAlias(algsSchedule, "赛程", "日程");
-bot.addAlias(algsPlayerData, "选手");
+bot.addAlias(algsPlayersData, "选手");
 bot.addAlias(groupLosers, "败者组", "败者");
 bot.addAlias(groupWinners, "胜者组", "胜者");
 algsMenu.addAlias(groupA, "A", "A组");
