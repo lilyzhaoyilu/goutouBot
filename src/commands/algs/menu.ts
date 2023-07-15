@@ -3,6 +3,7 @@ import { GROUPA, GROUPB, GROUPC, GROUPD, Team } from 'utils/team_assets';
 import { groupA, groupB, groupC, groupD } from './groups';
 import { algsResults } from './results';
 import { algsSchedule } from './schedule';
+import { algsPlayerData } from './player_data';
 
 
 
@@ -41,8 +42,7 @@ export const constructTeamSection = (card: Card, teams: Team[]) => {
 const constructCard = () => {
   const card = new Card().setSize("lg").setTheme("secondary");
 
-
-
+  card.addTitle("ALGS 相关指令");
   card.addModule({
     "type": "section",
     "text": {
@@ -61,30 +61,31 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `**查看分组**\n\`.algs A\` 查看A组\n\`.algs B\` 查看B组\n\`.algs C\` 查看C组\n\`.algs D\` 查看D组`
+      "content": `**查看选手数据统计**\`.algs player\`或 \`.选手\``
     }
   })
-
   card.addModule({
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `想看其它ALGS的信息？请私信狗头`
+      "content": `**查看分组**\n\`.algs a\` 查看A组\n\`.algs b\` 查看B组\n\`.algs c\` 查看C组\n\`.algs d\` 查看D组`
     }
-  });
-
+  })
+  card.addTitle("ALGS 简讯");
   card.addModule({
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `数据来源自[Battlefy](https://battlefy.com/apex-legends-global-series-year-3/pro-league-split-2-playoffs/teams)`
+      "content": `TSM第一, Alliance第二. DreamFire 第26, MDY-WHITE 第30. 两只中国队伍都会进入败者组比赛. 败者组比赛分两场, 每场比赛的前十支队伍会进入到下一轮.\n可以用\`。积分\`查看更多队伍积分。\n百弟在击杀榜上排名第30, 皮特(差不多) 紧随其后. \n可以用\`。选手\`查看更多选手表现.\n狗头于7月15日 上午11点报道`
     }
   });
-
-  card.addTitle("ALGS比赛时间(Group Stage) 北京时间");
-
-  constructScheduleSection(card);
-
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `想看其它ALGS的信息？请私信狗头\nALGS信息真的有人看吗? 没有人看的话就不更新啦...`
+    }
+  });
   return [card];
 }
 
@@ -103,4 +104,4 @@ class AlgsMenu extends MenuCommand {
   useCardMenu = true; // 使用卡片菜单
 }
 
-export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule);
+export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule, algsPlayerData);

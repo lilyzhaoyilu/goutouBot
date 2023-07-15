@@ -134,4 +134,15 @@ export class ApexLegendsStatus {
       return GoutouCard.buildGenericErrorCard(session);
     }
   }
+
+  //DGS
+  static async getALGSPlayerData(session: BaseSession) {
+    try {
+      const res = await axios.get("https://apexlegendsstatus.com/algs/Y3-Split2/ALGS-Playoffs/Global/Overview")
+      return res.data;
+    } catch (err) {
+      ErrorHandler.sendErrorMessageToLogChannel(session, `getALGSPlayerData: ${err}`);
+      return GoutouCard.buildGenericErrorCard(session);
+    }
+  }
 }

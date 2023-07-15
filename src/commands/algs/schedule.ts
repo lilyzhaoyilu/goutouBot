@@ -29,7 +29,7 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `**淘汰赛**\n7月15日 (星期六) 下午5:00 败者组第一轮\n7月15日 (星期六) 下午9:15 胜者组\n7月16日 (星期日) 凌晨01:30 败者组第二轮`
+      "content": `**淘汰赛**\n(font)7月15日 (星期六) 下午5:00 败者组第一轮*(有DF 和 MDY-WHITE)*(font)[warning]\n7月15日 (星期六) 下午9:15 胜者组\n(font)7月16日 (星期日) 凌晨01:30 败者组第二轮*(有DF 和 MDY-WHITE)*(font)[warning]`
     }
   });
   card.addModule({
@@ -39,11 +39,13 @@ const constructCard = () => {
       "content": `**总决赛**\n7月16日 (星期日) 晚上11点 赛点制决赛\n7月17日 (星期一) 分赛2 // 季后赛 **总冠军诞生**`
     }
   });
+  card.addTitle("比赛流程示意图 (点开查看) ")
+  card.addImage("https://img.kookapp.cn/assets/2023-07/KyGItX3j7O0xp0ah.png");
   card.addModule({
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `数据来源自[NGA网友帖子](https://bbs.nga.cn/read.php?tid=36668968&rand=932) 感谢大老师提供`
+      "content": `数据来源自[NGA网友帖子](https://bbs.nga.cn/read.php?tid=36668968&rand=932) 感谢大老师提供\n想查询ALGS相关信息？用 \`.ALGS\``
     }
   });
 

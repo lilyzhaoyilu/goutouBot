@@ -46,7 +46,7 @@ const constructCard = (data: any) => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `数据来源自[Battlefy](https://battlefy.com/apex-legends-global-series-year-3/pro-league-split-2-playoffs/group-stage/leaderboard)`
+      "content": `数据来源自[Battlefy](https://battlefy.com/apex-legends-global-series-year-3/pro-league-split-2-playoffs/group-stage/leaderboard) 想查询ALGS相关信息？用 \`.ALGS\``
     }
   });
   return card;
