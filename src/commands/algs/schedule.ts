@@ -50,5 +50,4 @@ const constructCard = () => {
   });
 
   return card;
-
 }
