@@ -1,6 +1,6 @@
 import { MenuCommand, Card } from 'kbotify';
 import { GROUPA, GROUPB, GROUPC, GROUPD, Team } from 'utils/team_assets';
-import { groupA, groupB, groupC, groupD } from './groups';
+import { groupA, groupB, groupC, groupD, groupLosers, groupWinners } from './groups';
 import { algsResults } from './results';
 import { algsSchedule } from './schedule';
 import { algsPlayerData } from './player_data';
@@ -104,4 +104,4 @@ class AlgsMenu extends MenuCommand {
   useCardMenu = true; // 使用卡片菜单
 }
 
-export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule, algsPlayerData);
+export const algsMenu = new AlgsMenu(groupA, groupB, groupC, groupD, algsResults, algsSchedule, algsPlayerData, groupLosers, groupWinners);
