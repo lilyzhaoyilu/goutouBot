@@ -74,7 +74,7 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `\`决赛积分\`或\`.algs fr\` (**f**inal **r**esults) 决赛积分和排名`
+      "content": `\`。决赛积分\`或\`.algs fr\` (**f**inal **r**esults) 决赛积分和排名`
     }
   })
   card.addModule({
