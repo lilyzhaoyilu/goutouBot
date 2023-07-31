@@ -12,7 +12,6 @@ class ApexPickRates extends AppCommand {
   help = '发送`.apex r`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
-
     await pickRatesCommandWrapper('r', session);
   };
 }

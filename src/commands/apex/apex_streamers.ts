@@ -15,7 +15,7 @@ export const apexStreamers = new ApexStreamers();
 
 const constructStreamerMenu = () => {
   const card = new Card().setSize('lg').setTheme('secondary');
-  card.addTitle("快速查询主播");
+  card.addTitle("查询主播");
   for (const key in STREAMER) {
     if (!STREAMER[key].isShowingOnStreamerMenu) {
       continue;
@@ -25,7 +25,6 @@ const constructStreamerMenu = () => {
   buildStreamerMenuTail(card);
   return card;
 }
-
 
 
 const buildStreamerMenuTail = (card: Card) => {
@@ -45,7 +44,7 @@ const buildStreamerMenuTail = (card: Card) => {
         "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
       }
     ]
-  })
+  });
 }
 
 const buildStreamerSection = (card: Card, name: string, streamerName: string, avatar: string) => {
@@ -61,7 +60,7 @@ const buildStreamerSection = (card: Card, name: string, streamerName: string, av
       "size": "lg"
     }
   }
-  )
+  );
 }
 
 // https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png

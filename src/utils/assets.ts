@@ -3,6 +3,12 @@
 export const LOG_CHANNEL = "9682242694390929";
 export const MESSAGE_CHANNEL = "1965837510857703";
 
+export const YELLOW_NESSIE = "https://img.kookapp.cn/assets/2023-03/GpLrxr1ddX046046.png";
+export const SILVRE_NESSIE = "https://img.kookapp.cn/assets/2023-03/Ntk3sqA0rq046046.png";
+export const RED_NESSIE = "https://img.kookapp.cn/assets/2023-03/NAUnnasL7p046046.png";
+export const PROFILE_NESSIE = "https://img.kookapp.cn/assets/2023-07/QN7q1UPSPt02s02q.png";
+
+export const APEX_LOGO_RED = "https://img.kookapp.cn/assets/2023-07/7hThBoDKvJ02s02s.png"
 
 export const RANK_TO_IMAGE = new Map<string, string>(
   [

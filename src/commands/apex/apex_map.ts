@@ -13,7 +13,6 @@ class ApexMap extends AppCommand {
     const msg_id = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getMapRotation(session);
     const card: Card = data instanceof Card ? data : buildMapCard(data);
-    addTailTempMessage(card);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }

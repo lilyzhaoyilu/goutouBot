@@ -147,7 +147,7 @@ export class GoutouCard {
             "type": "section",
             "text": {
               "type": "kmarkdown",
-              "content": `没有查询到关于${session.args[0]}的数据，目前只支持用Origin平台的ID进行查询。`
+              "content": `没有查询到关于${session.args[0]}的数据，目前只支持用Origin平台的ID进行查询。\n想根据Steam Id查询, 请用[apexlegendsstatus](https://apexlegendsstatus.com/stats/)。`
             }
           }, {
             "type": "context",

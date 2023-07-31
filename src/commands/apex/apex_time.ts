@@ -12,7 +12,6 @@ class ApexTime extends AppCommand {
     const msg_id = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getSeasonTimeInfo(session);
     const card: Card = data instanceof Card ? data : buildTimeCard(data);
-    addTailTempMessage(card);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
