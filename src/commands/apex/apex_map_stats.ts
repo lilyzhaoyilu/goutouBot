@@ -1,8 +1,6 @@
 import { AppCommand, AppFunc, BaseSession, Card, ModuleObject } from 'kbotify';
-import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
-import { StringTranslation } from 'utils/string_translation';
-import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
+import { normalSendOutCardWrapper } from './helper_methods';
 
 class ApexMapStats extends AppCommand {
   code = 'mapstats'; // 只是用作标记
@@ -17,7 +15,7 @@ class ApexMapStats extends AppCommand {
 }
 
 const buildMapStatsCard = () => {
-  const card = new Card().setSize('lg').setTheme('secondary');
+  const card = GoutouCard.baseCard();
   card.addTitle("地图刷圈概率图");
   card.addImage("https://img.kookapp.cn/assets/2023-07/JBPElZfhLq0xc0xc.png");
   card.addImage("https://img.kookapp.cn/assets/2023-07/iZqN6wqqvc0zk11w.jpg");

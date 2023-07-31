@@ -1,7 +1,7 @@
 import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
-import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
+import { normalSendOutCardWrapper } from './helper_methods';
 
 
 class ApexQuery extends AppCommand {
@@ -18,35 +18,16 @@ class ApexQuery extends AppCommand {
     const msg_id = await GoutouCard.sendQueringCard(session);
     const data = await ApexLegendsStatus.getQuery(session, queryUser);
     const card: Card = data instanceof Card ? data : buildQueryCard(data);
-    addCardTail(card);
-    addTailTempMessage(card);
     await normalSendOutCardWrapper(session, card, msg_id);
   }
 };
 
 const buildQueryCard = (data: any) => {
-  const card = new Card().setSize('lg').setTheme('secondary')
+  const card = GoutouCard.baseCard();
   card.addTitle(`${data.global?.name}的数据`);
   GoutouCard.buildPlayerInfoSection(card, data);
+  GoutouCard.addTailWantToQueryStreamers(card);
   return card;
-}
-
-// temprory for promotion
-const addCardTail = (card: Card) => {
-  card.addModule({
-    type: "context", elements: [{
-      "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
-    },
-    {
-      "type": "plain-text",
-      "content": "如果想查询查主播，看看 .主播 吧"
-    },
-    {
-      "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
-    }]
-  })
 }
 
 export const apexQuery = new ApexQuery();

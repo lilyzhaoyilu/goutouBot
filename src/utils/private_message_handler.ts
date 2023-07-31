@@ -1,7 +1,8 @@
 import { bot } from 'init/client';
 import { ErrorHandler } from './error_handler';
 import auth from '../configs/auth';
-
+import { Card } from "kbotify";
+import { SILVRE_NESSIE } from './assets';
 
 export class PrivateMessage {
   static async privateMessage(e: any) {
@@ -20,13 +21,20 @@ export class PrivateMessage {
         // 给频道发消息
         ErrorHandler.sendChatMessageToChatChannel(e);
 
+        // 发送邀请卡片
         if (e.extra?.last_msg_content === '[卡片]' && e.author_id) {
           await bot.API.directMessage.create(10, e.author_id?.toString(), undefined, INVITE_CONTENT)
+          // 发送数字1
         } else if (e.content === '1') {
           await bot.API.directMessage.create(9, e.author_id?.toString(), undefined, '2')
+          // 发送一些常见关键字
+        } else if (e.content === '你好') {
+          await bot.API.directMessage.create(10, e.author_id?.toString(), undefined, NO_HELLO());
+
         } else if (e.content.search(/apex/i) !== -1 || e.content.search("冲猎") !== -1 || e.content.search("查询") !== -1 || e.content.search("猎杀") !== -1) {
           await bot.API.directMessage.create(10, e.author_id?.toString(), undefined, USAGE_ONLY_CONTENT)
         } else {
+          // 其他自动回复
           await bot.API.directMessage.create(10, e.author_id?.toString(), undefined, AUTO_REPLY_CONTENT)
         }
       } catch (err) {
@@ -34,6 +42,146 @@ export class PrivateMessage {
       }
     }
   }
+}
+
+const PROFILE_THREE_M_Z = "https://img.kookapp.cn/assets/2023-07/SRaf8RWsZI05k05k.jpg";
+const PROFILE_QQ = "https://img.kookapp.cn/assets/2023-07/9pYPTyZcLh04w04w.jpg";
+
+const NO_HELLO = () => {
+  const card = new Card().setColor('#b2e9b0').setSize('lg');
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `:cross_mark_button:**请不要这样做**`
+    }
+  });
+  card.addModule({
+    type: "section", text: {
+      "type": "kmarkdown",
+      "content": `**QQ** 5:15 下午\n你好`
+    },
+    mode: "left",
+    accessory: {
+      "type": "image",
+      "src": PROFILE_QQ,
+      "size": "sm"
+    }
+  });
+  card.addModule({
+    type: "section", text: {
+      "type": "kmarkdown",
+      "content": `**3MZ** 6:15 下午\n...?`
+    },
+    mode: "left",
+    accessory: {
+      "type": "image",
+      "src": PROFILE_THREE_M_Z,
+      "size": "sm"
+    }
+  });
+  card.addModule({
+    type: "section", text: {
+      "type": "kmarkdown",
+      "content": `**QQ** 6:16 下午\n要一起打游戏吗?`
+    },
+    mode: "left",
+    accessory: {
+      "type": "image",
+      "src": PROFILE_QQ,
+      "size": "sm"
+    }
+  });
+  card.addModule({
+    type: "section", text: {
+      "type": "kmarkdown",
+      "content": `**3MZ** 7:20 下午\n哦, 我已经要下了!`
+    },
+    mode: "left",
+    accessory: {
+      "type": "image",
+      "src": PROFILE_THREE_M_Z,
+      "size": "sm"
+    }
+  });
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `请注意, 这里时间已经过去了两个小时! 其实QQ可以不让3mz等待, 而3mz收到信息后也可以立刻开始和QQ一起玩。\n现在已经是2023年啦, 聊天方式也和以前不同。尽管你的初衷是好的, 但实际上只说你好只是在让对方等待.\n**请直接问问题! **:angry:`
+    }
+  });
+  card.addDivider();
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `:ballot_box_with_check:**请试着这样做**`
+    }
+  });
+  card.addModule({
+    type: "section", text: {
+      "type": "kmarkdown",
+      "content": `**QQ** 5:15 下午\n你好, 要一起打游戏吗?`
+    },
+    mode: "left",
+    accessory: {
+      "type": "image",
+      "src": PROFILE_QQ,
+      "size": "sm"
+    }
+  });
+  card.addModule({
+    type: "section", text: {
+      "type": "kmarkdown",
+      "content": `**3MZ** 6:15 下午\n你好, 好的呀!`
+    },
+    mode: "left",
+    accessory: {
+      "type": "image",
+      "src": PROFILE_THREE_M_Z,
+      "size": "sm"
+    }
+  });
+  card.addModule({
+    type: "section", text: {
+      "type": "kmarkdown",
+      "content": `**QQ** 6:16 下午\nKook见!`
+    },
+    mode: "left",
+    accessory: {
+      "type": "image",
+      "src": PROFILE_QQ,
+      "size": "sm"
+    }
+  });
+  card.addModule({
+    type: "section", text: {
+      "type": "kmarkdown",
+      "content": `**3MZ** 6:16 下午\n好的!`
+    },
+    mode: "left",
+    accessory: {
+      "type": "image",
+      "src": PROFILE_THREE_M_Z,
+      "size": "sm"
+    }
+  });
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `如果你觉得直接说事情有些唐突, 你可以适当的在你的消息前加上一些问候的话。这样在对方看到你的消息的时候, 他们可以立刻回复你想要的内容, 而不是盯着你好迷茫不解。:partying_face:`
+    }
+  });
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `借鉴 [no-hello](https://nohello.net/zh-cn/)。 如果对话的头像和人物让你感到不开心, 请私信狗头, 狗头会尽快更换。`
+    }
+  });
+  return card.toString();
 }
 
 
@@ -159,7 +307,7 @@ const AUTO_REPLY_CONTENT = `[
         "type": "section",
         "text": {
           "type": "kmarkdown",
-          "content": "开发者已经收到你的信息。提出被采纳的bug，狗头会给你发小红包的哦~"
+          "content": "开发者已经收到你的信息。提出被采纳的bug, 狗头会给你发小红包的哦~"
         }
       },
       {
@@ -167,6 +315,13 @@ const AUTO_REPLY_CONTENT = `[
         "text": {
           "type": "kmarkdown",
           "content": "不知道怎么用？[点这里看使用视频](https://www.bilibili.com/video/BV1Eg41127y3?p=2)。"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "也可以加入狗头的频道, 试用狗头或者提出使用问题~"
         }
       },
       {

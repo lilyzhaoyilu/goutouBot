@@ -1,5 +1,6 @@
 import { AppCommand, AppFunc, BaseSession, TextMessage, Card } from 'kbotify';
 import { STREAMER } from '../../utils/streamer_assets';
+import { GoutouCard } from 'utils/goutou_card';
 
 class ApexStreamers extends AppCommand {
   code = 's'; // 只是用作标记
@@ -14,37 +15,16 @@ class ApexStreamers extends AppCommand {
 export const apexStreamers = new ApexStreamers();
 
 const constructStreamerMenu = () => {
-  const card = new Card().setSize('lg').setTheme('secondary');
-  card.addTitle("查询主播");
+  const card = GoutouCard.baseCard();
+  card.addTitle("查询主播菜单");
   for (const key in STREAMER) {
     if (!STREAMER[key].isShowingOnStreamerMenu) {
       continue;
     }
     buildStreamerSection(card, STREAMER[key].name, STREAMER[key].streamerName, STREAMER[key].avatar);
   }
-  buildStreamerMenuTail(card);
+  GoutouCard.addTailWantToQueryMoreStreamers(card);
   return card;
-}
-
-
-const buildStreamerMenuTail = (card: Card) => {
-  card.addModule({
-    "type": "context",
-    "elements": [
-      {
-        "type": "image",
-        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
-      },
-      {
-        "type": "plain-text",
-        "content": "如果还有其他你想看到的主播，请私信狗头哦~"
-      },
-      {
-        "type": "image",
-        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
-      }
-    ]
-  });
 }
 
 const buildStreamerSection = (card: Card, name: string, streamerName: string, avatar: string) => {
@@ -62,5 +42,3 @@ const buildStreamerSection = (card: Card, name: string, streamerName: string, av
   }
   );
 }
-
-// https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png

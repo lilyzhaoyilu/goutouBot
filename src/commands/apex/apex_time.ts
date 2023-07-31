@@ -2,7 +2,7 @@ import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { StringTranslation } from 'utils/string_translation';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
-import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
+import { normalSendOutCardWrapper } from './helper_methods';
 class ApexTime extends AppCommand {
   code = 'time'; // 只是用作标记
   trigger = 'time'; // 用于触发的文字

@@ -1,5 +1,6 @@
 import { BaseSession, Card } from 'kbotify';
 import { ErrorHandler } from '../../utils/error_handler';
+import { PROFILE_NESSIE, SILVRE_NESSIE, YELLOW_NESSIE, RED_NESSIE, APEX_LOGO_RED } from '../../utils/assets';
 
 // Wrap reply card method for better error logs
 export const normalSendOutCardWrapper = async (session: BaseSession, card: Card, msg_id: string | undefined) => {
@@ -18,21 +19,4 @@ export const normalSendOutCardWrapper = async (session: BaseSession, card: Card,
       ErrorHandler.sendErrorMessageToLogChannel(session, `UPDATE CARD no msg_id session msg: ' ${session.msg} session err: ${err}`);
     }
   }
-}
-
-export const addTailTempMessage = (card: Card) => {
-  card.addModule({
-    type: "context", elements: [{
-      "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
-    },
-    {
-      "type": "plain-text",
-      "content": "想查看ALSG比赛相关信息吗？试试 .ALGS"
-    },
-    {
-      "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
-    }]
-  })
 }

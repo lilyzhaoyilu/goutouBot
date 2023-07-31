@@ -85,7 +85,7 @@ const contructMenu = () => {
   card.addModule({
     type: "section", text: {
       "type": "kmarkdown",
-      "content": "\`。分布\`或\`.apex d\`(代表distribution)查询现在的玩家段位分布"
+      "content": "\`。分布\`或\`.apex d\`(**d**istribution)查询现在的玩家段位分布"
     }
   });
 
@@ -168,7 +168,7 @@ const contructMenu = () => {
   card.addModule({
     type: "section", text: {
       "type": "kmarkdown",
-      "content": "\` 。比赛\`或\`.algs\` 查询ALGS比赛相关信息~ DF和MDY-WHITE 加油！"
+      "content": "\`。比赛\`或\`.algs\` 查询ALGS比赛相关信息~ DF和MDY-WHITE 加油！"
     }
   });
 

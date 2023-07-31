@@ -2,7 +2,7 @@ import { AppCommand, AppFunc, BaseSession, Card, ModuleObject } from 'kbotify';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { StringTranslation } from 'utils/string_translation';
-import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
+import { normalSendOutCardWrapper } from './helper_methods';
 
 class ApexMap extends AppCommand {
   code = 'map'; // 只是用作标记

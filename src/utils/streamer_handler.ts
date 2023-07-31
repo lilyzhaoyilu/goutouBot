@@ -4,6 +4,7 @@ import { STREAMER, StreamerAsset, UidToStreamerAsset } from './streamer_assets';
 import { LivePlatform, LiveData } from './live_platform_api';
 import { GoutouCard } from './goutou_card';
 import { ApexLegendsStatus } from './apex_legends_status_api';
+import { PROFILE_NESSIE, SILVRE_NESSIE } from './assets';
 
 export class Streamer {
 
@@ -60,15 +61,15 @@ export class Streamer {
     card.addModule({
       type: "context", elements: [{
         "type": "image",
-        "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
+        "src": PROFILE_NESSIE
       },
       {
         "type": "plain-text",
-        "content": "这个主播暂时还没有提供他想展示的账号，如果你知道他的账号的话，请私信Apex查询狗头~"
+        "content": "这个主播暂时还没有提供他想展示的账号。 如果你知道他的账号的话, 请私信Apex查询狗头~"
       },
       {
         "type": "image",
-        "src": "https://img.kookapp.cn/assets/2023-01/53E0FkCSL115o15o.png"
+        "src": PROFILE_NESSIE
       }]
     })
   }
@@ -82,31 +83,18 @@ export class Streamer {
     card.addModule({
       type: "context", elements: [{
         "type": "image",
-        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+        "src": SILVRE_NESSIE
       },
       {
-        "type": "plain-text",
-        "content": ".主播 查看其它支持快速查询的主播"
+        "type": "kmarkdown",
+        "content": "\`。主播\` 查看其它支持快速查询的主播"
       },
       {
         "type": "image",
-        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+        "src": SILVRE_NESSIE
       }]
     })
-    card.addModule({
-      type: "context", elements: [{
-        "type": "image",
-        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
-      },
-      {
-        "type": "plain-text",
-        "content": "如果还有其他你想看到的主播，请私信狗头哦~"
-      },
-      {
-        "type": "image",
-        "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
-      }]
-    })
+    GoutouCard.addTailWantToQueryMoreStreamers(card);
   }
 
   static buildCustomizedLiveText(isStreaming: boolean, streamer: StreamerAsset) {
@@ -129,7 +117,7 @@ export class Streamer {
           }
         ]
       })
-      return ``
+      return ``;
     }
 
     if (streamer.customized?.sloganImage && streamer.customized?.sloganText) {

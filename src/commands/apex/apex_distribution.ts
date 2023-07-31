@@ -3,7 +3,7 @@ import { AppCommand, AppFunc, BaseSession, Card, ModuleObject } from 'kbotify';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { GoutouCard } from 'utils/goutou_card';
 import { StringTranslation } from 'utils/string_translation';
-import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
+import { normalSendOutCardWrapper } from './helper_methods';
 
 class ApexDistribution extends AppCommand {
   code = 'distribution'; // 只是用作标记
@@ -13,9 +13,7 @@ class ApexDistribution extends AppCommand {
   func: AppFunc<BaseSession> = async (session) => {
     const msg_id = await GoutouCard.sendQueringCard(session);
     const br_data = await ApexLegendsStatus.getBrDistribution(session);
-    // const ar_data = await ApexLegendsStatus.getAr(session);
     const card: Card = br_data instanceof Card ? br_data : buildDistributionCard(br_data);
-    addTailTempMessage(card);
     await normalSendOutCardWrapper(session, card, msg_id);
   };
 }
@@ -23,38 +21,12 @@ class ApexDistribution extends AppCommand {
 export const apexDistribution = new ApexDistribution();
 
 const buildDistributionCard = (br_data: any, ar_data: any = '') => {
-  const card = new Card().setColor('#b2e9b0').setSize('lg').addTitle("全平台大逃杀玩家段位分布(含未定级玩家)");
+  const card = GoutouCard.baseCard();
+  card.addTitle("全平台大逃杀玩家段位分布 (含未定级玩家)");
   parseSectionData(card, br_data);
 
-  card.addModule({
-    type: "context", elements: [{
-      "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
-    },
-    {
-      "type": "plain-text",
-      "content": "数据由 apexlegendsstatus.com提供, 和重生数据有差别。"
-    },
-    {
-      "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
-    }]
-  })
-
-  card.addModule({
-    type: "context", elements: [{
-      "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
-    },
-    {
-      "type": "plain-text",
-      "content": "如果有其他的意见和问题，可以直接私信狗头机器人~"
-    },
-    {
-      "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
-    }]
-  })
+  GoutouCard.addTailALS(card, "https://apexlegendsstatus.com/game-stats/ranked-distribution", ", 和重生数据有差别。");
+  GoutouCard.addTailMessageGoutouIfQuestion(card);
   return card;
 }
 

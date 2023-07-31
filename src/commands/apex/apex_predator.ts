@@ -1,7 +1,8 @@
 import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
-import { normalSendOutCardWrapper, addTailTempMessage } from './helper_methods';
+import { PROFILE_NESSIE } from '../../utils/assets';
+import { normalSendOutCardWrapper } from './helper_methods';
 
 class ApexPredator extends AppCommand {
   code = 'p'; // 只是用作标记
@@ -29,14 +30,14 @@ class ApexPredator extends AppCommand {
 }
 
 const buildReachPredatorCard = (data: any) => {
-  const card = new Card().setSize('lg').setTheme('secondary');
+  const card = GoutouCard.baseCard();
   card.addTitle("猎杀分数线 (PC端)");
   buildReachPredatorBrSection(card, data);
   card.addModule({
     "type": "context",
     "elements": [{
       "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      "src": PROFILE_NESSIE
     },
     {
       "type": "plain-text",
@@ -44,11 +45,10 @@ const buildReachPredatorCard = (data: any) => {
     },
     {
       "type": "image",
-      "src": "https://img.kookapp.cn/assets/2023-01/BWDWRd1Pm2035035.png"
+      "src": PROFILE_NESSIE
     }
     ]
   });
-  addTailTempMessage(card);
   return card;
 }
 

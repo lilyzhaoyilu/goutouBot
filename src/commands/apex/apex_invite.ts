@@ -34,6 +34,13 @@ const constructCard = () => {
             "type": "kmarkdown",
             "content": "请在**电脑**[点这个二狗邀请链接](https://www.kookapp.cn/app/oauth2/authorize?id=12733&permissions=536870908&client_id=8_4R7kB3Eh6b9GhM&redirect_uri=&scope=bot)。手机不行哦。"
           }
+        },
+        {
+          "type": "section",
+          "text": {
+            "type": "kmarkdown",
+            "content": "也可以尝试点击机器人头像，然后点击 **邀请**, 但是可能会出现机器人已经满频道的提示。 如果是这样, 请用上面的链接。"
+          }
         }
       ]
     }
