@@ -25,6 +25,13 @@ const buildMapStatsCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
+      "content": `紫色代表概率高。颜色优先级是 黄 > 绿 > 青 > 品红 > 橙 > 深蓝 > 淡粉 > 淡黄 > 黄`
+    }
+  });
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
       "content": `数据源自@1Nurge(Twitter) 感谢[大老师](https://www.douyin.com/user/MS4wLjABAAAAO3ZL1B95G029KemNL_q2Eym5xXvBjvlW906IKe9qirU)提供`
     }
   });
