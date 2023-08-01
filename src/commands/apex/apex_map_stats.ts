@@ -16,7 +16,9 @@ class ApexMapStats extends AppCommand {
 
 const buildMapStatsCard = () => {
   const card = GoutouCard.baseCard();
-  card.addTitle("地图刷圈概率图");
+  card.addTitle("地图圈概率");
+  card.addImage("https://img.kookapp.cn/assets/2023-08/txFwmrdHuU0dw0eb.png");
+  card.addTitle("刷圈探测器概率图");
   card.addImage("https://img.kookapp.cn/assets/2023-07/JBPElZfhLq0xc0xc.png");
   card.addImage("https://img.kookapp.cn/assets/2023-07/iZqN6wqqvc0zk11w.jpg");
   card.addModule({

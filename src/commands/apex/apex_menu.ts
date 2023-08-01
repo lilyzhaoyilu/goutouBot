@@ -111,7 +111,7 @@ const contructMenu = () => {
   card.addModule({
     type: "section", text: {
       "type": "kmarkdown",
-      "content": "\`。赛季\`或\`.apex time\`查询这个赛段的时间"
+      "content": "\`。时间\`或\`.apex time\`查询这个赛季的开始和结束时间"
     }
   });
   card.addModule({
