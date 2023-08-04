@@ -32,7 +32,14 @@ const buildMapStatsCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `数据源自@1Nurge(Twitter) 感谢[大老师](https://www.douyin.com/user/MS4wLjABAAAAO3ZL1B95G029KemNL_q2Eym5xXvBjvlW906IKe9qirU)提供`
+      "content": `数据源自@1Nurge(Twitter) 感谢[大老师](https://kook.top/AhJPdm) 提供`
+    }
+  });
+  card.addModule({
+    "type": "section",
+    "text": {
+      "type": "kmarkdown",
+      "content": `Apex 知识库哪里找？[大老师频道](https://kook.top/AhJPdm) 全都有`
     }
   });
   return card;
