@@ -70,6 +70,10 @@ export class StringTranslation {
         return '熔岩虹吸';
       case 'Skulltown':
         return '骷髅镇';
+      case 'Production Yard':
+        return '生产地';
+      case 'The Core':
+        return '核心';
       default:
         return map
     }

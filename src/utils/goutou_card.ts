@@ -64,7 +64,7 @@ export class GoutouCard {
     queryingCard.addModule({
       type: "section", "text": {
         "type": "kmarkdown",
-        "content": `(font)正在努力查询中~(font)[success]\n如果不能更新卡片请再试一下~\n请不要删除查询信息\n请确保机器人在频道内有以下权限:\n-能更新卡片\n-没有被限速`
+        "content": `(font)正在努力查询中~(font)[success]\n如果不能更新卡片请再试一下~\n请不要删除查询信息\n请确保机器人在频道内有以下权限:\n-能更新卡片\n-没有被限速\n-没有回复请等一会再试一下\n-想限制机器人只在一个频道回复, 请查看[帮助视频](https://www.bilibili.com/video/BV1Eg41127y3?p=3)`
       },
       mode: "left",
       accessory: {
@@ -92,7 +92,7 @@ export class GoutouCard {
       "type": "section",
       "text": {
         "type": "kmarkdown",
-        "content": `"查询出现了错误，请等一下再试。狗头已经记录了这个错误，会在周末的时候进行维修和升级。:computer:\n如果还有问题，可以点击机器人头像 -> 私信。看到了就会回复的！`
+        "content": `"查询出现了错误，请等一下再试。狗头已经记录了这个错误，会在周末的时候进行维修和升级。:computer:\n如果还有问题, 可以点击机器人头像 -> 私信。看到了就会回复的！`
       }
     });
     return card;

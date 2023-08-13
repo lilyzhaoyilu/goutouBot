@@ -2,7 +2,6 @@ import { Card, MenuCommand, BaseUser } from 'kbotify';
 import { apexQuery } from './apex_query';
 import { apexPredator } from './apex_predator';
 import { apexMap } from './apex_map';
-import { apexMapStats } from './apex_map_stats';
 import { apexCraft } from './apex_craft';
 import { apexTopTen, apexTopFifty } from './apex_leaderboard';
 import { apexInvite } from './apex_invite';
@@ -123,12 +122,6 @@ const contructMenu = () => {
   card.addModule({
     type: "section", text: {
       "type": "kmarkdown",
-      "content": "\`。刷圈\`或\`.apex mapstats\` (map statistics)查询现在的地图"
-    }
-  });
-  card.addModule({
-    type: "section", text: {
-      "type": "kmarkdown",
       "content": "\`。制造\`或\`.apex c\`(**c**raft)查询现在复制器可以制造的东西"
     }
   });
@@ -226,4 +219,4 @@ const contructMenu = () => {
 
 
 
-export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum, apexDistribution, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq, apexFeiju, apexLaodiao, apexLizhi, apexTianyao, apexYouling, apexKasha, apexMingyue, apexNiko, apexXiaore, apexMapStats);
+export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum, apexDistribution, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq, apexFeiju, apexLaodiao, apexLizhi, apexTianyao, apexYouling, apexKasha, apexMingyue, apexNiko, apexXiaore);

@@ -314,8 +314,25 @@ const AUTO_REPLY_CONTENT = `[
         "type": "section",
         "text": {
           "type": "kmarkdown",
-          "content": "不知道怎么用？[点这里看使用视频](https://www.bilibili.com/video/BV1Eg41127y3?p=2)。"
+          "content": "点击看[邀请教程](https://www.bilibili.com/video/BV1Eg41127y3?p=1)"
         }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "点击看[使用教程](https://www.bilibili.com/video/BV1Eg41127y3?p=2)"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "kmarkdown",
+          "content": "点击看[设置狗头机器人权限教程](https://www.bilibili.com/video/BV1Eg41127y3?p=3). 设置权限之后, 机器人只能在一个频道回复. "
+        }
+      },
+      {
+        "type": "divider"
       },
       {
         "type": "section",

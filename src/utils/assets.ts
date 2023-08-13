@@ -10,6 +10,14 @@ export const PROFILE_NESSIE = "https://img.kookapp.cn/assets/2023-07/QN7q1UPSPt0
 
 export const APEX_LOGO_RED = "https://img.kookapp.cn/assets/2023-07/7hThBoDKvJ02s02s.png"
 
+export const MAP_TO_FINAL_CIRCLES = new Map<string, string>([
+  ['Storm Point', 'https://img.kookapp.cn/assets/2023-08/txFwmrdHuU0dw0eb.png'],
+  ['World\'s Edge', 'https://img.kookapp.cn/assets/2023-08/uk7t4V3Rie0dw0dr.png'],
+  ['Broken Moon', 'https://img.kookapp.cn/assets/2023-08/gQEvfyg3ej0dw0dw.png'],
+  ['Kings Canyon', 'https://img.kookapp.cn/assets/2023-08/dhLFQ27Gqw0dw0dw.png'],
+  ['Olympus', 'https://img.kookapp.cn/assets/2023-08/G5goNjTBdH0dw0dw.png']
+])
+
 export const RANK_TO_IMAGE = new Map<string, string>(
   [
     ["1", "https://img.kookapp.cn/assets/2023-03/GpLrxr1ddX046046.png"],
