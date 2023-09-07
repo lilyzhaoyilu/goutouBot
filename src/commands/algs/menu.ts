@@ -31,7 +31,7 @@ const constructCard = () => {
     "type": "section",
     "text": {
       "type": "kmarkdown",
-      "content": `2023 年 Apex Legends Global Series (ALGS) 将会于 9月6日 - 9月10日(当地时间)在英国伯明翰举行。\n(font)DreamFire(DF)(font)[pink]和(font)MDY-White(font)[pink]都会参与这次比赛。`
+      "content": `2023 年 Apex Legends Global Series (ALGS) 将会于 9月6日 - 9月10日(当地时间)在英国伯明翰举行。\n(font)DreamFire(DF)(font)[pink]和(font)MDY-White(font)[pink]都会参与这次比赛。\n狗头在更新上懒惰所以...\n详细信息点击进入 [大老师ALGS信息频道](https://kook.top/OD5j3e)`
     }
   })
 
