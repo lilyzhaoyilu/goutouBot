@@ -29,6 +29,7 @@ import { apexYouling } from 'commands/apex/streamers/youling';
 import { apexKasha } from 'commands/apex/streamers/kasha';
 import { apexMingyue } from 'commands/apex/streamers/mingyue';
 import { apexXiaore } from 'commands/apex/streamers/xiaore';
+import { apexEnzuo } from 'commands/apex/streamers/enzuo';
 
 import { algsMenu } from 'commands/algs/menu';
 import { groupA, groupB, groupC, groupD, groupLosers, groupWinners } from 'commands/algs/groups';
@@ -113,6 +114,7 @@ apexMenu.addAlias(apexYouling, "Youling", "幽灵");
 apexMenu.addAlias(apexKasha, "Kasha", "卡莎");
 apexMenu.addAlias(apexMingyue, "Mingyue", "明月", "五更明月");
 apexMenu.addAlias(apexXiaore, "Xiaore", "小惹");
+apexMenu.addAlias(apexEnzuo, "恩佐", "佐神", "Enzuo");
 // messager
 bot.addCommands(messagerMenu);
 
