@@ -23,6 +23,7 @@ import { apexLaodiao } from './streamers/laodiao';
 import { apexLizhi } from './streamers/lizhi';
 import { apexTianyao } from './streamers/tianyao';
 import { apexYouling } from './streamers/youling';
+import { apexEnzuo } from './streamers/enzuo';
 // huya
 import { apexKasha } from './streamers/kasha';
 import { apexMingyue } from './streamers/mingyue';
@@ -219,4 +220,4 @@ const contructMenu = () => {
 
 
 
-export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum, apexDistribution, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq, apexFeiju, apexLaodiao, apexLizhi, apexTianyao, apexYouling, apexKasha, apexMingyue, apexNiko, apexXiaore);
+export const apexMenu = new ApexMenu(apexQuery, apexPredator, apexMap, apexCraft, apexTopTen, apexInvite, apexTime, apexTopFifty, apexPickRates, apexPickRatesMaster, apexPickRatesDiamond, apexPickRatesPlatinum, apexDistribution, apexPite, apexStreamers, apex3mz, apexRoieee, apexJacky, apexKuku, apexQq, apexFeiju, apexLaodiao, apexLizhi, apexTianyao, apexYouling, apexKasha, apexMingyue, apexNiko, apexXiaore, apexEnzuo);
