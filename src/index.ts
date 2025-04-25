@@ -85,7 +85,8 @@ bot.addAlias(apexQuery, "查询", "查");
 bot.addAlias(apexInvite, "邀请");
 bot.addAlias(apexTime, "赛季", "时间");
 bot.addAlias(apexMap, "地图", "图");
-bot.addAlias(apexCraft, "制造", "造");
+// Deprecated
+// bot.addAlias(apexCraft, "制造", "造");
 bot.addAlias(apexTopTen, "前十");
 bot.addAlias(apexTopFifty, "前五十", "五十");
 bot.addAlias(apexPickRates, "选择率", "选择");

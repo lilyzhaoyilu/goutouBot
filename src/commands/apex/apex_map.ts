@@ -4,6 +4,7 @@ import { GoutouCard } from 'utils/goutou_card';
 import { StringTranslation } from 'utils/string_translation';
 import { normalSendOutCardWrapper } from './helper_methods';
 import { MAP_TO_FINAL_CIRCLES } from 'utils/assets';
+import { logger } from '../../utils/logger';
 
 class ApexMap extends AppCommand {
   code = 'map'; // 只是用作标记
@@ -15,6 +16,7 @@ class ApexMap extends AppCommand {
     const data = await ApexLegendsStatus.getMapRotation(session);
     const card: Card = data instanceof Card ? data : constructMapCard(data);
     await normalSendOutCardWrapper(session, card, msg_id);
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'map');
   };
 }
 

@@ -5,6 +5,7 @@ import { StringTranslation } from 'utils/string_translation';
 import { LEGEND_TO_IMAGE } from 'utils/assets';
 import * as cheerio from 'cheerio';
 import { normalSendOutCardWrapper } from './helper_methods';
+import { logger } from '../../utils/logger';
 
 class ApexPickRates extends AppCommand {
   code = 'rate'; // 只是用作标记
@@ -12,7 +13,9 @@ class ApexPickRates extends AppCommand {
   help = '发送`.apex r`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
+
     await pickRatesCommandWrapper('r', session);
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'pickrate');
   };
 }
 export const apexPickRates = new ApexPickRates();
@@ -25,6 +28,7 @@ class ApexPickRatesMaster extends AppCommand {
   func: AppFunc<BaseSession> = async (session) => {
 
     await pickRatesCommandWrapper('rpm', session);
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'pickrateMaster');
   };
 }
 export const apexPickRatesMaster = new ApexPickRatesMaster();
@@ -37,6 +41,7 @@ class ApexPickRatesDiamond extends AppCommand {
   func: AppFunc<BaseSession> = async (session) => {
 
     await pickRatesCommandWrapper('rd', session);
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'pickrateDiamond');
   };
 }
 export const apexPickRatesDiamond = new ApexPickRatesDiamond();
@@ -49,6 +54,7 @@ class ApexPickRatesPlatinum extends AppCommand {
   func: AppFunc<BaseSession> = async (session) => {
 
     await pickRatesCommandWrapper('rp', session);
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'pickratePlatinum');
   };
 }
 export const apexPickRatesPlatinum = new ApexPickRatesPlatinum();

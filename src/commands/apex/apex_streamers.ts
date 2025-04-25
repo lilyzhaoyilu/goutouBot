@@ -1,6 +1,7 @@
 import { AppCommand, AppFunc, BaseSession, TextMessage, Card } from 'kbotify';
 import { STREAMER } from '../../utils/streamer_assets';
 import { GoutouCard } from 'utils/goutou_card';
+import { logger } from '../../utils/logger';
 
 class ApexStreamers extends AppCommand {
   code = 's'; // 只是用作标记
@@ -8,6 +9,7 @@ class ApexStreamers extends AppCommand {
   help = '发送`.apex streamers`就可以啦~'; // 帮助文字
   intro = '什么时候会有intro';
   func: AppFunc<BaseSession> = async (session) => {
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'streamer');
     return session.replyCard(constructStreamerMenu());
   };
 }

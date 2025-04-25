@@ -2,7 +2,7 @@ import { AppCommand, AppFunc, BaseSession, Card } from 'kbotify';
 import { GoutouCard } from 'utils/goutou_card';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { normalSendOutCardWrapper } from './helper_methods';
-
+import { logger } from '../../utils/logger';
 
 class ApexQuery extends AppCommand {
   code = 'q'; // 只是用作标记
@@ -19,6 +19,7 @@ class ApexQuery extends AppCommand {
     const data = await ApexLegendsStatus.getQuery(session, queryUser);
     const card: Card = data instanceof Card ? data : buildQueryCard(data);
     await normalSendOutCardWrapper(session, card, msg_id);
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'query');
   }
 };
 

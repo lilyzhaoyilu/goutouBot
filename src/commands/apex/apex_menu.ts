@@ -120,12 +120,13 @@ const contructMenu = () => {
       "content": "\`。地图\`或\`.apex map\`查询现在的地图"
     }
   });
-  card.addModule({
-    type: "section", text: {
-      "type": "kmarkdown",
-      "content": "\`。制造\`或\`.apex c\`(**c**raft)查询现在复制器可以制造的东西"
-    }
-  });
+  // Deprecated
+  // card.addModule({
+  //   type: "section", text: {
+  //     "type": "kmarkdown",
+  //     "content": "\`。制造\`或\`.apex c\`(**c**raft)查询现在复制器可以制造的东西"
+  //   }
+  // });
 
   card.addDivider();
   card.addModule({

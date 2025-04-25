@@ -3,6 +3,7 @@ import { GoutouCard } from 'utils/goutou_card';
 import { ApexLegendsStatus } from 'utils/apex_legends_status_api';
 import { PROFILE_NESSIE } from '../../utils/assets';
 import { normalSendOutCardWrapper } from './helper_methods';
+import { logger } from '../../utils/logger';
 
 class ApexPredator extends AppCommand {
   code = 'p'; // 只是用作标记
@@ -26,6 +27,7 @@ class ApexPredator extends AppCommand {
         console.error('REPLY CARD session msg: ', session.msg, 'session err: ', err);
       }
     }
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'predatorScore');
   };
 }
 

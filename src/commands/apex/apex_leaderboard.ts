@@ -5,6 +5,7 @@ import { GoutouCard } from 'utils/goutou_card';
 import { RANK_TO_IMAGE } from 'utils/assets';
 import { normalSendOutCardWrapper } from './helper_methods';
 import { Streamer } from '../../utils/streamer_handler';
+import { logger } from '../../utils/logger';
 import * as cheerio from 'cheerio';
 
 class ApexTopFifty extends AppCommand {
@@ -18,6 +19,7 @@ class ApexTopFifty extends AppCommand {
     const card: Card = data instanceof Card ? data :
       buildLiveLeaderboardCard(data.data, 50);
     await normalSendOutCardWrapper(session, card, msg_id);
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'top50');
   };
 }
 
@@ -32,6 +34,7 @@ class ApexTopTen extends AppCommand {
     const card: Card = data instanceof Card ? data :
       buildLiveLeaderboardCard(data.data, 10);
     await normalSendOutCardWrapper(session, card, msg_id);
+    logger(session.guild?.id, session.userId, session.user?.username, session.user?.identifyNum, 'top10');
   };
 }
 
